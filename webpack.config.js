@@ -34,6 +34,7 @@ module.exports = {
             js: path.resolve(__dirname, './src'),
             jsx: path.resolve(__dirname, './src'),
         },
+        extensions: ['.js', '.json', '.ts', '.tsx', '.jsx'],
     },
     module: {
         rules: [
@@ -50,10 +51,6 @@ module.exports = {
                         presets: ['@babel/preset-env'],
                     },
                 },
-            },
-            {
-                test: /\.mp3$/,
-                loader: 'file-loader',
             },
             {
                 test: /\.(jsx|js)$/,
@@ -75,10 +72,6 @@ module.exports = {
                 {
                     from: path.resolve(__dirname, 'public/assets/images'),
                     to: path.resolve(__dirname, 'dist/public/assets/images'),
-                },
-                {
-                    from: path.resolve(__dirname, 'public/assets/music'),
-                    to: path.resolve(__dirname, 'dist/public/assets/music'),
                 },
             ],
         }),
