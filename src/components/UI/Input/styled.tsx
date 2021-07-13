@@ -37,7 +37,6 @@ export const StInput = styled.input < IInput > `
       background:${({ bgFocusColor = bgFocusColorDefault }) => bgFocusColor};
       color: ${({ focusColor = focusColorDefaultInput }) => focusColor};
       &::placeholder {
-        
         color: ${({ color = focusColorDefaultInput }) => color};
       }
     }
