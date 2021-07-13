@@ -4,4 +4,4 @@ export enum actionTypes {
     SET_VALUE = '@@registration/SET_VALUE',
     REGISTRATION_REQUEST_SUCCESS = '@@registration/REGISTRATION_REQUEST_SUCCESS',
     REGISTRATION_REQUEST_ERROR = '@@registration/REGISTRATION_REQUEST_ERROR',
-};
+}
