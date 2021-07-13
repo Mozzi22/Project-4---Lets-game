@@ -8,21 +8,24 @@ import {
   disabledBorder,
 } from '../baseLayout';
 
-export const StButton = styled.button < { 
-    margin: 'string', 
-    padding: 'string', 
-    width: 'string', 
-    height: 'string', 
-    cursor: 'string',
-    bgColor: 'string',
-    borderRadius: 'string',
-    border: 'string', 
-    outline: 'string',
-    transition: 'string',
-    fontSize: 'string',
-    focusColor: 'string',
-    bgColorDisabled: 'string',
-} > `
+interface IBtn {
+     
+        margin: string; 
+        padding: string; 
+        width: string; 
+        height: string; 
+        cursor: string;
+        bgColor: 'string',
+        borderRadius: 'string',
+        border: 'string', 
+        outline: 'string',
+        transition: 'string',
+        fontSize: 'string',
+        focusColor: 'string',
+        bgColorDisabled: 'string',
+     
+}
+export const StButton = styled.button < IBtn > `
   ${({ margin = '0 0 3px 0' }) => margin && `margin: ${margin}`};
   font-family: 'Play', sans-serif;
   padding: ${({ padding = '5px' }) => padding};

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactEventHandler } from 'react';
 import { NavLink, Redirect } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { regInputs } from '../../constants/componentsСonsts';
@@ -7,18 +7,19 @@ import { StRegDiv } from './styled';
 import Form from '../UI/Form';
 import Input from '../UI/Input';
 import Button from '../UI/Button';
+import { TRegistrationData } from '../../Store/registration/types'
 
 interface IRegistration {
-    sendRegistrationRequest: ;
-    setRegistrationValue: ;
-    // fields: (value: { success: string; }) => void;
+    sendRegistrationRequest: (e: React.MouseEvent) => void ;
+    setRegistrationValue: (data: TRegistrationData) => void ;
+    fields: { success?: string, error?: string };
 }
 
 const Registration = ({ sendRegistrationRequest, setRegistrationValue, fields }: IRegistration) => {
     const { t } = useTranslation();
     const { success } = fields;
     if (success) return <Redirect to={APP_ROUTES.login} />;
-    const handleOnChange = (data) => {
+    const handleOnChange = (data: TRegistrationData) => {
         const { error } = fields;
         if (error) setRegistrationValue({ name: 'error', value: null });
         setRegistrationValue(data);
