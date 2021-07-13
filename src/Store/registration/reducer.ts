@@ -28,7 +28,7 @@ export const reducer: Reducer<TInitialRegistrationData, TActionsRegistration> = 
         case AT.REGISTRATION_REQUEST_SUCCESS:
             return { ...state, isLoading: false, success: false };
         case AT.REGISTRATION_REQUEST_ERROR:
-            return { ...state, isLoading: false, error: action.payload };
+            return { ...state, isLoading: false, error: true };
         case AT.CLEAR_INPUTS_VALUES:
             return {
                 ...state,
