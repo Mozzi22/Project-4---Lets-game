@@ -1,30 +1,8 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { StButton } from './styled';
+import { IButton } from './types';
 
-interface IButton{
-    id: string;
-    name?: string;
-    onClick: (e : React.MouseEvent<HTMLElement, MouseEvent>) => void;
-    title?: string;
-    type?: 'button';
-    value?: string;
-    borderRadius?: string;
-    isDisabled?: boolean;
-    color?: string;
-    fontSize?: string;
-    fontWeight?: string;
-    bgColorDisabled?: string;
-    bgColor?: string;
-    bgColorHover?: string;
-    height?: string;
-    width?: string;
-    padding?: string;
-    margin?: string;
-    content?: string;
-    transition?: string;
-    focusColor?: string;
-}
 const Button = ({
     id,
     name,

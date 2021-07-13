@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { IInput } from './types';
 import { 
   bgInpColorDefault, 
   bgFocusColorDefault, 
@@ -14,24 +15,7 @@ export const StLabel = styled.label < { margin: 'string', cursor: 'string', disp
    ${({ fontWeight = 'bold' }) => fontWeight && `font-weight: ${fontWeight}`};
 `;
 
-export const StInput = styled.input < { 
-    inputHeight: 'string', 
-    padding: 'string', 
-    margin: 'string', 
-    borderColor: 'string', 
-    brRadius: 'string', 
-    bgColor: 'string',
-    outlineInput: 'string',
-    cursorType: 'string',
-    borderRadius: 'string',
-    fontWeight: 'string',
-    fontSizeInp: 'string',
-    textAlignInput: 'string',
-    transition: 'string',
-    bgFocusColor: 'string',
-    focusColor: 'string',
-
-} > `
+export const StInput = styled.input < IInput > `
     width: 100%;
     height: ${({ inputHeight = '100%' }) => inputHeight};
     padding: ${({ padding = '5px' }) => padding};

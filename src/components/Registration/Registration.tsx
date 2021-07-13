@@ -1,4 +1,4 @@
-import React, { ReactEventHandler } from 'react';
+import React from 'react';
 import { NavLink, Redirect } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { regInputs } from '../../constants/componentsСonsts';
@@ -7,12 +7,12 @@ import { StRegDiv } from './styled';
 import Form from '../UI/Form';
 import Input from '../UI/Input';
 import Button from '../UI/Button';
-import { TRegistrationData } from '../../Store/registration/types'
+import { TInitialRegistrationData, TRegistrationData } from '../../Store/registration/types';
 
 interface IRegistration {
     sendRegistrationRequest: (e: React.MouseEvent) => void ;
     setRegistrationValue: (data: TRegistrationData) => void ;
-    fields: { success?: string, error?: string };
+    fields: TInitialRegistrationData;
 }
 
 const Registration = ({ sendRegistrationRequest, setRegistrationValue, fields }: IRegistration) => {
@@ -56,12 +56,6 @@ const Registration = ({ sendRegistrationRequest, setRegistrationValue, fields }:
             </Form>
         </StRegDiv>
     );
-};
-
-Registration.propTypes = {
-    sendRegistrationRequest: PropTypes.func.isRequired,
-    setRegistrationValue: PropTypes.func.isRequired,
-    fields: PropTypes.object.isRequired,
 };
 
 export default Registration;

@@ -1,4 +1,10 @@
-export const regInputs = [{
+interface IRegInput {
+    id: 'email' | 'password' | 'confirm';
+    placeholder: string;
+    label: string;
+}
+
+export const regInputs: Array<IRegInput> = [{
     id: 'email',
     label: 'email_label',
     placeholder: 'email_placeholder',

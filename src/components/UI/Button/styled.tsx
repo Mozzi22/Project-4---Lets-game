@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { IBtn } from './types';
 import {
   bgColorDefault,
   colorDefault,
@@ -8,23 +9,6 @@ import {
   disabledBorder,
 } from '../baseLayout';
 
-interface IBtn {
-     
-        margin: string; 
-        padding: string; 
-        width: string; 
-        height: string; 
-        cursor: string;
-        bgColor: 'string',
-        borderRadius: 'string',
-        border: 'string', 
-        outline: 'string',
-        transition: 'string',
-        fontSize: 'string',
-        focusColor: 'string',
-        bgColorDisabled: 'string',
-     
-}
 export const StButton = styled.button < IBtn > `
   ${({ margin = '0 0 3px 0' }) => margin && `margin: ${margin}`};
   font-family: 'Play', sans-serif;

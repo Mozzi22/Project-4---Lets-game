@@ -5,7 +5,7 @@ import Button from '/src/components/UI/Button';
 import { NotificationManager } from 'react-notifications';
 import { useTranslation } from 'react-i18next';
 import { StContentModalUsers, StControlPanel, StUsersItem } from './styled';
-import { MODAL_USERS_BUTTON } from '/src/constants/componentsСonsts.js';
+import { MODAL_USERS_BUTTON } from '/src/constants/componentsСonsts';
 
 const InviteUsersView = ({ users, changeModalVisibility, setUserInRoom }) => {
     const { t } = useTranslation();

@@ -1,4 +1,4 @@
-import ModalComponent from './ModalComponent.js';
+import ModalComponent from './ModalComponent';
 import { connect } from 'react-redux';
 import { changeModalVisibility } from '/src/Store/modals/actions';
 import { getModalVisibilityIsOpen } from '/src/Store/modals/selectors';
