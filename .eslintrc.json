@@ -20,8 +20,11 @@
             2
         ],
         "react/jsx-indent-props": [
-            "off",
-            2
+            // "off",
+            0
+        ],
+        "react/prop-types": [
+            0
         ],
         "react/jsx-filename-extension": [
             1,
@@ -62,7 +65,7 @@
         "import/no-dynamic-require": "off",
         "import/no-absolute-path": "off",
         "consistent-return": "off",
-        "react/forbid-prop-types": "off",
+        // "react/forbid-prop-types": "off",
         "no-use-before-define": [
             "error",
             {
