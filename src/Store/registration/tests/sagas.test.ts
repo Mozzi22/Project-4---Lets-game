@@ -14,7 +14,6 @@ import { actionTypes } from '../actionTypes';
 import { routes } from '../../../constants/routes';
 import { validation } from '../../../helpers/validation';
 
-
 describe('registrationSaga', () => {
     describe('workerRegistration', () => {
         let action: any;

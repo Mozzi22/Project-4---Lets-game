@@ -1,18 +1,19 @@
 import styled from 'styled-components';
 import { IStInput, IStLabel, IStInputContainer } from './types';
-import { 
-  bgInpColorDefault, 
-  bgFocusColorDefault, 
-  focusColorDefaultInput, 
+import {
+  bgInpColorDefault,
+  bgFocusColorDefault,
+  focusColorDefaultInput,
   colorDefaultInput } from '../baseLayout';
 
 export const StLabel = styled.label < IStLabel > `
-   ${({ margin = '0 0px 10px 0' }) => margin && `margin: ${margin}`};
-   padding: 0;
-   justify-content: flex-start;
-   ${({ cursor = 'pointer' }) => cursor && `cursor: ${cursor}`};
-   ${({ display = 'block' }) => display && `display: ${display}`};
-   ${({ fontWeight = 'bold' }) => fontWeight && `font-weight: ${fontWeight}`};
+    ${({ margin = '0 0px 10px 0' }) => margin && `margin: ${margin}`};
+    padding: 0;
+    justify-content: flex-start;
+    ${({ cursor = 'pointer' }) => cursor && `cursor: ${cursor}`};
+    ${({ display = 'block' }) => display && `display: ${display}`};
+    ${({ fontWeight = 'bold' }) => fontWeight && `font-weight: ${fontWeight}`};
+
 `;
 
 export const StInput = styled.input < IStInput > `
@@ -22,7 +23,7 @@ export const StInput = styled.input < IStInput > `
     ${({ margin }) => margin && `margin: ${margin}`};
     ${({ borderColor }) => borderColor && `border: 1px solid ${borderColor}`};
     box-sizing: border-box;
-     font-family: 'Play', sans-serif;
+    font-family: 'Play', sans-serif;
     ${({ brRadius }) => brRadius && `border-radius: ${brRadius}`};
     background-color: ${({ bgColor = bgInpColorDefault }) => (bgColor)};
     ${({ outlineInput = 'none' }) => outlineInput && `outline: ${outlineInput}`};
@@ -37,7 +38,6 @@ export const StInput = styled.input < IStInput > `
       background:${({ bgFocusColor = bgFocusColorDefault }) => bgFocusColor};
       color: ${({ focusColor = focusColorDefaultInput }) => focusColor};
       &::placeholder {
-        
         color: ${({ color = focusColorDefaultInput }) => color};
       }
     }

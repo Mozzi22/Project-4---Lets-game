@@ -1,9 +1,9 @@
 {
-  "name": "header_shmeader_client",
+  "name": "lets_game",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "author": "header_shmeader_team",
+  "author": "lets_game",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.14.3",

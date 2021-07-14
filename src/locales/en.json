@@ -60,5 +60,8 @@
     "welcome": "Welcome,",
     "find_interlocutors": "Choose a chat to start a chat",
     "long_no_space": "You cannot send such a long word without spaces",
-    "online": "Online Users"
+    "online": "Online Users",
+    "dropdown_game": "game type",
+    "option_game_1": "tic-tac-toe",
+    "option_game_2": "checkers"
 }

@@ -4,6 +4,7 @@ coverage
 node_modules
 .vs
 package-lock.json
-dist 
+dist
 vscode
 .vscode
+yarn-error.log

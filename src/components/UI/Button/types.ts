@@ -1,21 +1,19 @@
 import React from 'react';
 
 export interface IBtn {
-     
-    margin?: string; 
-    padding?: string; 
-    width?: string; 
-    height?: string; 
+    margin?: string;
+    padding?: string;
+    width?: string;
+    height?: string;
     cursor?: string;
     bgColor?: string;
     borderRadius?: string;
-    border?: string; 
+    border?: string;
     outline?: string;
     transition?: string;
     fontSize?: string;
     focusColor?: string;
     bgColorDisabled?: string;
- 
 }
 export interface IButton{
     id: string;

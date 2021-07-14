@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Select Should match snapshot 1`] = `"<select id=\\"id\\" class=\\"styled__StSelect-sc-hpp2tm-0 jRUrUi\\"></select>"`;

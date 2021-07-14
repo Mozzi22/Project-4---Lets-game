@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { NavLink, Redirect } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { logInputs } from '../../constants/componentsСonsts';
@@ -48,12 +47,6 @@ const Login = ({ sendLoginRequest, setLoginValue, fields, setValue }) => {
       </Form>
     </StLoginDiv>
   );
-};
-
-Login.propTypes = {
-  sendLoginRequest: PropTypes.func.isRequired,
-  setLoginValue: PropTypes.func.isRequired,
-  fields: PropTypes.object.isRequired,
 };
 
 export default Login;
