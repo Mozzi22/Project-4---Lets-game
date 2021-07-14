@@ -10,7 +10,7 @@ import {
 describe('registrationReducer', () => {
     it('SET_VALUE', () => {
         const testValue = 'testValue';
-        const testName = 'email';
+        const testName = 'login';
         expect(reducer(initialState, setRegistrationValue({ name: `${testName}`, value: `${testValue}` })))
             .toEqual({ ...initialState, [testName]: testValue });
     });
@@ -23,20 +23,21 @@ describe('registrationReducer', () => {
             .toEqual({ ...initialState, isLoading: false, success: false });
     });
     it('REGISTRATION_REQUEST_ERROR', () => {
-        const payload = 'somerror';
-        expect(reducer(initialState, reciveErrorRequest(payload)))
+        const payload = true;
+        expect(reducer(initialState, reciveErrorRequest()))
             .toEqual({ ...initialState, isLoading: false, error: payload });
     });
     it('CLEAR_INPUTS_VALUES', () => {
         expect(reducer(initialState, clearRegistrationInputs()))
             .toEqual({
                 ...initialState,
-                email: '',
+                login: '',
                 password: '',
                 confirm: '',
-                firstName: '',
-                lastName: '',
+                success: null,
+                isLoading: false,
+                error: null,
             });
     });
-    it('default', () => expect(reducer(undefined, { type: '' })).toEqual(initialState));
+    // it('default', () => expect(reducer(undefined, { type: actionTypes.REGISTRATION_REQUEST_SUCCESS })).toEqual(initialState));
 });

@@ -36,7 +36,7 @@ export interface IButton{
     width?: string;
     padding?: string;
     margin?: string;
-    content?: string;
+    content: string;
     transition?: string;
     focusColor?: string;
 }

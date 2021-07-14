@@ -3,15 +3,19 @@ module.exports = {
     moduleFileExtensions: [
         'js',
         'jsx',
+        'ts',
+        'tsx',
     ],
     globals: {
         window: true,
     },
-    collectCoverageFrom: ['**/*.jsx', '**/*.js'],
-    moduleDirectories: ['node_modules', '.', 'src'],
+    collectCoverageFrom: ['**/*.jsx', '**/*.js', '**/*.ts', '**/*.tsx'],
+    moduleDirectories: ['node_modules', '.', 'src', 'tests'],
     testMatch: [
         '**/*.(test|spec).(js)',
         '**/*.(test|spec).(jsx)',
+        '**/*.(test|spec).(ts)',
+        '**/*.(test|spec).(tsx)',
     ],
     coverageReporters: [
         'json',
@@ -24,6 +28,8 @@ module.exports = {
         '/dist/',
         'jest.config.js',
         'package.json',
+        'webpack.config.js',
+        '/coverage/',
     ],
     moduleNameMapper: {
         '^.+\\.(css|scss)$': 'identity-obj-proxy',

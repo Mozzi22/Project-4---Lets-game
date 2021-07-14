@@ -14,10 +14,8 @@ const Button = ({
     isDisabled,
     color,
     fontSize,
-    fontWeight,
     bgColorDisabled,
     bgColor,
-    bgColorHover,
     height,
     width,
     padding,
@@ -37,12 +35,10 @@ const Button = ({
             title={title}
             bgColorDisabled={bgColorDisabled}
             borderRadius={borderRadius}
-            isDisabled={isDisabled}
+            disabled={isDisabled}
             color={color}
             fontSize={fontSize}
-            fontWeight={fontWeight}
             bgColor={bgColor}
-            bgColorHover={bgColorHover}
             height={height}
             width={width}
             padding={padding}
