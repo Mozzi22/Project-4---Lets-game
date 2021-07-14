@@ -13,6 +13,7 @@ export const StModalHeader = styled.div`
             margin-left: auto;
         }
 `;
+
 export const StTextHeader = styled.div`
     width: 100%;
     display: flex;
@@ -22,6 +23,7 @@ export const StTextHeader = styled.div`
     color: ${({ color = colorDefault }) => color};
     font-size: 36px;
 `;
+
 export const Component = {
     margin: 'auto',
     overflow: 'visible',
@@ -33,18 +35,19 @@ export const Component = {
     maxHeight: '80vh',
     width: '40%',
     justifyContent: 'center',
-    fontFamily: 'Play, sans-serif',
+    fontFamily: 'Oxanium, cursive',
     display: 'flex',
     overflowY: 'hidden',
 };
+
 export const customStyles = {
-   overlay: {
-        backgroundColor: 'rgba(0, 0, 0, 0.6)',
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
+    overlay: {
+    backgroundColor: 'rgba(0, 0, 0, 0.6)',
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
     },
     content: {
         overflow: 'auto',
@@ -58,8 +61,8 @@ export const customStyles = {
         minHeight: '40vh',
         maxHeight: '80vh',
         width: '40%',
-        fontFamily: 'Play, sans-serif',
+        fontFamily: 'Oxanium, cursive',
         display: 'flex',
         overflowY: 'hidden',
     },
-  };
+};

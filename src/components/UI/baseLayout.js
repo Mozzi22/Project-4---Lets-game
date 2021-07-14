@@ -7,7 +7,6 @@ export const backgroundUrls = {
 
 // default color for all transparent backgrounds, use this :)
 export const TRANSPARENT_BACKGROUND = 'rgba(0, 0, 0, 0.4)';
-export const activeBorder = '1px solid #c4c4c4';
 
 //Button
 export const bgColorDefault = '#5523c1';
@@ -29,3 +28,4 @@ export const textColorBlack = '#000';
 
 // Select
 export const bgSelect = '#fff';
+export const activeBorder = '1px solid #c4c4c4';

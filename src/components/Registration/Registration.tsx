@@ -9,6 +9,8 @@ import Input from '../UI/Input';
 import Button from '../UI/Button';
 import { TInitialRegistrationData, TRegistrationData } from '../../Store/registration/types';
 
+import ModalCreateRoom from '../UI/Modals/ModalCreateRoom';
+
 interface IRegistration {
     sendRegistrationRequest: (e: React.MouseEvent) => void ;
     setRegistrationValue: (data: TRegistrationData) => void ;
@@ -54,6 +56,7 @@ const Registration = ({ sendRegistrationRequest, setRegistrationValue, fields }:
                     <NavLink to={APP_ROUTES.login}>{t('reg_link_text')}</NavLink>
                 </span>
             </Form>
+            <ModalCreateRoom isOpen />
         </StRegDiv>
     );
 };
