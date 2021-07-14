@@ -7,6 +7,7 @@ const Select: React.FC<ISelect> = ({
     id,
     onClick,
     content,
+    name,
     selected,
     margin,
     padding,
@@ -31,6 +32,7 @@ const Select: React.FC<ISelect> = ({
             id={id}
             onClick={onClick}
             content={content}
+            name={name}
             borderRadius={borderRadius}
             color={color}
             border={border}
@@ -51,7 +53,7 @@ const Select: React.FC<ISelect> = ({
             {options.map(el => (
                 <StOption
                     id={id}
-                    value={el.value}
+                    value={el.value || options[1]}
                     key={`${el.key}`}
                     onClick={onClick}
                     selected={selected}
