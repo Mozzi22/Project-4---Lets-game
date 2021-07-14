@@ -1,6 +1,7 @@
 import { takeEvery, call, select, put } from 'redux-saga/effects';
 import { NotificationManager } from 'react-notifications';
 import i18next from 'i18next';
+import { SagaIterator } from '@redux-saga/core';
 import { postRequest } from '../../helpers/requests';
 import { routes } from '../../constants/routes';
 import { actionTypes } from './actionTypes';
@@ -11,7 +12,7 @@ import { setLoginValue, clearLoginInputs, reciveErrorRequest, reciveSuccessReque
 import { support } from '../../helpers/support';
 import { setAuthValues, setValue } from '../user/actions';
 
-export function* workerLogin() {
+export function* workerLogin(): SagaIterator {
     try {
         const data = yield select(logValues);
         const { message: validateMessage, isValid } = yield call(validation.loginValidation, data);
