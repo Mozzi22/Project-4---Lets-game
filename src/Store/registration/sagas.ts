@@ -1,6 +1,7 @@
 import { takeEvery, call, select, put } from 'redux-saga/effects';
 import { NotificationManager } from 'react-notifications';
 import i18next from 'i18next';
+import { SagaIterator } from '@redux-saga/core';
 import { postRequest } from '../../helpers/requests';
 import { routes } from '../../constants/routes';
 import { actionTypes } from './actionTypes';
@@ -8,7 +9,7 @@ import { regValues } from './selectors';
 import { setRegistrationValue, clearRegistrationInputs, reciveErrorRequest, reciveSuccessRequest } from './actions';
 import { validation } from '../../helpers/validation';
 
-export function* workerRegistration() {
+export function* workerRegistration(): SagaIterator {
     try {
         const data = yield select(regValues);
         const { message: validateMessage, isValid } = yield call(

@@ -1,9 +1,9 @@
 export type TRegistrationData = {
-    name: string, value: string | null 
+    name: string, value: string | null | boolean 
 }
 
 export type TInitialRegistrationData = {
-    email: string;
+    login: string;
     password: string;
     confirm: string;
     success: null | boolean;

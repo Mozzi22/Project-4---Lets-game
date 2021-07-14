@@ -1,9 +1,9 @@
 import { expectSaga, testSaga } from 'redux-saga-test-plan';
-import * as sagas from '../sagas';
-import { regValues } from '../selectors';
-import { postRequest } from '/src/helpers/requests';
 import { NotificationManager } from 'react-notifications';
 import i18next from 'i18next';
+import * as sagas from '../sagas';
+import { regValues } from '../selectors';
+import { postRequest } from '../../../helpers/requests';
 import {
     setRegistrationValue,
     clearRegistrationInputs,
@@ -11,8 +11,8 @@ import {
     reciveSuccessRequest,
 } from '../actions';
 import { actionTypes } from '../actionTypes';
-import { routes } from '/src/constants/routes';
-import { validation } from '/src/helpers/validation';
+import { routes } from '../../../constants/routes';
+import { validation } from '../../../helpers/validation';
 
 
 describe('registrationSaga', () => {
@@ -24,15 +24,13 @@ describe('registrationSaga', () => {
             };
         });
         const authValue = {
-            email: 'SkripnikMRW@gmail.com',
+            login: 'login',
             password: '123456',
-            firstName: 'Max',
-            lastName: 'Skr',
             confirm: undefined,
         };
         const path = `${routes.account.registration}`;
         it('should call workerRegistration with validation Error', () => {
-            testSaga(sagas.workerRegistration, action)
+            testSaga(sagas.workerRegistration)
                 .next()
                 .select(regValues)
                 .next(authValue)
@@ -45,7 +43,7 @@ describe('registrationSaga', () => {
                 .isDone();
         });
         it('should call workerRegistration without error', () => {
-            testSaga(sagas.workerRegistration, action)
+            testSaga(sagas.workerRegistration)
                 .next()
                 .select(regValues)
                 .next(authValue)
@@ -62,7 +60,7 @@ describe('registrationSaga', () => {
                 .isDone();
         });
         it('should call workerRegistration , serverAnswer !== done ', () => {
-            testSaga(sagas.workerRegistration, action)
+            testSaga(sagas.workerRegistration)
                 .next()
                 .select(regValues)
                 .next(authValue)
@@ -81,7 +79,7 @@ describe('registrationSaga', () => {
                 .isDone();
         });
         it('should call workerRegistration and we have error ', () => {
-            testSaga(sagas.workerRegistration, action)
+            testSaga(sagas.workerRegistration)
                 .next()
                 .throw()
                 .put(setRegistrationValue({ name: 'success', value: false }))

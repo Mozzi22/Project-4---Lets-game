@@ -5,10 +5,9 @@ describe('registration selectors', () => {
     beforeEach(() => {
         state = {
             registration: {
-                email: '',
+                login: '',
                 password: '',
-                firstName: '',
-                lastName: '',
+                confirm: '',
             },
         };
     });
