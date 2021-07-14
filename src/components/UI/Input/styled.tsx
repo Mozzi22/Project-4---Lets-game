@@ -1,12 +1,12 @@
 import styled from 'styled-components';
-import { IInput } from './types';
+import { IStInput, IStLabel, IStInputContainer } from './types';
 import { 
   bgInpColorDefault, 
   bgFocusColorDefault, 
   focusColorDefaultInput, 
   colorDefaultInput } from '../baseLayout';
 
-export const StLabel = styled.label < { margin: 'string', cursor: 'string', display: 'string', fontWeight: 'string' } > `
+export const StLabel = styled.label < IStLabel > `
    ${({ margin = '0 0px 10px 0' }) => margin && `margin: ${margin}`};
    padding: 0;
    justify-content: flex-start;
@@ -15,7 +15,7 @@ export const StLabel = styled.label < { margin: 'string', cursor: 'string', disp
    ${({ fontWeight = 'bold' }) => fontWeight && `font-weight: ${fontWeight}`};
 `;
 
-export const StInput = styled.input < IInput > `
+export const StInput = styled.input < IStInput > `
     width: 100%;
     height: ${({ inputHeight = '100%' }) => inputHeight};
     padding: ${({ padding = '5px' }) => padding};
@@ -51,7 +51,7 @@ export const StErrorSpan = styled.span`
     color: ${({ color = 'red' }) => color};
 `;
 
-export const StInputContainer = styled.div < { width: 'string', height: 'string' } > `
+export const StInputContainer = styled.div < IStInputContainer > `
     ${({ width = '100%' }) => width && `width: ${width}`};
     ${({ height = '50px' }) => height && `height: ${height}`};
 `;
