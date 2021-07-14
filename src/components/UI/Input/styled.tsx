@@ -13,7 +13,6 @@ export const StLabel = styled.label < IStLabel > `
     ${({ cursor = 'pointer' }) => cursor && `cursor: ${cursor}`};
     ${({ display = 'block' }) => display && `display: ${display}`};
     ${({ fontWeight = 'bold' }) => fontWeight && `font-weight: ${fontWeight}`};
-
 `;
 
 export const StInput = styled.input < IStInput > `
