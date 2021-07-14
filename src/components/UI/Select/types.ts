@@ -5,6 +5,7 @@ export interface ISelect {
     name?: string;
     onClick?: (e: React.MouseEvent<HTMLElement, MouseEvent>) => void;
     content?: string;
+    selected: string;
     margin?: string;
     padding?: string;
     width?: string;
@@ -20,4 +21,5 @@ export interface ISelect {
     focusColor?: string;
     bgColorDisabled?: string;
     options: Array<string>;
+    defaultValue?: string;
 }

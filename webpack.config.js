@@ -4,100 +4,107 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const pages = [
-    {
-        template: path.resolve(__dirname, 'src/index.html'),
-        filename: 'index.html',
-    },
+  {
+    template: path.resolve(__dirname, 'src/index.html'),
+    filename: 'index.html',
+  },
 ];
-const getFileLoader = regExp => ({
-    test: regExp,
-    use: ['file-loader'],
+const getFileLoader = (regExp) => ({
+  test: regExp,
+  use: ['file-loader'],
 });
 const getStyleLoader = (regExp, additionalLoaders) => {
-    const rules = {
-        test: regExp,
-        use: ['style-loader', 'css-loader'],
-    };
-    if (additionalLoaders && additionalLoaders.length) {
-        additionalLoaders.forEach(loader => rules.use.push(loader));
-    }
-    return rules;
+  const rules = {
+    test: regExp,
+    use: ['style-loader', 'css-loader'],
+  };
+  if (additionalLoaders && additionalLoaders.length) {
+    additionalLoaders.forEach((loader) => rules.use.push(loader));
+  }
+  return rules;
 };
-const getPath = url => path.resolve(__dirname, `src/${url}`);
+const getPath = (url) => path.resolve(__dirname, `src/${url}`);
 
 module.exports = {
-    entry: {
-        bundle: getPath('index.js'),
+  entry: {
+    bundle: getPath('index.js'),
+  },
+  resolve: {
+    alias: {
+      constants: path.resolve(__dirname, 'src/constants'),
+      store: path.resolve(__dirname, 'src/Store'),
+      src: path.resolve(__dirname, 'src'),
+      helpers: path.resolve(__dirname, 'src/helpers'),
     },
-    resolve: {
-        alias: {
-            src: path.resolve('./src'),
+    extensions: ['.js', '.json', '.ts', '.tsx', '.jsx'],
+  },
+  module: {
+    rules: [
+      getStyleLoader(/\.css$/),
+      getFileLoader(/\.(ttf|woff|eot)$/),
+      getFileLoader(/\.(jpg|jpeg|svg|png)$/),
+      getStyleLoader(/\.s[ac]ss$/, ['sass-loader']),
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+          },
         },
-        extensions: ['.js', '.json', '.ts', '.tsx', '.jsx'],
-    },
-    module: {
-        rules: [
-            getStyleLoader(/\.css$/),
-            getFileLoader(/\.(ttf|woff|eot)$/),
-            getFileLoader(/\.(jpg|jpeg|svg|png)$/),
-            getStyleLoader(/\.s[ac]ss$/, ['sass-loader']),
-            {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: ['@babel/preset-env'],
-                    },
-                },
-            },
-            {
-                test: /\.(tsx|ts)$/,
-                exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: ['@babel/preset-react', '@babel/preset-env', '@babel/preset-typescript'],
-                    },
-                },
-            },
-            {
-                test: /\.(jsx|js)$/,
-                exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: ['@babel/preset-react', '@babel/preset-env'],
-                    },
-                },
-            },
-        ],
-    },
-    plugins: [
-        ...pages.map(config => new HTMLWebpackPlugin(config)),
-        new CleanWebpackPlugin(),
-        new CopyWebpackPlugin({
-            patterns: [
-                {
-                    from: path.resolve(__dirname, 'public/assets/images'),
-                    to: path.resolve(__dirname, 'dist/public/assets/images'),
-                },
+      },
+      {
+        test: /\.(tsx|ts)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              '@babel/preset-react',
+              '@babel/preset-env',
+              '@babel/preset-typescript',
             ],
-        }),
-    ],
-    output: {
-        filename: '[name].[contenthash].js',
-        path: path.resolve(__dirname, 'dist'),
-    },
-    optimization: {
-        splitChunks: {
-            chunks: 'all',
+          },
         },
+      },
+      {
+        test: /\.(jsx|js)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-react', '@babel/preset-env'],
+          },
+        },
+      },
+    ],
+  },
+  plugins: [
+    ...pages.map((config) => new HTMLWebpackPlugin(config)),
+    new CleanWebpackPlugin(),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, 'public/assets/images'),
+          to: path.resolve(__dirname, 'dist/public/assets/images'),
+        },
+      ],
+    }),
+  ],
+  output: {
+    filename: '[name].[contenthash].js',
+    path: path.resolve(__dirname, 'dist'),
+  },
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
     },
-    devServer: {
-        port: 7777,
-        historyApiFallback: true,
-        contentBase: './',
-        hot: true,
-    },
+  },
+  devServer: {
+    port: 7777,
+    historyApiFallback: true,
+    contentBase: './',
+    hot: true,
+  },
 };

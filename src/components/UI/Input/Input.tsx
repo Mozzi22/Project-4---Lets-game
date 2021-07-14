@@ -1,29 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { StErrorSpan, StInput, StInputContainer, StLabel } from './styled';
-
-interface IInput{
-    id: number | string;
-    type?: string;
-    name?: string;
-    width: string;
-    label?: string;
-    value?: string;
-    height?: string;
-    margin?: string;
-    onChange: (value: { name: string; value: string }) => void;
-    maxLength?: string;
-    inputHeight?: string;
-    borderRadius?: string;
-    bgColor?: string;
-    padding?: string;
-    color?: string;
-    bgFocusColor?: string;
-    fontSizeInp?: string;
-    borderColor?: string;
-    placeholder?: string;
-    errorMessage?: string;
-}
+import { IInput } from './types';
 
 const Input: React.FC<IInput> = ({
     id,

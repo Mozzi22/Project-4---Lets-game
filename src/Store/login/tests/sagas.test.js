@@ -11,7 +11,6 @@ import { support } from '/src/helpers/support';
 import { actionTypes } from '../actionTypes';
 import { validation } from '/src/helpers/validation';
 
-
 describe('loginSaga', () => {
     describe('workerLogin', () => {
         let action;
