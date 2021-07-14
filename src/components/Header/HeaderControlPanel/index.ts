@@ -1,5 +1,5 @@
 import { withRouter } from 'react-router';
-import HeaderControlPanel from './HeaderControlPanel.jsx';
+import HeaderControlPanel from './HeaderControlPanel';
 import { connect } from 'react-redux';
 import { setValue } from '/src/Store/user/actions';
 import { userThemeMode, userNotifSettings } from '/src/Store/user/selectors';

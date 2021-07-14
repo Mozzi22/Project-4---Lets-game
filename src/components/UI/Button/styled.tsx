@@ -7,6 +7,7 @@ import {
   disabledColor,
   bgColorDisabledDefault,
   disabledBorder,
+  hoverBgDefault,
 } from '../baseLayout';
 
 export const StButton = styled.button < IBtn > `
@@ -18,19 +19,24 @@ export const StButton = styled.button < IBtn > `
   ${({ cursor = 'pointer' }) => cursor && `cursor: ${cursor}`};
   color: ${({ color = colorDefault }) => color};
   background-color: ${({ bgColor = bgColorDefault }) => bgColor};
-  border-radius: ${({ borderRadius = '7px' }) => borderRadius}; 
+  border-radius: ${({ borderRadius = '7px' }) => borderRadius};
   border: ${({ border = 'none' }) => border};
   outline: ${({ outline = 'none' }) => outline};
   ${({ transition = 'all 300ms ease-in-out' }) => transition && `transition: ${transition}`};
   font-size: ${({ fontSize = '16px' }) => fontSize};
   &:hover {
-    color: ${({ focusColor = focusColorDefault }) => focusColor}; 
     border: ${({ border = 'none' }) => border};
     }
+    background-color: ${({ bgColor = hoverBgDefault }) => bgColor};
   &:focus {
     color: ${({ focusColor = focusColorDefault }) => focusColor};
+    background-color: ${({ bgColor = hoverBgDefault }) => bgColor};
     }
-  &:disabled{ 
+  &:active{
+    border: ${({ border = disabledBorder }) => border};
+    background-color: ${({ bgColorDisabled = '#00a6ff' }) => bgColorDisabled};
+    }
+  &:disabled{
     border: ${({ border = disabledBorder }) => border};
     background-color: ${({ bgColorDisabled = bgColorDisabledDefault }) => bgColorDisabled};
     color: ${({ focusColor = disabledColor }) => focusColor};

@@ -1,15 +1,13 @@
 import React from 'react';
 import { NavLink, Redirect } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { regInputs } from './src/constants/componentsConsts';
+import { regInputs } from '../../constants/componentsСonsts';
 import { APP_ROUTES } from '../../constants/reactRoutes';
 import { StRegDiv } from './styled';
 import Form from '../UI/Form';
 import Input from '../UI/Input';
 import Button from '../UI/Button';
 import { TInitialRegistrationData, TRegistrationData } from '../../Store/registration/types';
-
-import ModalCreateRoom from '../UI/Modals/ModalCreateRoom';
 
 interface IRegistration {
     sendRegistrationRequest: (e: React.MouseEvent) => void ;
@@ -56,7 +54,6 @@ const Registration = ({ sendRegistrationRequest, setRegistrationValue, fields }:
                     <NavLink to={APP_ROUTES.login}>{t('reg_link_text')}</NavLink>
                 </span>
             </Form>
-            <ModalCreateRoom isOpen />
         </StRegDiv>
     );
 };

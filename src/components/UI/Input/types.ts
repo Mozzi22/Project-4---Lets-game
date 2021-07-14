@@ -10,7 +10,9 @@ export interface IInput{
     onChange: (value: { name: string; value: string }) => void;
     maxLength?: number;
     inputHeight?: string;
+    border?: string;
     borderRadius?: string;
+    boxShadow?: string;
     bgColor?: string;
     padding?: string;
     color?: string;
@@ -21,21 +23,23 @@ export interface IInput{
     errorMessage?: string;
 }
 export interface IStInput {
-    inputHeight?: string; 
-    padding?: string; 
-    margin?: string; 
-    borderColor?: string; 
-    brRadius?: string; 
-    bgColor?: string; 
-    outlineInput?: string; 
-    cursorType?: string; 
-    borderRadius?: string; 
-    fontWeight?: string; 
-    fontSizeInp?: string; 
-    textAlignInput?: string; 
-    transition?: string; 
-    bgFocusColor?: string; 
-    focusColor?: string; 
+    inputHeight?: string;
+    padding?: string;
+    margin?: string;
+    borderColor?: string;
+    brRadius?: string;
+    bgColor?: string;
+    outlineInput?: string;
+    cursorType?: string;
+    border?: string;
+    borderRadius?: string;
+    boxShadow?: string;
+    fontWeight?: string;
+    fontSizeInp?: string;
+    textAlignInput?: string;
+    transition?: string;
+    bgFocusColor?: string;
+    focusColor?: string;
 }
 export interface IStLabel {
     margin?: string;

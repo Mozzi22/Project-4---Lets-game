@@ -1,6 +1,6 @@
 import React from 'react';
-import { shallowSmart, mountSmart } from '/src/helpers/testHelper';
-import Login from '../Login.jsx';
+import { shallowSmart, mountSmart } from '../../../helpers/testHelper';
+import Login from '../Login';
 import '/src/i18n';
 
 describe('Login', () => {

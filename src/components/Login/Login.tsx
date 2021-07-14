@@ -7,27 +7,39 @@ import { StLoginDiv } from './styled';
 import Form from '../UI/Form';
 import Input from '../UI/Input';
 import Button from '../UI/Button';
+import { TInitialLoginData, TLoginData, TLoginValue } from '../../Store/login/types';
 
-const Login = ({ sendLoginRequest, setLoginValue, fields, setValue }) => {
+interface ILogin {
+    sendLoginRequest: (e: React.MouseEvent) => void ;
+    setLoginValue: (data: TLoginData) => void ;
+    fields: TInitialLoginData;
+    setValue: (data: TLoginValue) => void;
+}
+
+const Login = ({ sendLoginRequest, setLoginValue, fields, setValue }: ILogin) => {
   const { t } = useTranslation();
-
   if (fields.success) {
     setValue({ name: 'success', value: false });
-    return <Redirect to={APP_ROUTES.chat} />;
+    return <Redirect to={APP_ROUTES.registration} />;
   }
   return (
     <StLoginDiv>
       <Form>
+        <img src="./public/assets/images/sign-logo.svg" alt='sign in' />
         <p>{t('authorization')}</p>
         {logInputs.map(input => (
           <Input
-            width="80%"
+            width="400px"
             id={input.id}
-            height="100px"
+            height="auto"
             key={input.id}
             name={input.id}
-            inputHeight="50px"
-            borderRadius="5px"
+            padding="17px 15px"
+            inputHeight="60px"
+            border="0px"
+            borderRadius="7px"
+            color="#484b54"
+            fontSizeInp="18px"
             label={t(input.label)}
             value={fields[input.id]}
             onChange={setLoginValue}

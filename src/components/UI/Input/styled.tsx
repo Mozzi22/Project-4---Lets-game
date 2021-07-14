@@ -4,7 +4,7 @@ import {
   bgInpColorDefault,
   bgFocusColorDefault,
   focusColorDefaultInput,
-  colorDefaultInput } from '../baseLayout';
+  colorDefaultInput, boxShadowColor } from '../baseLayout';
 
 export const StLabel = styled.label < IStLabel > `
     ${({ margin = '0 0px 10px 0' }) => margin && `margin: ${margin}`};
@@ -25,8 +25,10 @@ export const StInput = styled.input < IStInput > `
     font-family: 'Play', sans-serif;
     ${({ brRadius }) => brRadius && `border-radius: ${brRadius}`};
     background-color: ${({ bgColor = bgInpColorDefault }) => (bgColor)};
+    box-shadow: ${({ boxShadow = boxShadowColor }) => (boxShadow)};
     ${({ outlineInput = 'none' }) => outlineInput && `outline: ${outlineInput}`};
     ${({ cursorType }) => cursorType && `cursor: ${cursorType}`};
+    border: 0;
     ${({ borderRadius }) => borderRadius && `border-radius: ${borderRadius}`};
     ${({ fontWeight }) => fontWeight && `font-weight: ${fontWeight}`};
     color: ${({ color = colorDefaultInput }) => color};

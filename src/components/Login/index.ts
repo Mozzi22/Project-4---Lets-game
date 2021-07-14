@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Login from './Login.jsx';
+import Login from './Login';
 import { setLoginValue, sendLoginRequest, setValue } from '../../Store/login/actions';
 import { loginStore } from '../../Store/login/selectors';
 
