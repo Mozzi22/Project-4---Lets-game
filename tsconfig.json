@@ -1,45 +1,48 @@
 {
-    "compilerOptions": {
-      "moduleResolution": "node",
-      "baseUrl": "./",
-      "paths": {
-        "src/*": [
-          "./src/*"
-        ],
-        "store/*": [
-            "src/store/*"
-          ]
-      },
-      "lib": [
-        "dom",
-        "dom.iterable",
-        "esnext"
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "baseUrl": "./",
+    "paths": {
+      "images/*": [
+        "public/static/*"
       ],
-      "resolveJsonModule": true,
-      "jsx": "react",
-      "target": "ESNEXT",
-      "module": "commonjs",
-      "sourceMap": true,
-      "strict": true, 
-      "typeRoots": [
-        "../node_modules/@types",
-        "../TStypes"
-      ], 
-      "allowSyntheticDefaultImports": true,
-      "esModuleInterop": true, 
-      "skipLibCheck": true, 
-    },
-    "include": [
+      "src/*": [
         "./src/*"
       ],
-      "exclude": [
-        "__tests__",
-        "node_modules",
-        "**/*.js",
-        "**/*.jsx",
-        "**/*.test.js",
-        "**/*.test.ts",
-        "**/*.test.jsx",
-        "**/*.test.tsx",
+      "actions/*": [
+        "./src/redux/actions*"
       ]
+    },
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "resolveJsonModule": true,
+    "jsx": "react",
+    "target": "ESNEXT",
+    "module": "commonjs",
+    "sourceMap": true,
+    "strict": true,
+    "typeRoots": [
+      "../node_modules/@types",
+      "../TStypes"
+    ],
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+  },
+  "include": [
+    "./src/*"
+  ],
+  "exclude": [
+    "__tests__",
+    "node_modules",
+    "**/*.js",
+    "**/*.jsx",
+    "**/*.test.js",
+    "**/*.test.ts",
+    "**/*.test.jsx",
+    "**/*.test.tsx",
+  ]
 }

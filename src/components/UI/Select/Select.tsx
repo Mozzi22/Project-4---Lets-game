@@ -3,10 +3,11 @@ import { useTranslation } from 'react-i18next';
 import { StSelect, StOption } from './styled';
 import { ISelect } from './types';
 
-const Select = ({
+const Select: React.FC<ISelect> = ({
     id,
     onClick,
     content,
+    selected,
     margin,
     padding,
     width,
@@ -22,7 +23,8 @@ const Select = ({
     focusColor,
     bgColorDisabled,
     options,
-    }: ISelect) => {
+    defaultValue,
+    }) => {
     const { t } = useTranslation();
     return (
         <StSelect
@@ -44,14 +46,17 @@ const Select = ({
             margin={margin}
             transition={transition}
             options={options}
+            defaultValue={defaultValue}
         >
-            {options.map((el, index) => (
+            {options.map(el => (
                 <StOption
                     id={id}
                     value={el.value}
-                    key={`${el.key + index}`}
+                    key={`${el.key}`}
+                    onClick={onClick}
+                    selected={selected}
                 >
-            {t(content)}
+                    {t(el.content)}
                 </StOption>
             ))
             }

@@ -20,7 +20,6 @@
             2
         ],
         "react/jsx-indent-props": [
-            // "off",
             0
         ],
         "react/prop-types": [
@@ -65,7 +64,6 @@
         "import/no-dynamic-require": "off",
         "import/no-absolute-path": "off",
         "consistent-return": "off",
-        // "react/forbid-prop-types": "off",
         "no-use-before-define": [
             "error",
             {

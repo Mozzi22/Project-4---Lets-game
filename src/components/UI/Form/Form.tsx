@@ -1,9 +1,6 @@
 import React from 'react';
 import { StFormDiv } from './styled';
-
-interface IForm {
-    children: React.ReactNode;
-}
+import { IForm } from './types';
 
 const Form : React.FC<IForm> = ({ children }) => <StFormDiv>{children}</StFormDiv>;
 

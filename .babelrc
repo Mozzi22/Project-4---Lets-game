@@ -9,12 +9,20 @@
             "module-resolver",
             {
                 "root": [
-                    "./src"
+                    "."
                 ],
                 "alias": {
-                    "js": "./src",
-                    "jsx": "./src"
-                }
+                    "constants": "src/constants",
+                    "store": "src/store",
+                    "src": "src",
+                    "helpers": "src/helpers"
+                },
+                "extensions": [
+                    ".js",
+                    ".jsx",
+                    ".ts",
+                    ".tsx"
+                ]
             }
         ],
         "@babel/plugin-transform-runtime",
