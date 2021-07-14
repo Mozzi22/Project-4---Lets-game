@@ -10,9 +10,9 @@ describe('ModalComponent', () => {
   let props;
   beforeEach(() => {
     props = {
-        isOpen: true, 
-        onChangeIsOpen: jest.fn(), 
-        currentModalType: 'notificationSettings',
+        isOpen: true,
+        changeModalVisibility: jest.fn(),
+        modalType: 'notificationSettings',
         Component,
     };
   });
@@ -35,6 +35,6 @@ describe('ModalComponent', () => {
   it('should click on the button', () => {
     const component = shallow(<ModalComponent {...props} />);
     component.find('Button').simulate('click');
-    expect(props.onChangeIsOpen).toHaveBeenCalledWith({ currentModalType: 'notificationSettings', data: {}, isOpen: false });
+    expect(props.changeModalVisibility).toHaveBeenCalledWith({ modalType: 'notificationSettings', data: {}, isOpen: false });
   });
 });
