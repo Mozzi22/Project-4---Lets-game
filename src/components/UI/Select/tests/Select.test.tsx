@@ -4,16 +4,16 @@ import Select from '../Select';
 // import { ISelect } from '../types';
 
 describe('Select', () => {
-  // let props;
-  // beforeEach(() => {
-  //   props = {
-  //     id: 'id',
-  //     onClick: jest.fn(),
-  //     value: 'value',
-  //   };
-  // });
+  let props;
+  beforeEach(() => {
+    props = {
+      id: 'id',
+      onClick: jest.fn(),
+      value: 'value',
+    };
+  });
   it('Should match snapshot', () => {
-    const component = shallow(<Select />);
+    const component = shallow(<Select {...props} />);
     expect(component.html()).toMatchSnapshot();
   });
   it('Should have Select', () => {
