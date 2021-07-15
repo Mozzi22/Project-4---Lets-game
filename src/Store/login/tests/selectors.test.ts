@@ -5,12 +5,22 @@ describe('login selectors', () => {
   beforeEach(() => {
     state = {
       login: {
-        loginLog: '',
-        passwordLog: '',
+        login: '',
+        password: '',
+        success: '',
+        isLoading: '',
       },
     };
   });
   describe('selectors.loginStore', () => {
+ it('returns the user\'s name', () => {
+   expect(selectors.loginStore({
+        login: 'Mary',
+        password: 'mary1',
+        success: true,
+        isLoading: true,
+   })).toEqual({ login: 'Mary', password: 'mary1', success: true, isLoading: true });
+  });
     it('toBe defined', () => {
       expect(selectors.loginStore).toBeDefined();
     });

@@ -8,7 +8,7 @@ const actionTypesAll = actions;
 type TActions = typeof actionTypesAll ;
 export type TActionsLogin = ActionType<TActions>;
 
-export const initialState = {
+export const initialState: TInitialLoginData = {
     login: '',
     password: '',
     success: null,

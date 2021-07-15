@@ -1,8 +1,16 @@
+import { Reducer } from 'redux';
+import { ActionType } from 'typesafe-actions';
 import { backgroundUrls } from 'src/components/UI/baseLayout';
 import { support } from 'src/helpers/support';
-import { actionTypes } from './actionTypes';
+import * as actions from './actions';
+import { actionTypes as AT } from './actionTypes';
+import { TInitialUserData } from './types';
 
-export const initialState = {
+const actionTypesAll = actions;
+type TActions = typeof actionTypesAll ;
+export type TActionsUser = ActionType<TActions>;
+
+export const initialState: TInitialUserData = {
   theme: backgroundUrls,
   themeMode: support.getSessionStorageItem('themeMode') || 'light',
   token: support.getSessionStorageItem('token') || null,
@@ -21,20 +29,20 @@ export const initialState = {
   changeUser: support.getSessionStorageItem('userInfo') || null,
 };
 
-export const reducer = (state = initialState, action) => {
+export const reducer: Reducer<TInitialUserData, TActionsUser> = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.SET_VALUE:
+    case AT.SET_VALUE:
       return { ...state, [action.payload.name]: action.payload.value };
-    case actionTypes.CHANGE_USER_DATA:
+    case AT.CHANGE_USER_DATA:
       return { ...state, changeUser: { ...state.changeUser, [action.payload.name]: action.payload.value } };
-    case actionTypes.SET_AUTH_VALUES:
+    case AT.SET_AUTH_VALUES:
       return {
         ...state,
         token: action.payload.token,
         userInfo: action.payload.userInfo,
         changeUser: action.payload.userInfo,
       };
-    case actionTypes.SIGN_IN_SUCCESS:
+    case AT.SIGN_IN_SUCCESS:
       return { ...state, userInfo: { ...state.userInfo, [action.payload.name]: action.payload.value } };
     default: return { ...state };
   }

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colorDefault, textColorGray, bgBlue } from '../baseLayout';
+import { colorDefault, textColorGray } from '../baseLayout';
 import { IStFormDiv } from './types';
 
 export const StFormDiv = styled.div < IStFormDiv > `

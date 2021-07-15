@@ -9,6 +9,16 @@ import { support } from 'src/helpers/support';
 import { colorDefault } from 'src/components/UI/baseLayout';
 import { StControl } from './styled';
 
+interface IHeaderControlPanel {
+    themeMode: string;
+    setValue: (data: TLoginData) => void ;
+    history: TInitialLoginData;
+    location: (data: TLoginValue) => void;
+    logOut: '';
+    userNotifSettings: '';
+    onlineUsersCount: '';
+}
+
 const HeaderControlPanel = ({
     themeMode,
     setValue,
@@ -16,7 +26,7 @@ const HeaderControlPanel = ({
     location,
     logOut,
     userNotifSettings,
-    onlineUsersCount }) => {
+    onlineUsersCount }: IHeaderControlPanel) => {
     const { i18n } = useTranslation();
     const handleChangeLanguage = (e) => {
         i18n.changeLanguage(e.target.value);
