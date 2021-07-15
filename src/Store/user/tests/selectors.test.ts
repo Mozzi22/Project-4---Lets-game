@@ -6,7 +6,16 @@ describe('login selectors', () => {
         state = {
             user: {
                 init: '',
+                token: '',
+                settings: '',
+                notifications: '',
+                theme: '',
+                userInfo: '',
+                login: '',
+                newMessage: '',
                 themeMode: '',
+                changeUser: '',
+                id: '',
             },
         };
     });
@@ -36,13 +45,14 @@ describe('login selectors', () => {
             };
             expect(selectors.userToken(state)).toEqual('abc');
         });
+
         it('should return value of selectors userNotifSettings', () => {
             const state = {
                 user: {
                     notifications: true,
                 },
             };
-            expect(selectors.userNotifSettings(state)).toEqual(true);
+            expect(selectors.userNotifSettings(state.settings)).toEqual(true);
         });
         it('should return value of selectors userTheme', () => {
             const state = {

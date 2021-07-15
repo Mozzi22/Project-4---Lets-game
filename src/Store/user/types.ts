@@ -17,10 +17,11 @@ export type TInitialUserData = {
   age: number;
   hobby: string;
   company: string;
-  city: string
+  city: string;
   init: boolean;
-  settings: string;
-  notifications: boolean;
+  settings: string | {
+    notifications: boolean;
+  };
   changeUser: string | null;
 }
 
@@ -34,4 +35,24 @@ export type TAuthValues = {
   token: string | null;
   userInfo: string;
   changeUser: string | null;
+}
+
+export type TUserSettings = {
+  userSettings: string;
+}
+
+export type TNotifications = {
+  notifications: boolean;
+}
+
+export type TUserLogin = {
+  login: string;
+}
+
+export type TNewMessage = {
+  newMessage: string;
+}
+
+export type TUserId = {
+  userId: number;
 }
