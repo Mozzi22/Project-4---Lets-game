@@ -5,6 +5,7 @@ import { SagaIterator } from '@redux-saga/core';
 import { postRequest } from 'src/helpers/requests';
 import { routes } from 'src/constants/routes';
 import { validation } from 'src/helpers/validation';
+import httpStatusCode from 'src/constants/httpStatusCode';
 import { actionTypes } from './actionTypes';
 import { regValues } from './selectors';
 import { setRegistrationValue, clearRegistrationInputs, reciveErrorRequest, reciveSuccessRequest } from './actions';
@@ -18,7 +19,7 @@ export function* workerRegistration(): SagaIterator {
             return yield call([NotificationManager, NotificationManager.error], i18next.t(validateMessage), i18next.t('input_error'), 2000);
         }
         const answer = yield call(postRequest, routes.account.registration, { ...data, confirm: undefined });
-        if (answer.status < 205) {
+        if (answer.status < httpStatusCode.RESET_CONTENT) {
             yield (put(clearRegistrationInputs()));
             yield put(setRegistrationValue({ name: 'success', value: true }));
             yield put(reciveSuccessRequest());

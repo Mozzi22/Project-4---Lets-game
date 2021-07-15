@@ -1,4 +1,4 @@
-import { validation } from './validation';
+import { validation } from '../validation';
 
 describe('validation', () => {
     describe('loginValidation', () => {

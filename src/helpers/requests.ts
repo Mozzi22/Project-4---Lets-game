@@ -1,15 +1,14 @@
 import { routes } from '../constants/routes';
-import { TUrl } from './types';
 
 const { baseUrl } = routes;
 
-export const getRequest = async (url: TUrl) => {
+export const getRequest = async (url: string) => {
   const options = { method: 'GET' };
   const answer = await fetch(`${baseUrl}${url}`, options);
   return answer;
 };
 
-export const postRequest = async (url: TUrl, body) => {
+export const postRequest = async <T>(url: string, body:T) => {
   const options = {
     method: 'POST',
     headers: {

@@ -1,4 +1,4 @@
-import { support } from './support';
+import { support } from '../support';
 
 describe('support', () => {
     describe('setSessionStorageItem', () => {
