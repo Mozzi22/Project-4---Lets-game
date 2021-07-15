@@ -9,20 +9,18 @@ export type TInitialUserData = {
   };
   themeMode: string;
   token: string | null;
-  userInfo: string | {
-    login: string;
-    firstName: string;
-    lastName: string;
-    id: number;
-    age: number;
-    hobby: string;
-    company: string;
-    city: string;
-  };
+  userInfo: string;
+  login: string;
+  firstName: string;
+  lastName: string;
+  id: number;
+  age: number;
+  hobby: string;
+  company: string;
+  city: string
   init: boolean;
-  settings: string | {
-    notifications: boolean;
-  };
+  settings: string;
+  notifications: boolean;
   changeUser: string | null;
 }
 
