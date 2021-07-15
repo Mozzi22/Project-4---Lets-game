@@ -1,13 +1,12 @@
 import { takeEvery, call, select, put } from 'redux-saga/effects';
-import { putRequest } from '/src/helpers/requests';
-import { routes } from '/src/constants/routes';
+import { putRequest } from 'src/helpers/requests';
+import { routes } from 'src/constants/routes';
 import { NotificationManager } from 'react-notifications';
 import i18next from 'i18next';
+import { support } from 'src/helpers/support';
+import { validation } from 'src/helpers/validation';
 import { actionTypes } from './actionTypes';
-import { changeUser, userEmail } from './selectors';
-import { setValue } from './actions';
-import { support } from '../../helpers/support';
-import { validation } from '../../helpers/validation';
+import { changeUser, userLogin } from './selectors';
 
 export function* setNewUserDataSaga() {
     try {
@@ -27,9 +26,9 @@ export function* setNewUserDataSaga() {
             return yield call([NotificationManager, NotificationManager.error],
                 i18next.t(answer.message), i18next.t('server_error'), 2000);
         }
-        const email = yield select(userEmail);
-        yield call([support, support.setSessionStorageItem], 'userInfo', { ...answer, email });
-        yield put(setValue({ name: 'userInfo', value: { ...answer, email } }));
+        const login = yield select(userLogin);
+        yield call([support, support.setSessionStorageItem], 'userInfo', { ...answer, login });
+        yield put(setValue({ name: 'userInfo', value: { ...answer, login } }));
     } catch (e) {
         yield call([NotificationManager, NotificationManager.error],
             i18next.t('server_error_text'), i18next.t('server_error'), 2000);

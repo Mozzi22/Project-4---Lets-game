@@ -1,9 +1,11 @@
 import { expectSaga, testSaga } from 'redux-saga-test-plan';
 import { NotificationManager } from 'react-notifications';
 import i18next from 'i18next';
+import { postRequest } from 'src/helpers/requests';
+import { routes } from 'src/constants/routes';
+import { validation } from 'src/helpers/validation';
 import * as sagas from '../sagas';
 import { regValues } from '../selectors';
-import { postRequest } from '../../../helpers/requests';
 import {
     setRegistrationValue,
     clearRegistrationInputs,
@@ -11,8 +13,6 @@ import {
     reciveSuccessRequest,
 } from '../actions';
 import { actionTypes } from '../actionTypes';
-import { routes } from '../../../constants/routes';
-import { validation } from '../../../helpers/validation';
 
 describe('registrationSaga', () => {
     describe('workerRegistration', () => {

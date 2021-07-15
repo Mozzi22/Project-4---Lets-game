@@ -1,3 +1,3 @@
-import UserItem from './UserItem.jsx';
+import UserItem from './UserItem';
 
 export default UserItem;

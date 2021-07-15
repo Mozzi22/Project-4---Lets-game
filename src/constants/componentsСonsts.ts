@@ -1,13 +1,13 @@
 interface IRegInput {
-    id: 'email' | 'password' | 'confirm';
+    id: 'login' | 'password' | 'confirm';
     placeholder: string;
     label: string;
 }
 
 export const regInputs: Array<IRegInput> = [{
-    id: 'email',
-    label: 'email_label',
-    placeholder: 'email_placeholder',
+    id: 'login',
+    label: 'login',
+    placeholder: 'login_placeholder',
 },
 {
     id: 'password',
@@ -20,9 +20,9 @@ export const regInputs: Array<IRegInput> = [{
     placeholder: 'confirm_placeholder',
 }];
 export const logInputs = [{
-    id: 'email',
-    label: 'email_label',
-    placeholder: 'email_placeholder',
+    id: 'login',
+    label: 'login_label',
+    placeholder: 'login_placeholder',
 },
 {
     id: 'password',

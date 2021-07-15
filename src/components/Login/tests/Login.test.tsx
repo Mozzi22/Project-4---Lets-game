@@ -1,14 +1,14 @@
 import React from 'react';
-import { shallowSmart, mountSmart } from '../../../helpers/testHelper';
+import { shallowSmart, mountSmart } from 'src/helpers/testHelper';
 import Login from '../Login';
-import '/src/i18n';
+import 'src/i18n';
 
 describe('Login', () => {
     let props;
     const sendLoginRequest = jest.fn();
     const setLoginValue = jest.fn();
     const fields = {
-        email: '',
+        login: '',
         password: '',
         success: null,
     };
@@ -42,8 +42,8 @@ describe('Login', () => {
     });
     it('should click change input', () => {
         const component = mountSmart(<Login {...props} />);
-        component.find('input').first().simulate('change', { target: { name: 'email', value: 'emailValue' } });
-        expect(setLoginValue).toHaveBeenCalledWith({ name: 'email', value: 'emailValue' });
+        component.find('input').first().simulate('change', { target: { name: 'login', value: 'loginValue' } });
+        expect(setLoginValue).toHaveBeenCalledWith({ name: 'login', value: 'loginValue' });
     });
     it('should redirect', () => {
         props.fields = {

@@ -23,13 +23,13 @@ describe('registration actions', () => {
         });
         it('should return value', () => {
             const payload = {
-                token: 'newToken',
-                userInfo: {
-                    id: 1,
-                    email: 'Skripnik@gmal.com',
-                    firstName: 'Max',
-                    lastName: 'Skripnik',
-                },
+              token: 'newToken',
+              userInfo: {
+                id: 1,
+                login: 'Skripnik@gmal.com',
+                firstName: 'Max',
+                lastName: 'Skripnik',
+              },
             };
             expect(actions.setAuthValues(payload))
                 .toEqual({ type: actionTypes.SET_AUTH_VALUES, payload });

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colorDefault } from '/src/components/UI/baseLayout';
+import { colorDefault } from 'src/components/UI/baseLayout';
 
 export const StChatListItems = styled.div`
     display: flex;

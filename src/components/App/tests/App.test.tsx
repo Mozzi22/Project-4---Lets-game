@@ -1,15 +1,15 @@
 import React from 'react';
 import configureStore from 'redux-mock-store';
-import { shallowSmart } from '/src/helpers/testHelper';
+import { shallowSmart } from 'src/helpers/testHelper';
 import App from '../App';
-import '/src/i18n';
+import 'src/i18n';
 
 jest.mock('react-modal');
 
 const mockStore = configureStore();
 const store = mockStore({
   registration: {
-    email: '',
+    login: '',
     password: '',
     confirm: '',
     firstName: '',
@@ -17,7 +17,7 @@ const store = mockStore({
     success: null,
   },
   login: {
-    email: '',
+    login: '',
     password: '',
     confirm: '',
     firstName: '',

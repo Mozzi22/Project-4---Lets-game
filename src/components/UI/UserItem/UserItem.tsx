@@ -3,23 +3,23 @@ import PropTypes from 'prop-types';
 import Input from 'src/components/UI/Input';
 import { StChatListItems, StPhoto, StUsersView } from './styled';
 
-const UserItem = ({ img, email, id, onChange, isSelected, onlineUsersEmails }) => {
+const UserItem = ({ img, login, id, onChange, isSelected, onlineUserslogins }) => {
     const [state, setState] = useState({
         error: false,
         src: img,
-        defaultImg: '../../../../public/assets/images/user.png',
+        defaultImg: 'public/assets/images/user.png',
     });
     const onError = () => setState({ ...state, error: true, src: state.defaultImg });
 
     return (
         <StUsersView>
             <StChatListItems>
-                <div>{onlineUsersEmails.includes(email) ? '🟢' : '🔴'}</div>
+                <div>{onlineUserslogins.includes(login) ? '🟢' : '🔴'}</div>
                 <StPhoto>
                     <img src={img ? state.src : state.defaultImg} onError={onError} />
                 </StPhoto>
                 <div>
-                    {email}
+                    {login}
                 </div>
             </StChatListItems>
             <Input
@@ -45,12 +45,12 @@ const UserItem = ({ img, email, id, onChange, isSelected, onlineUsersEmails }) =
 };
 
 UserItem.propTypes = {
-    email: PropTypes.string,
+    login: PropTypes.string,
     img: PropTypes.any,
     id: PropTypes.number,
     onChange: PropTypes.func,
     isSelected: PropTypes.string,
-    onlineUsersEmails: PropTypes.array,
+    onlineUsersLogins: PropTypes.array,
 };
 
 export default UserItem;

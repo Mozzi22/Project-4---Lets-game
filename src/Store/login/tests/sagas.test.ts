@@ -2,14 +2,14 @@ import { expectSaga, testSaga } from 'redux-saga-test-plan';
 import { routes } from 'src/constants/routes';
 import { NotificationManager } from 'react-notifications';
 import i18next from 'i18next';
+import { postRequest } from 'src/helpers/requests';
+import { setAuthValues } from 'src/Store/user/actions';
+import { validation } from 'src/helpers/validation';
+import { support } from 'src/helpers/support';
 import * as sagas from '../sagas';
 import { logValues } from '../selectors';
-import { postRequest } from 'src/helpers/requests';
 import * as actions from '../actions';
-import { setAuthValues } from '../../user/actions';
-import { support } from '/src/helpers/support';
 import { actionTypes } from '../actionTypes';
-import { validation } from '/src/helpers/validation';
 
 describe('loginSaga', () => {
     describe('workerLogin', () => {
@@ -59,13 +59,13 @@ describe('loginSaga', () => {
             const mocklogValues = { login: 'login', password: '123456' };
             const mockValidation = { message: '', isValid: true };
             const mockServerAnswer = {
-                token: 'someToken',
-                message: 'yep',
-                userInfo: {
-                    email: 'Smartick@qip.ru',
-                    firstName: 'Egor',
-                    lastName: 'Letov',
-                },
+              token: 'someToken',
+              message: 'yep',
+              userInfo: {
+                login: 'Smartick@qip.ru',
+                firstName: 'Egor',
+                lastName: 'Letov',
+              },
             };
             const { token, userInfo } = mockServerAnswer;
             testSaga(sagas.workerLogin, action)

@@ -1,13 +1,13 @@
+import { backgroundUrls } from 'src/components/UI/baseLayout';
+import { support } from 'src/helpers/support';
 import { actionTypes } from './actionTypes';
-import { backgroundUrls } from '../../components/UI/baseLayout';
-import { support } from '../../helpers/support';
 
 export const initialState = {
   theme: backgroundUrls,
   themeMode: support.getSessionStorageItem('themeMode') || 'light',
   token: support.getSessionStorageItem('token') || null,
   userInfo: support.getSessionStorageItem('userInfo') || {
-    email: '',
+    login: '',
     firstName: '',
     lastName: '',
     id: 0,

@@ -4,5 +4,5 @@ import { AplicationState } from '../types';
 export const loginStore = (state: AplicationState) => state.login;
 export const logValues = createSelector(
     loginStore,
-    ({ email, password }) => ({ email, password }),
+    ({ login, password }) => ({ login, password }),
 );

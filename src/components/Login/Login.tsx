@@ -1,13 +1,13 @@
 import React from 'react';
 import { NavLink, Redirect } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { logInputs } from '../../constants/componentsСonsts';
-import { APP_ROUTES } from '../../constants/reactRoutes';
+import { APP_ROUTES } from 'src/constants/reactRoutes';
+import { logInputs } from 'src/constants/componentsСonsts';
+import Form from 'src/components/UI/Form';
+import Input from 'src/components/UI/Input';
+import Button from 'src/components/UI/Button';
+import { TInitialLoginData, TLoginData, TLoginValue } from 'src/Store/login/types';
 import { StLoginDiv } from './styled';
-import Form from '../UI/Form';
-import Input from '../UI/Input';
-import Button from '../UI/Button';
-import { TInitialLoginData, TLoginData, TLoginValue } from '../../Store/login/types';
 
 interface ILogin {
     sendLoginRequest: (e: React.MouseEvent) => void ;
@@ -20,7 +20,7 @@ const Login = ({ sendLoginRequest, setLoginValue, fields, setValue }: ILogin) =>
   const { t } = useTranslation();
   if (fields.success) {
     setValue({ name: 'success', value: false });
-    return <Redirect to={APP_ROUTES.registration} />;
+    return <Redirect to={APP_ROUTES.main} />;
   }
   return (
     <StLoginDiv>

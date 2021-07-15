@@ -10,7 +10,7 @@ describe('login actions', () => {
             expect(typeof actions.setLoginValue).toBe('function');
         });
         it('should return value', () => {
-            const payload = { email: 'emailValue' };
+            const payload = { login: 'loginValue' };
             expect(actions.setLoginValue(payload)).toEqual({ type: actionTypes.SET_VALUE, payload });
         });
     });

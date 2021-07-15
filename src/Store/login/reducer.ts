@@ -9,7 +9,7 @@ type TActions = typeof actionTypesAll ;
 export type TActionsLogin = ActionType<TActions>;
 
 export const initialState = {
-    email: '',
+    login: '',
     password: '',
     success: null,
     isLoading: false,
@@ -29,7 +29,7 @@ export const reducer: Reducer<TInitialLoginData, TActionsLogin> = (
             case AT.CLEAR_INPUTS_VALUES:
                 return {
                     ...state,
-                    email: '',
+                    login: '',
                     password: '',
                 };
             default: return { ...state };

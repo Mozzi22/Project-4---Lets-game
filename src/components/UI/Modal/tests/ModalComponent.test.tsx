@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import { shallowSmart } from 'src/helpers/testHelper';
 import ModalComponent from '../ModalComponent';
-import { shallowSmart } from '../../../../helpers/testHelper';
 import Component from '../ModalTestComponent';
 
 jest.mock('react-modal');

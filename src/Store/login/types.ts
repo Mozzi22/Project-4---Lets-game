@@ -7,7 +7,7 @@ export type TLoginValue = {
 }
 
 export type TInitialLoginData = {
-    email: string;
+    login: string;
     password: string;
     success: null | boolean;
     isLoading: boolean;

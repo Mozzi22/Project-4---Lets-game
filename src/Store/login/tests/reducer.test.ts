@@ -10,7 +10,7 @@ import {
 describe('loginReducer', () => {
     it('SET_VALUE', () => {
         const testValue = 'testValue';
-        const testName = 'email';
+        const testName = 'login';
         expect(reducer(initialState, setLoginValue({ name: `${testName}`, value: `${testValue}` })))
             .toEqual({ ...initialState, [testName]: testValue });
     });
@@ -18,7 +18,7 @@ describe('loginReducer', () => {
         expect(reducer(initialState, clearLoginInputs()))
             .toEqual({
                 ...initialState,
-                email: '',
+                login: '',
                 password: '',
             });
     });

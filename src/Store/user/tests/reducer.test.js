@@ -11,10 +11,10 @@ describe('userReducer', () => {
     it('SET_AUTH_VALUES', () => {
         const token = 'tokenSomeToken';
         const userInfo = {
-            id: 1,
-            email: 'skripnikMRW@gmai.com',
-            firstName: 'Max',
-            lastName: 'Skripnik',
+          id: 1,
+          login: 'skripnikMRW@gmai.com',
+          firstName: 'Max',
+          lastName: 'Skripnik',
         };
         expect(reducer(initialState, setAuthValues({ token, userInfo })))
             .toEqual({

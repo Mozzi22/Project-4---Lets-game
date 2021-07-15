@@ -21,8 +21,4 @@ export const support = {
         return messagesFolders;
     },
     getFormatedDate: date => moment(date).format('YYYY-MM-DD HH:mm:ss'),
-    playAudio: (path) => {
-        const audio = new Audio(path);
-        audio.play();
-    },
 };

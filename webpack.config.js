@@ -23,7 +23,7 @@ const getStyleLoader = (regExp, additionalLoaders) => {
   }
   return rules;
 };
-const getPath = (url) => path.resolve(__dirname, `src/${url}`);
+const getPath = (url) => path.resolve(__dirname, `./src/${url}`);
 
 module.exports = {
   entry: {

@@ -27,9 +27,9 @@ export const userInfo = createSelector(
   userStore,
   ({ userInfo }) => userInfo,
 );
-export const userEmail = createSelector(
+export const userLogin = createSelector(
   userInfo,
-  ({ email }) => email,
+  ({ login }) => login,
 );
 export const newMessage = createSelector(
   userStore,
