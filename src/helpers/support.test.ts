@@ -46,17 +46,4 @@ describe('support', () => {
             expect(support.getSessionStorageItem('kek')).toEqual({ kek: 1 });
         });
     });
-    describe('getMessagesFolders', () => {
-        it('should be defined', () => {
-            expect(support.getMessagesFolders).toBeDefined();
-        });
-        it('should be function', () => {
-            expect(typeof support.getMessagesFolders).toBe('function');
-        });
-        it('should return expected Object', () => {
-            const rooms = [{ room_id: 1, room_name: 'global' }];
-            const expectedObj = { global: [] };
-            expect(support.getMessagesFolders(rooms)).toEqual(expectedObj);
-        });
-    });
 });
