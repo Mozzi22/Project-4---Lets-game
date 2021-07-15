@@ -16,7 +16,8 @@ import { validation } from '../../../helpers/validation';
 
 describe('registrationSaga', () => {
     describe('workerRegistration', () => {
-        let action;
+        let action: any;
+        const error = new Error('error');
         beforeEach(() => {
             action = {
                 type: actionTypes.SEND_REGISTRATION_REQUEST,
@@ -80,7 +81,7 @@ describe('registrationSaga', () => {
         it('should call workerRegistration and we have error ', () => {
             testSaga(sagas.workerRegistration)
                 .next()
-                .throw()
+                .throw(error)
                 .put(setRegistrationValue({ name: 'success', value: false }))
                 .next()
                 .put(reciveErrorRequest())

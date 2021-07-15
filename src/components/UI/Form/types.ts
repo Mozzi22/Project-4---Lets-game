@@ -5,6 +5,6 @@ export interface IForm {
 }
 
 export interface IStFormDiv {
-  backgroundColor: string;
-  transition: string;
+  backgroundColor?: string;
+  transition?: string;
 }

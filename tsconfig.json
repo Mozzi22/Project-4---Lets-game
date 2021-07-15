@@ -20,8 +20,8 @@
     ],
     "resolveJsonModule": true,
     "jsx": "react",
-    "target": "ESNEXT",
-    "module": "commonjs",
+    "target": "es5",
+    "module": "esnext",
     "sourceMap": true,
     "strict": true,
     "typeRoots": [
@@ -33,7 +33,8 @@
     "skipLibCheck": true,
   },
   "include": [
-    "./src/*"
+    "**/*.ts",
+    "**/*.tsx"
   ],
   "exclude": [
     "__tests__",
