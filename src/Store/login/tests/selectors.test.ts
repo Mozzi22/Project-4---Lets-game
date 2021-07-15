@@ -1,34 +1,33 @@
 import * as selectors from '../selectors';
 
 describe('login selectors', () => {
-  let state;
-  beforeEach(() => {
-    state = {
-      login: {
-        login: '',
-        password: '',
-        success: '',
-        isLoading: '',
-      },
-    };
-  });
-  describe('selectors.loginStore', () => {
- it('returns the user\'s name', () => {
-   expect(selectors.loginStore({
-        login: 'Mary',
-        password: 'mary1',
-        success: true,
-        isLoading: true,
-   })).toEqual({ login: 'Mary', password: 'mary1', success: true, isLoading: true });
-  });
-    it('toBe defined', () => {
-      expect(selectors.loginStore).toBeDefined();
+    let state;
+    beforeEach(() => {
+        state = {
+            login: {
+                loginLog: '',
+                passwordLog: '',
+            },
+        };
     });
-    it('toBe function', () => {
-      expect(typeof selectors.loginStore).toBe('function');
+    describe('selectors.loginStore', () => {
+        it('toBe defined', () => {
+            expect(selectors.loginStore).toBeDefined();
+        });
+        it('toBe function', () => {
+            expect(typeof selectors.loginStore).toBe('function');
+        });
+        it('should return value', () => {
+            expect(selectors.loginStore(state)).toEqual(state.login);
+        });
+        it('should return valufffe', () => {
+          const state = {
+            login: {
+              login: 'personal',
+              password: 'personal1',
+          },
+        };
+            expect(selectors.logValues(state)).toEqual({ login: 'personal', password: 'personal1' });
+        });
     });
-    it('should return value', () => {
-      expect(selectors.loginStore(state)).toEqual(state.login);
-    });
-  });
 });
