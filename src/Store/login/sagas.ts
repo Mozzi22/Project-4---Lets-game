@@ -20,6 +20,7 @@ export function* workerLogin(): SagaIterator {
         }
 
         const answer = yield call(postRequest, routes.account.login, data);
+        console.log(data);
 
         if (answer.status < httpStatusCode.MULTIPLE_CHOICES) {
             yield (put(clearLoginInputs()));
