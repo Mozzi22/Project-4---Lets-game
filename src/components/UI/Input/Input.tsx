@@ -16,6 +16,7 @@ const Input: React.FC<IInput> = ({
     maxLength,
     inputHeight,
     borderRadius,
+    boxShadow,
     bgColor,
     padding,
     color,
@@ -42,6 +43,7 @@ const Input: React.FC<IInput> = ({
                 onChange={handleOnchange}
                 maxLength={maxLength}
                 borderRadius={borderRadius}
+                boxShadow={boxShadow}
                 inputHeight={inputHeight}
                 placeholder={t(placeholder)}
                 bgColor={bgColor}

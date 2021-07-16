@@ -1,5 +1,5 @@
 export type TRegistrationData = {
-    name: string, value: string | null | boolean 
+    name: string, value: string | null | boolean
 }
 
 export type TInitialRegistrationData = {

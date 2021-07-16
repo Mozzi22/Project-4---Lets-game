@@ -1,25 +1,24 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import UsersItem from '../../../UserItem'; 
-import Button from '/src/components/UI/Button';
+import UsersItem from 'src/components/UI/UserItem';
+import Button from 'src/components/UI/Button';
 import { NotificationManager } from 'react-notifications';
 import { useTranslation } from 'react-i18next';
+import { MODAL_USERS_BUTTON } from 'src/constants/componentsСonsts';
 import { StContentModalUsers, StControlPanel, StUsersItem } from './styled';
-import { MODAL_USERS_BUTTON } from '/src/constants/componentsСonsts';
 
 const InviteUsersView = ({ users, changeModalVisibility, setUserInRoom }) => {
     const { t } = useTranslation();
     const [state, setState] = useState({ user_ids: [] });
     const handleToggleUsers = (e) => {
-        setState({ 
+        setState({
             ...state,
             user_ids: state.user_ids.includes(e.name)
-            ? state.user_ids.filter(id => id !== e.name) 
+            ? state.user_ids.filter(id => id !== e.name)
             : [...state.user_ids, Number(e.name)],
         });
     };
     const handleCloseModal = () => changeModalVisibility({ modalType: 'usersInChat', data: {}, isOpen: false });
-    const handleSetNewUsersClick = () => {  
+    const handleSetNewUsersClick = () => {
         if (state.user_ids.length < 1) {
             return NotificationManager.error(t('empty_users_list'), t('input_error'), 2000);
         }
@@ -33,16 +32,16 @@ const InviteUsersView = ({ users, changeModalVisibility, setUserInRoom }) => {
         }
     };
     return (
-        <StContentModalUsers> 
+        <StContentModalUsers>
             <StUsersItem>
-            {users?.length > 0 ? users.map((user) => { 
+            {users?.length > 0 ? users.map((user) => {
                 return (
-                    <UsersItem 
-                    id={user.id} 
-                    email={user.email} 
-                    key={user.id} 
-                    onChange={handleToggleUsers} 
-                    isSelected={state.user_ids.includes(user.id)} 
+                    <UsersItem
+                    id={user.id}
+                    login={user.login}
+                    key={user.id}
+                    onChange={handleToggleUsers}
+                    isSelected={state.user_ids.includes(user.id)}
                     />
                 );
             }) : null}
@@ -61,12 +60,6 @@ const InviteUsersView = ({ users, changeModalVisibility, setUserInRoom }) => {
             </StControlPanel>
         </StContentModalUsers>
     );
-};
-
-InviteUsersView.propTypes = {
-    users: PropTypes.array,
-    changeModalVisibility: PropTypes.func.isRequired,
-    setUserInRoom: PropTypes.func.isRequired,
 };
 
 export default InviteUsersView;
