@@ -31,15 +31,3 @@ export const bgSelect = '#fff';
 export const activeBorder = '1px solid #c4c4c4';
 export const boxShadowColor = '0px 4px 4px rgba(0, 0, 0, 0.25)';
 
-// Theme
-export const colors = {
-  light: {
-    back: '#fff',
-    backgroundButton: '#78dec7',
-
-  },
-  dark: {
-    back: '#0E1621',
-    backgroundButton: '#17212B',
-  },
-};

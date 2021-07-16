@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors } from 'src/components/UI/baseLayout';
+import { colors } from 'src/components/UI/themeStyles';
 
 export interface IAppDiv {
   theme: 'dark' | 'light';
@@ -11,5 +11,5 @@ export const StAppDiv = styled.div < IAppDiv > `
   ${({ url = 'heh' }) => url && `background: url(${url}) 100% 100% no-repeat`};
   background-size: cover;
   direction: ${({ lang }) => (lang === 'ar' ? 'rtl' : 'ltr')};
-  background-color: ${({ colors, theme }) => colors[theme].back};
+  background-color: ${({ colors, theme }) => colors[theme].backgroundDefault};
 `;

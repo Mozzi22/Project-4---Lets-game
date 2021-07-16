@@ -5,7 +5,7 @@ export const StLogo = styled.div`
     justify-content: space-evenly;
     align-items: center;
     width:30%;
-    font-family: 'Play', sans-serif;
+    font-family: 'Oxanium', cursive;
     color:white;
         h1{
             font-size: 30px;

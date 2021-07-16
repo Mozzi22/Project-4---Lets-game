@@ -27,6 +27,7 @@ const Registration = ({ sendRegistrationRequest, setRegistrationValue, fields }:
     return (
         <StRegDiv>
             <Form>
+                <img src="./public/assets/images/sign-logo.svg" alt='sign in' />
                 <p>{t('registration')}</p>
                 {regInputs.map(input => (
                     <Input

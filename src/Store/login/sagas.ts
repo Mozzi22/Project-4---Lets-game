@@ -5,7 +5,7 @@ import { SagaIterator } from '@redux-saga/core';
 import { routes } from 'src/constants/routes';
 import { postRequest } from 'src/helpers/requests';
 import { validation } from 'src/helpers/validation';
-import httpStatusCode from 'src/constants/HttpStatusCode';
+import { httpStatusCode } from 'src/constants/httpStatusCode';
 import { actionTypes } from './actionTypes';
 import { logValues } from './selectors';
 import { setLoginValue, clearLoginInputs, reciveErrorRequest, reciveSuccessRequest } from './actions';
@@ -24,7 +24,7 @@ export function* workerLogin(): SagaIterator {
 
         if (answer.status < httpStatusCode.MULTIPLE_CHOICES) {
             yield (put(clearLoginInputs()));
-            yield put(reciveSuccessRequest());
+            yield put(reciveSuccessRequest({ userLogin: data.login }));
             yield put(setLoginValue({ name: 'success', value: true }));
         } else {
             yield put(setLoginValue({ name: 'success', value: false }));

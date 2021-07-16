@@ -13,6 +13,7 @@ export const initialState: TInitialLoginData = {
     password: '',
     success: null,
     isLoading: false,
+    userLogin: '',
 };
 
 export const reducer: Reducer<TInitialLoginData, TActionsLogin> = (
@@ -23,13 +24,12 @@ export const reducer: Reducer<TInitialLoginData, TActionsLogin> = (
             case AT.SEND_LOGIN_REQUEST:
                 return { ...state, isLoading: true };
             case AT.LOGIN_REQUEST_SUCCESS:
-                return { ...state, isLoading: false };
+                return { ...state, isLoading: false, userLogin: action.payload.userLogin };
             case AT.LOGIN_REQUEST_ERROR:
                 return { ...state, isLoading: false };
             case AT.CLEAR_INPUTS_VALUES:
                 return {
                     ...state,
-                    login: '',
                     password: '',
                 };
             default: return { ...state };

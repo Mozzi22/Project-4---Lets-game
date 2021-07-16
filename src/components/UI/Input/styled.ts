@@ -1,10 +1,12 @@
 import styled from 'styled-components';
+import { colors } from 'src/components/UI/themeStyles';
 import { IStInput, IStLabel, IStInputContainer } from './types';
 import {
   bgInpColorDefault,
   bgFocusColorDefault,
   focusColorDefaultInput,
-  colorDefaultInput, boxShadowColor } from '../baseLayout';
+  colorDefaultInput, boxShadowColor,
+} from '../baseLayout';
 
 export const StLabel = styled.label < IStLabel > `
     ${({ margin = '0 0px 10px 0' }) => margin && `margin: ${margin}`};
@@ -22,16 +24,16 @@ export const StInput = styled.input < IStInput > `
     ${({ margin }) => margin && `margin: ${margin}`};
     ${({ borderColor }) => borderColor && `border: 1px solid ${borderColor}`};
     box-sizing: border-box;
-    font-family: 'Play', sans-serif;
+    font-family: 'Oxanium', cursive;
     ${({ brRadius }) => brRadius && `border-radius: ${brRadius}`};
-    background-color: ${({ bgColor = bgInpColorDefault }) => (bgColor)};
+    background-color: ${({ colors, theme }) => colors[theme].backgroundForm};
     box-shadow: ${({ boxShadow = boxShadowColor }) => (boxShadow)};
     ${({ outlineInput = 'none' }) => outlineInput && `outline: ${outlineInput}`};
     ${({ cursorType }) => cursorType && `cursor: ${cursorType}`};
-    border: 0;
-    ${({ borderRadius }) => borderRadius && `border-radius: ${borderRadius}`};
+    border: 1px solid;
+    border-color: ${({ colors, theme }) => colors[theme].borderColorForm};
+    border-radius: 7px;
     ${({ fontWeight }) => fontWeight && `font-weight: ${fontWeight}`};
-    color: ${({ color = colorDefaultInput }) => color};
     font-size: ${({ fontSizeInp = '14px' }) => fontSizeInp};
     ${({ textAlignInput }) => textAlignInput && `text-align: ${textAlignInput}`}
     ${({ transition = 'all 1000ms ease-in-out' }) => transition && `transition: ${transition}`};
@@ -43,7 +45,8 @@ export const StInput = styled.input < IStInput > `
       }
     }
     &::placeholder {
-      color: ${({ color = colorDefaultInput }) => color};
+      padding: 0 10px;
+      color: ${({ colors, theme }) => colors[theme].colorTextForm};
       font-size: ${({ fontSizeInp = '14px' }) => fontSizeInp};
     }
 `;

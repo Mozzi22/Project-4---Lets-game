@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { useTheme } from 'src/components/Hooks/useTheme';
 import { StErrorSpan, StInput, StInputContainer, StLabel } from './styled';
 import { IInput } from './types';
 
@@ -30,9 +31,10 @@ const Input: React.FC<IInput> = ({
     const handleOnchange = (e :React.ChangeEvent<HTMLInputElement>) => {
         onChange({ name: e.target.name, value: e.target.value });
     };
+    const { colors, theme } = useTheme();
     return (
         <StInputContainer width={width} height={height}>
-            {!!label && <StLabel htmlFor={id}>{label}</StLabel>}
+            {!!label && <StLabel htmlFor={id}></StLabel>}
             <StInput
                 id={id}
                 name={name}
@@ -51,6 +53,8 @@ const Input: React.FC<IInput> = ({
                 borderColor={borderColor}
                 fontSizeInp={fontSizeInp}
                 bgFocusColor={bgFocusColor}
+                theme={theme}
+                colors={colors}
             />
             {!!errorMessage && <StErrorSpan>{errorMessage}</StErrorSpan>}
         </StInputContainer>

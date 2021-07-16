@@ -3,7 +3,6 @@ import { routes } from 'src/constants/routes';
 import { NotificationManager } from 'react-notifications';
 import i18next from 'i18next';
 import { postRequest } from 'src/helpers/requests';
-import { setAuthValues } from 'src/Store/user/actions';
 import { validation } from 'src/helpers/validation';
 import { support } from 'src/helpers/support';
 import * as sagas from '../sagas';
@@ -46,7 +45,8 @@ describe('loginSaga', () => {
                 .call(validation.loginValidation, mocklogValues)
                 .next(mockValidation)
                 .call(postRequest, routes.account.login, mocklogValues)
-                .next(invalidAcc)
+                .next({ status: 300 })
+                // .next(invalidAcc)
                 .put(actions.setLoginValue({ name: 'success', value: false }))
                 .next()
                 .put(actions.reciveErrorRequest())
@@ -83,8 +83,6 @@ describe('loginSaga', () => {
                 .call([support, support.setSessionStorageItem], 'token', token)
                 .next()
                 .call([support, support.setSessionStorageItem], 'userInfo', userInfo)
-                .next()
-                .put(setAuthValues({ token, userInfo }))
                 .next()
                 .put(actions.setLoginValue({ name: 'success', value: true }))
                 .next()

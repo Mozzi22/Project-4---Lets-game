@@ -5,7 +5,7 @@ import { SagaIterator } from '@redux-saga/core';
 import { postRequest } from 'src/helpers/requests';
 import { routes } from 'src/constants/routes';
 import { validation } from 'src/helpers/validation';
-import httpStatusCode from 'src/constants/httpStatusCode';
+import { httpStatusCode } from 'src/constants/httpStatusCode';
 import { actionTypes } from './actionTypes';
 import { regValues } from './selectors';
 import { setRegistrationValue, clearRegistrationInputs, reciveErrorRequest, reciveSuccessRequest } from './actions';
