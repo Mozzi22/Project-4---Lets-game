@@ -9,7 +9,6 @@ import {
 } from '../baseLayout';
 import { IBtn } from './types';
 
-
 export const StButton = styled.button < IBtn > `
   ${({ margin = '0 0 3px 0' }) => margin && `margin: ${margin}`};
   font-family: 'Play', sans-serif;
