@@ -1,6 +1,5 @@
 import { createSelector } from 'reselect';
 import { AplicationState } from '../types';
-import * as Type from './types';
 
 export const userStore = (state: AplicationState) => state.user;
 
@@ -18,7 +17,7 @@ export const userSettings = createSelector(
 );
 export const userNotifSettings = createSelector(
   userSettings,
-  notifications => notifications,
+  ({ notifications }) => notifications,
 );
 export const userTheme = createSelector(
   userStore,
@@ -30,11 +29,11 @@ export const userInfo = createSelector(
 );
 export const userLogin = createSelector(
   userInfo,
-  login => login,
+  ({ login }) => login,
 );
 export const newMessage = createSelector(
   userStore,
-  newMessage => newMessage,
+  ({ newMessage }) => newMessage,
 );
 export const userThemeMode = createSelector(
   userStore,
@@ -46,5 +45,5 @@ export const changeUser = createSelector(
 );
 export const userId = createSelector(
   userInfo,
-  id => id,
+  ({ id }) => id,
 );

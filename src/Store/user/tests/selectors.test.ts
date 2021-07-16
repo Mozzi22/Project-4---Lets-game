@@ -49,10 +49,12 @@ describe('login selectors', () => {
         it('should return value of selectors userNotifSettings', () => {
             const state = {
                 user: {
-                    notifications: true,
+                    settings: {
+                        notifications: true,
+                    },
                 },
             };
-            expect(selectors.userNotifSettings(state.settings)).toEqual(true);
+            expect(selectors.userNotifSettings(state)).toEqual(true);
         });
         it('should return value of selectors userTheme', () => {
             const state = {

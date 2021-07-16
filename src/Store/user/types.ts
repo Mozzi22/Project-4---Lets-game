@@ -36,23 +36,3 @@ export type TAuthValues = {
   userInfo: string;
   changeUser: string | null;
 }
-
-export type TUserSettings = {
-  userSettings: string;
-}
-
-export type TNotifications = {
-  notifications: boolean;
-}
-
-export type TUserLogin = {
-  login: string;
-}
-
-export type TNewMessage = {
-  newMessage: string;
-}
-
-export type TUserId = {
-  userId: number;
-}
