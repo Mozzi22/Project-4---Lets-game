@@ -1,21 +1,21 @@
 
 import styled from 'styled-components';
 import { colors } from 'src/components/UI/themeStyles';
-import { colorDefault, textColorGray } from '../baseLayout';
+import { colorDefault } from '../baseLayout';
 import { IStFormDiv } from './types';
 
 export const StFormDiv = styled.div < IStFormDiv > `
     background-color: ${({ colors, theme }) => colors[theme].backgroundForm};
-    min-height: 545px;
+    max-height: 545px;
     display: flex;
     width: 500px;
     max-width: 100%;
-    margin: 20px auto 0 auto;
+    margin: 40px auto 0 auto;
     padding: 40px 0;
     justify-content: space-between;
     align-items: center;
     flex-direction: column;
-    font-family: 'Oxanium', cursive;
+    font-family: 'Poppins', sans-serif;
     border: 1px solid;
     border-color: ${({ colors, theme }) => colors[theme].borderColorForm};
     border-radius: 7px;
@@ -25,7 +25,7 @@ export const StFormDiv = styled.div < IStFormDiv > `
         p{
           font-size: 36px;
           padding: 0;
-          margin: 10px 0 0;
+          margin: 10px 0 20px;
           color: ${({ colors, theme }) => colors[theme].colorTextForm};
         }
         span{
@@ -47,7 +47,7 @@ export const StFormDiv = styled.div < IStFormDiv > `
           }
         }
         button{
-          margin: 60px 0 25px;
+          margin: 40px 0 25px;
           font-size: 18px;
           text-transform: uppercase;
           background-color: ${({ colors, theme }) => colors[theme].backgroundButton};

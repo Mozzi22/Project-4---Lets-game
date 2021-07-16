@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { useTheme } from 'src/components/Hooks/useTheme';
 import { StButton } from './styled';
 import { IButton } from './types';
 
@@ -16,6 +17,8 @@ const Button = ({
     fontSize,
     bgColorDisabled,
     bgColor,
+    backgroundImage,
+    backgroundSize,
     height,
     width,
     padding,
@@ -25,6 +28,7 @@ const Button = ({
     focusColor,
 }: IButton) => {
     const { t } = useTranslation();
+    const { colors, theme } = useTheme();
     return (
         <StButton
             id={id}
@@ -34,6 +38,8 @@ const Button = ({
             value={value}
             title={title}
             bgColorDisabled={bgColorDisabled}
+            backgroundImage={backgroundImage}
+            backgroundSize={backgroundSize}
             borderRadius={borderRadius}
             disabled={isDisabled}
             color={color}
@@ -45,6 +51,8 @@ const Button = ({
             margin={margin}
             transition={transition}
             focusColor={focusColor}
+            theme={theme}
+            colors={colors}
         >
             {t(content)}
         </StButton>

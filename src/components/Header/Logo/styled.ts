@@ -1,17 +1,18 @@
 import styled from 'styled-components';
+import { colors } from 'src/components/UI/themeStyles';
 
 export const StLogo = styled.div`
-    display:flex;
+    display: flex;
     justify-content: space-evenly;
     align-items: center;
-    width:30%;
-    font-family: 'Oxanium', cursive;
-    color:white;
+    width: 20%;
         h1{
-            font-size: 30px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 25px;
+            color: ${({ colors, theme }) => colors[theme].colorTextForm};
         }
         img{
-            height: 8vh;
+            height: 40px;
         }
     cursor: pointer;
 `;

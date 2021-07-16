@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 import {
   colorDefault,
   focusColorDefault,
@@ -11,7 +12,7 @@ import { IBtn } from './types';
 
 export const StButton = styled.button < IBtn > `
   ${({ margin = '0 0 3px 0' }) => margin && `margin: ${margin}`};
-  font-family: 'Oxanium', cursive;
+  font-family: 'Poppins', sans-serif;
   padding: ${({ padding = '5px' }) => padding};
   width: ${({ width = '170px' }) => width};
   height: ${({ height = '35px' }) => height};
@@ -22,6 +23,9 @@ export const StButton = styled.button < IBtn > `
   outline: ${({ outline = 'none' }) => outline};
   ${({ transition = 'all 300ms ease-in-out' }) => transition && `transition: ${transition}`};
   font-size: ${({ fontSize = '16px' }) => fontSize};
+  background-color: ${({ bgColor = 'transparent' }) => bgColor};
+  background-image: ${({ colors, theme }) => colors[theme].backgroundImage};
+  background-size:  ${({ backgroundSize = 'cover' }) => backgroundSize};
   &:hover {
     border: ${({ border = 'none' }) => border};
     }

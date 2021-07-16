@@ -7,7 +7,10 @@ export interface IBtn {
     width?: string;
     height?: string;
     cursor?: string;
+    background?: string;
     bgColor?: string;
+    backgroundImage?: string;
+    backgroundSize?: string;
     borderRadius?: string;
     border?: string;
     outline?: string;
@@ -31,8 +34,11 @@ export interface IButton{
     fontSize?: string;
     fontWeight?: string;
     bgColorDisabled?: string;
+    background: string;
     bgColor?: string;
     bgColorHover?: string;
+    backgroundImage?: string;
+    backgroundSize?: string;
     height?: string;
     width?: string;
     padding?: string;

@@ -1,9 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
+import { useTheme } from 'src/components/Hooks/useTheme';
 import { StLogo } from './styled';
 
 const Logo = ({ history, setValue }) => {
+    const { colors, theme } = useTheme();
     const handleClick = () => {
         const { pathname } = history.location;
         if (pathname === '/' || pathname === '/registration') return history.push('/');
@@ -12,16 +13,15 @@ const Logo = ({ history, setValue }) => {
     };
     const { t } = useTranslation();
     return (
-        <StLogo onClick={handleClick}>
-            <img src="./public/assets/images/logo.png" />
+        <StLogo
+            onClick={handleClick}
+            theme={theme}
+            colors={colors}
+        >
+            <img src="/public/assets/images/game-logo.svg" />
             <h1>{t('logo')}</h1>
         </StLogo>
     );
-};
-
-Logo.propTypes = {
-    history: PropTypes.object,
-    setValue: PropTypes.func,
 };
 
 export default Logo;

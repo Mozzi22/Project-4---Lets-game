@@ -28,10 +28,10 @@ const Input: React.FC<IInput> = ({
     errorMessage,
 }) => {
     const { t } = useTranslation();
+    const { colors, theme } = useTheme();
     const handleOnchange = (e :React.ChangeEvent<HTMLInputElement>) => {
         onChange({ name: e.target.name, value: e.target.value });
     };
-    const { colors, theme } = useTheme();
     return (
         <StInputContainer width={width} height={height}>
             {!!label && <StLabel htmlFor={id}></StLabel>}

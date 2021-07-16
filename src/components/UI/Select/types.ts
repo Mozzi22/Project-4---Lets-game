@@ -3,7 +3,9 @@ import React from 'react';
 export interface ISelect {
     id: string;
     name?: string;
+    value?: string;
     onClick?: (e: React.MouseEvent<HTMLElement, MouseEvent>) => void;
+    onChange?: (e: React.MouseEvent<HTMLElement, MouseEvent>) => void;
     content?: string;
     selected: string;
     margin?: string;

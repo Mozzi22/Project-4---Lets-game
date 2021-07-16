@@ -2,10 +2,9 @@ import styled from 'styled-components';
 import { colors } from 'src/components/UI/themeStyles';
 import { IStInput, IStLabel, IStInputContainer } from './types';
 import {
-  bgInpColorDefault,
   bgFocusColorDefault,
   focusColorDefaultInput,
-  colorDefaultInput, boxShadowColor,
+  boxShadowColor,
 } from '../baseLayout';
 
 export const StLabel = styled.label < IStLabel > `
@@ -24,7 +23,7 @@ export const StInput = styled.input < IStInput > `
     ${({ margin }) => margin && `margin: ${margin}`};
     ${({ borderColor }) => borderColor && `border: 1px solid ${borderColor}`};
     box-sizing: border-box;
-    font-family: 'Oxanium', cursive;
+    font-family: 'Poppins', sans-serif;
     ${({ brRadius }) => brRadius && `border-radius: ${brRadius}`};
     background-color: ${({ colors, theme }) => colors[theme].backgroundForm};
     box-shadow: ${({ boxShadow = boxShadowColor }) => (boxShadow)};
@@ -49,6 +48,13 @@ export const StInput = styled.input < IStInput > `
       color: ${({ colors, theme }) => colors[theme].colorTextForm};
       font-size: ${({ fontSizeInp = '14px' }) => fontSizeInp};
     }
+    &::-webkit-input-placeholder {opacity: 1; transition: opacity 0.3s ease;}
+    &::-moz-placeholder {opacity: 1; transition: opacity 0.3s ease;}
+    &:-ms-input-placeholder {opacity: 1; transition: opacity 0.3s ease;}
+    &:focus::-webkit-input-placeholder {opacity: 0; transition: opacity 0.3s ease;}
+    &:focus::-moz-placeholder {opacity: 0; transition: opacity 0.3s ease;}
+    &:focus:-moz-placeholder {opacity: 0; transition: opacity 0.3s ease;}
+    &:focus:-ms-input-placeholder {opacity: 0; transition: opacity 0.3s ease;}
 `;
 
 export const StErrorSpan = styled.span`

@@ -1,25 +1,24 @@
 import styled from 'styled-components';
+import { colors } from 'src/components/UI/themeStyles';
 import {
   bgSelect,
-  textColorBlack,
-  focusColorDefault,
   disabledColor,
   bgColorDisabledDefault,
   disabledBorder,
   activeBorder,
 } from '../baseLayout';
 
-import { ISelect, IOption } from './types';
+import { ISelect } from './types';
 
 export const StSelect = styled.select < ISelect > `
   ${({ margin = '0 0 3px 0' }) => margin && `margin: ${margin}`};
-  font-family: 'Oxanium', cursive;
-  padding: ${({ padding = '5px' }) => padding};
+  font-family: 'Poppins', sans-serif;
+  padding: ${({ padding = '0 0 0 5px' }) => padding};
   width: ${({ width = '170px' }) => width};
   height: ${({ height = '30px' }) => height};
   ${({ cursor = 'pointer' }) => cursor && `cursor: ${cursor}`};
-  color: ${({ color = textColorBlack }) => color};
-  background-color: ${({ bgColor = bgSelect }) => bgColor};
+  color: ${({ colors, theme }) => colors[theme].colorTextForm};
+  background-color: ${({ colors, theme }) => colors[theme].backgroundSelect};
   border-radius: ${({ borderRadius = '7px' }) => borderRadius};
   border: ${({ border = activeBorder }) => border};
   outline: ${({ outline = 'none' }) => outline};
@@ -31,12 +30,6 @@ export const StSelect = styled.select < ISelect > `
           background-color: ${({ bgColor = bgSelect }) => bgColor};
       }
   }
-  &:hover {
-    color: ${({ focusColor = focusColorDefault }) => focusColor};
-    }
-  &:focus {
-    color: ${({ focusColor = focusColorDefault }) => focusColor};
-    }
   &:disabled{
     border: ${({ border = disabledBorder }) => border};
     background-color: ${({ bgColorDisabled = bgColorDisabledDefault }) => bgColorDisabled};
@@ -44,6 +37,8 @@ export const StSelect = styled.select < ISelect > `
     }
 `;
 
-export const StOption = styled.option < IOption > `
-  font-family: 'Oxanium', cursive;
+export const StOption = styled.option`
+  font-family: 'Poppins', sans-serif;
+  color: #000;
+  font-size: 14px;
 `;
