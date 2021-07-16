@@ -1,7 +1,19 @@
 import React from 'react';
+import { useTheme } from 'src/components/Hooks/useTheme';
 import { StFormDiv } from './styled';
 import { IForm } from './types';
 
-const Form : React.FC<IForm> = ({ children }) => <StFormDiv>{children}</StFormDiv>;
+const Form: React.FC<IForm> = ({ children }) => {
+const { colors, theme } = useTheme();
+      return (
+    <StFormDiv
+    theme={theme}
+              colors={colors}
+    >
+    {children}
+    </StFormDiv>
+    );
+};
+
 
 export default Form;

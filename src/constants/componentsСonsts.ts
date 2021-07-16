@@ -6,7 +6,7 @@ interface IRegInput {
 
 export const regInputs: Array<IRegInput> = [{
     id: 'login',
-    label: 'login',
+    label: 'login_label',
     placeholder: 'login_placeholder',
 },
 {

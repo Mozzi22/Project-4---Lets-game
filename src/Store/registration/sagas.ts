@@ -5,6 +5,7 @@ import { SagaIterator } from '@redux-saga/core';
 import { postRequest } from 'src/helpers/requests';
 import { routes } from 'src/constants/routes';
 import { validation } from 'src/helpers/validation';
+import httpStatusCode from 'src/constants/httpStatusCode';
 import { actionTypes } from './actionTypes';
 import { regValues } from './selectors';
 import { setRegistrationValue, clearRegistrationInputs, reciveErrorRequest, reciveSuccessRequest } from './actions';
@@ -17,15 +18,15 @@ export function* workerRegistration(): SagaIterator {
         if (!isValid) {
             return yield call([NotificationManager, NotificationManager.error], i18next.t(validateMessage), i18next.t('input_error'), 2000);
         }
-        const { message } = yield call(postRequest, routes.account.registration, { ...data, confirm: undefined });
-        if (message === 'done') {
+        const answer = yield call(postRequest, routes.account.registration, { ...data, confirm: undefined });
+        if (answer.status < httpStatusCode.RESET_CONTENT) {
             yield (put(clearRegistrationInputs()));
             yield put(setRegistrationValue({ name: 'success', value: true }));
             yield put(reciveSuccessRequest());
         } else {
             yield put(setRegistrationValue({ name: 'success', value: false }));
             yield put(reciveErrorRequest());
-            yield call([NotificationManager, NotificationManager.error], i18next.t(message), i18next.t('reg_error'), 2000);
+            yield call([NotificationManager, NotificationManager.error], i18next.t('registartion_error'), i18next.t('reg_error'), 2000);
         }
     } catch (e) {
         yield put(setRegistrationValue({ name: 'success', value: false }));

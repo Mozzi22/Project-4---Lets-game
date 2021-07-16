@@ -32,7 +32,7 @@ describe('Registration', () => {
     });
     it('should render inputs', () => {
         const component = mountSmart(<Registration {...props} />);
-        expect(component.find('Input')).toHaveLength(5);
+        expect(component.find('Input')).toHaveLength(3);
     });
     it('should render button', () => {
         const component = mountSmart(<Registration {...props} />);

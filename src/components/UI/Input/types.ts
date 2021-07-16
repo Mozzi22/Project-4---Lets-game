@@ -19,7 +19,7 @@ export interface IInput{
     bgFocusColor?: string;
     fontSizeInp?: string;
     borderColor?: string;
-    placeholder?: string;
+    placeholder: string;
     errorMessage?: string;
 }
 export interface IStInput {
@@ -48,6 +48,6 @@ export interface IStLabel {
     fontWeight?: string;
 }
 export interface IStInputContainer {
-    width: string;
-    height: string;
+    width?: string;
+    height?: string;
 }

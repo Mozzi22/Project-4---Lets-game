@@ -1,8 +1,8 @@
 {
     "authorization": "Вход",
     "registration": "Регистрация",
-    "login_label": "Электронная почта",
-    "login_placeholder": "Логин",
+    "login_label": "Логин",
+    "login_placeholder": "Введите свой логин...",
     "password_label": "Пароль",
     "password_placeholder": "Введите свой пароль...",
     "confirm_label": "Подтверждение",

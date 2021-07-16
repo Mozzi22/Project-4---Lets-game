@@ -7,6 +7,7 @@ import Form from 'src/components/UI/Form';
 import Input from 'src/components/UI/Input';
 import Button from 'src/components/UI/Button';
 import { TInitialLoginData, TLoginData, TLoginValue } from 'src/Store/login/types';
+import { useTheme } from 'src/components/Hooks/useTheme';
 import { StLoginDiv } from './styled';
 
 interface ILogin {
@@ -22,6 +23,7 @@ const Login = ({ sendLoginRequest, setLoginValue, fields, setValue }: ILogin) =>
     setValue({ name: 'success', value: false });
     return <Redirect to={APP_ROUTES.main} />;
   }
+  const { colors, theme } = useTheme();
   return (
     <StLoginDiv>
       <Form>

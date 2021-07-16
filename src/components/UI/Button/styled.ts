@@ -1,7 +1,5 @@
 import styled from 'styled-components';
-import { IBtn } from './types';
 import {
-  bgColorDefault,
   colorDefault,
   focusColorDefault,
   disabledColor,
@@ -9,6 +7,8 @@ import {
   disabledBorder,
   hoverBgDefault,
 } from '../baseLayout';
+import { IBtn } from './types';
+
 
 export const StButton = styled.button < IBtn > `
   ${({ margin = '0 0 3px 0' }) => margin && `margin: ${margin}`};
@@ -18,7 +18,6 @@ export const StButton = styled.button < IBtn > `
   height: ${({ height = '35px' }) => height};
   ${({ cursor = 'pointer' }) => cursor && `cursor: ${cursor}`};
   color: ${({ color = colorDefault }) => color};
-  background-color: ${({ bgColor = bgColorDefault }) => bgColor};
   border-radius: ${({ borderRadius = '7px' }) => borderRadius};
   border: ${({ border = 'none' }) => border};
   outline: ${({ outline = 'none' }) => outline};

@@ -1,3 +1,4 @@
+
 import styled from 'styled-components';
 import { colorDefault, textColorGray } from '../baseLayout';
 import { IStFormDiv } from './types';
@@ -45,7 +46,7 @@ export const StFormDiv = styled.div < IStFormDiv > `
           margin: 60px 0 25px;
           font-size: 18px;
           text-transform: uppercase;
-          background-color: #78dec7;
+          background-color: ${({ colors, theme }) => colors[theme].backgroundButton};
           width: 400px;
           height: 40px;
           color: #484b54;

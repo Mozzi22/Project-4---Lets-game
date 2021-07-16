@@ -3,11 +3,11 @@ import { NavLink, Redirect } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { regInputs } from 'src/constants/componentsСonsts';
 import { APP_ROUTES } from 'src/constants/reactRoutes';
-import Form from 'src/components/UI/Form';
-import Input from 'src/components/UI/Input';
-import Button from 'src/components/UI/Button';
 import { TInitialRegistrationData, TRegistrationData } from 'src/Store/registration/types';
 import { StRegDiv } from './styled';
+import Form from '../UI/Form';
+import Input from '../UI/Input';
+import Button from '../UI/Button';
 
 interface IRegistration {
     sendRegistrationRequest: (e: React.MouseEvent) => void ;

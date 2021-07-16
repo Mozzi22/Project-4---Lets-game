@@ -1,5 +1,7 @@
 import { connect } from 'react-redux';
+import { compose } from 'redux';
 import { userTheme, userThemeMode } from 'src/Store/user/selectors';
+import { withTheme } from '../Hocs/withTheme';
 import App from './App';
 
 const mapStateToProps = state => ({
@@ -7,4 +9,7 @@ const mapStateToProps = state => ({
   userThemeMode: userThemeMode(state),
 });
 
-export default connect(mapStateToProps)(App);
+export default compose(
+  connect(mapStateToProps),
+  withTheme,
+)(App);
