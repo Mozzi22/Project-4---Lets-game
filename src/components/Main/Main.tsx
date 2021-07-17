@@ -1,12 +1,11 @@
 import React from 'react';
 
-import Modal from '../UI/Modal';
+import Statistics from '../Statistics';
 
 const Main = () => {
     return (
         <>
-            <p>fgfgfgfg</p>
-            <Modal />
+            <Statistics />
         </>
     );
 };

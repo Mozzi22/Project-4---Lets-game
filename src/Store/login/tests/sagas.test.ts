@@ -46,7 +46,6 @@ describe('loginSaga', () => {
                 .next(mockValidation)
                 .call(postRequest, routes.account.login, mocklogValues)
                 .next({ status: 300 })
-                // .next(invalidAcc)
                 .put(actions.setLoginValue({ name: 'success', value: false }))
                 .next()
                 .put(actions.reciveErrorRequest())

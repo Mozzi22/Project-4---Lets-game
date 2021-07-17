@@ -1,12 +1,7 @@
 import React, { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
-import { HEADER_CONTROL_BTNS } from 'src/constants/componentsСonsts';
 import Button from 'src/components/UI/Button';
 import Select from 'src/components/UI/Select';
-import { APP_ROUTES } from 'src/constants/reactRoutes';
-import { ROUTS_WITHOUT_MY_ACCOUNT } from 'src/constants/ui';
-import { support } from 'src/helpers/support';
-import { colorDefault } from 'src/components/UI/baseLayout';
 import { Theme } from 'src/components/Hocs/withTheme';
 import { StOption } from 'src/components/UI/Select/styled';
 import { StControl } from './styled';
@@ -21,26 +16,30 @@ const options = [
 ];
 
 const HeaderControlPanel = ({
-    authorization,
 }: IHeaderControlPanel) => {
     const { t, i18n } = useTranslation();
     const { theme, changeTheme } = useContext(Theme);
+    const [selected, setSelected] = React.useState('');
 
-    const onChangeTheme = (lng, i18n) => {
+    React.useEffect(() => {
+        const lastSelected = localStorage.getItem('lang');
+        setSelected(lastSelected);
+    }, [localStorage.getItem('lang')]);
+
+    const onChangeLanguage = (lng, i18n) => {
         i18n.changeLanguage(lng);
         localStorage.setItem('lang', lng);
     };
 
-    const handleChangeTheme = e => onChangeTheme(e.target.value, i18n);
-
-    const toggleThemeMode = () => {
-        changeTheme(theme === 'dark' ? 'light' : 'dark');
+    const handleChangeLanguage = (e) => {
+        onChangeLanguage(e.target.value, i18n);
     };
+
+    const toggleThemeMode = () => changeTheme(theme === 'dark' ? 'light' : 'dark');
 
     return (
         <StControl>
             <Button
-                color={colorDefault}
                 fontSize='26px'
                 width='40px'
                 height="40px"
@@ -49,13 +48,12 @@ const HeaderControlPanel = ({
                 onClick={toggleThemeMode}
                 bgColor='transparent'
                 backgroundSize='cover'
-            >
-                {t(authorization)}
-            </Button>
+            />
             <Select
                 id={options.id}
                 options={options}
-                onChange={handleChangeTheme}
+                onChange={handleChangeLanguage}
+                value={selected}
                 width="70px"
                 bgColor=""
             >

@@ -17,7 +17,7 @@ export const StButton = styled.button < IBtn > `
   width: ${({ width = '170px' }) => width};
   height: ${({ height = '35px' }) => height};
   ${({ cursor = 'pointer' }) => cursor && `cursor: ${cursor}`};
-  color: ${({ color = colorDefault }) => color};
+  color: ${({ colors, theme }) => colors[theme].colorTextForm};
   border-radius: ${({ borderRadius = '7px' }) => borderRadius};
   border: ${({ border = 'none' }) => border};
   outline: ${({ outline = 'none' }) => outline};
@@ -31,8 +31,10 @@ export const StButton = styled.button < IBtn > `
     }
     background-color: ${({ bgColor = hoverBgDefault }) => bgColor};
   &:focus {
-    color: ${({ focusColor = focusColorDefault }) => focusColor};
+    color:  ${({ colors, theme }) => colors[theme].focusColorDefault};
     background-color: ${({ bgColor = hoverBgDefault }) => bgColor};
+    border-bottom: 1px solid ${({ colors, theme }) => colors[theme].focusColorDefault};
+    border-radius: 0;
     }
   &:active{
     border: ${({ border = disabledBorder }) => border};

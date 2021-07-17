@@ -32,7 +32,6 @@
     "placeholder_control_input": "Write a message...",
     "user_list": "Add users",
     "placeholder_search_input": "🔍  Search...",
-    "logo": "Lets game!",
     "without_room": "You have not chosen a chat",
     "without_text": "You cannot send an empty message",
     "apply": "Apply",
@@ -52,8 +51,9 @@
     "welcome": "Welcome,",
     "find_interlocutors": "Choose a chat to start a chat",
     "long_no_space": "You cannot send such a long word without spaces",
-    "online": "Online Users",
     "dropdown_game": "game type",
     "option_game_1": "tic-tac-toe",
-    "option_game_2": "checkers"
+    "option_game_2": "checkers",
+    "statistics": "Statistics",
+    "main_page": "Main"
 }

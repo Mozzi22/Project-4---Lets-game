@@ -7,6 +7,8 @@ export const colors = {
     borderColor: '#cacaca',
     borderColorForm: 'transparent',
     colorTextForm: '#484848',
+    colorTextButton: '#fff',
+    focusColorDefault: '#000',
     backgroundImage: 'url(public/assets/images/day-logo.svg)',
   },
   dark: {
@@ -17,6 +19,8 @@ export const colors = {
     borderColor: '#994272',
     borderColorForm: '#14d2fC',
     colorTextForm: '#fff',
+    colorTextButton: '#000',
+    focusColorDefault: '#fff',
     backgroundImage: 'url(public/assets/images/night-logo.svg)',
   },
 };
