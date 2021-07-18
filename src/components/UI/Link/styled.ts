@@ -1,14 +1,11 @@
 import styled from 'styled-components';
 
 import {
-  disabledColor,
-  bgColorDisabledDefault,
-  disabledBorder,
   hoverBgDefault,
 } from '../baseLayout';
-import { IBtn } from './types';
+import { ILink } from './types';
 
-export const StButton = styled.button < IBtn > `
+export const StLink = styled.button < ILink > `
   ${({ margin = '0 0 3px 0' }) => margin && `margin: ${margin}`};
   font-family: 'Poppins', sans-serif;
   padding: ${({ padding = '5px' }) => padding};
@@ -16,8 +13,8 @@ export const StButton = styled.button < IBtn > `
   height: ${({ height = '35px' }) => height};
   ${({ cursor = 'pointer' }) => cursor && `cursor: ${cursor}`};
   color: ${({ colors, theme }) => colors[theme].colorTextForm};
-  border-radius: ${({ borderRadius = '7px' }) => borderRadius};
-  border: ${({ border = 'none' }) => border};
+  border-radius: ${({ borderRadius = '0' }) => borderRadius};
+  border: ${({ border = '0' }) => border};
   outline: ${({ outline = 'none' }) => outline};
   ${({ transition = 'all 300ms ease-in-out' }) => transition && `transition: ${transition}`};
   font-size: ${({ fontSize = '16px' }) => fontSize};
@@ -29,15 +26,8 @@ export const StButton = styled.button < IBtn > `
     }
     background-color: ${({ bgColor = hoverBgDefault }) => bgColor};
   &:focus {
-    color:  ${({ colors, theme }) => colors[theme].focusColorDefault};
-    }
-  &:active{
-    border: ${({ border = disabledBorder }) => border};
-    background-color: ${({ bgColorDisabled = '#00a6ff' }) => bgColorDisabled};
-    }
-  &:disabled{
-    border: ${({ border = disabledBorder }) => border};
-    background-color: ${({ bgColorDisabled = bgColorDisabledDefault }) => bgColorDisabled};
-    color: ${({ focusColor = disabledColor }) => focusColor};
+    color:  ${({ colors, theme }) => colors[theme].backgroundButton};
+    border: ${({ border = 'none' }) => border};
+    background-color: ${({ bgColor = 'transparent' }) => bgColor};
     }
 `;

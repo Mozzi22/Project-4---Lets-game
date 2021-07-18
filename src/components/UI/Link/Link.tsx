@@ -1,12 +1,12 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from 'src/components/Hooks/useTheme';
-import { StButton } from './styled';
-import { IButton } from './types';
+import { StLink } from './styled';
+import { ILink } from './types';
 
-const Button = ({
+const Link = ({
     id,
-    name,
+    href,
     onClick,
     title,
     type = 'button',
@@ -25,13 +25,13 @@ const Button = ({
     margin,
     content,
     transition,
-}: IButton) => {
+}: ILink) => {
     const { t } = useTranslation();
     const { colors, theme } = useTheme();
     return (
-        <StButton
+        <StLink
             id={id}
-            name={name}
+            href={href}
             onClick={onClick}
             type={type}
             value={value}
@@ -53,8 +53,8 @@ const Button = ({
             colors={colors}
         >
             {t(content)}
-        </StButton>
+        </StLink>
     );
 };
 
-export default Button;
+export default Link;

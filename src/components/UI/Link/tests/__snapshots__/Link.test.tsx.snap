@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Link Should match snapshot 1`] = `"<button id=\\"id\\" type=\\"Button\\" value=\\"value\\" title=\\"Link\\" disabled=\\"\\" class=\\"styled__StLink-sc-dq9w1g-0 hIjsFD\\"></button>"`;

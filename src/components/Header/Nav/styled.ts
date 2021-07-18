@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { colors } from 'src/components/UI/themeStyles';
 
-export const StLogo = styled.div`
+export const StNav = styled.div`
     display: flex;
     justify-content: space-evenly;
     align-items: center;

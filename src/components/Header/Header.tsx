@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTheme } from 'src/components/Hooks/useTheme';
 import { StHeader } from './styled';
-import Logo from './Logo';
+import Nav from './Nav';
 import HeaderControlPanel from './HeaderControlPanel';
 
 const Header = () => {
@@ -11,7 +11,7 @@ const Header = () => {
             theme={theme}
             colors={colors}
         >
-            <Logo />
+            <Nav />
             <HeaderControlPanel />
         </StHeader >
     );

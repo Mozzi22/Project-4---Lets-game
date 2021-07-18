@@ -6,18 +6,13 @@ import { Theme } from 'src/components/Hocs/withTheme';
 import { StOption } from 'src/components/UI/Select/styled';
 import { StControl } from './styled';
 
-interface IHeaderControlPanel {
-    themeMode: string;
-}
-
 const options = [
     { id: 1, label: 'en', value: 'en' },
     { id: 2, label: 'ru', value: 'ru' },
 ];
 
-const HeaderControlPanel = ({
-}: IHeaderControlPanel) => {
-    const { t, i18n } = useTranslation();
+const HeaderControlPanel = () => {
+    const { i18n } = useTranslation();
     const { theme, changeTheme } = useContext(Theme);
     const [selected, setSelected] = React.useState('');
 
@@ -35,11 +30,14 @@ const HeaderControlPanel = ({
         onChangeLanguage(e.target.value, i18n);
     };
 
-    const toggleThemeMode = () => changeTheme(theme === 'dark' ? 'light' : 'dark');
+    const toggleThemeMode = () => changeTheme(
+        theme === 'dark' ? 'light' : 'dark',
+    );
 
     return (
         <StControl>
             <Button
+                id='theme-btn'
                 fontSize='26px'
                 width='40px'
                 height="40px"

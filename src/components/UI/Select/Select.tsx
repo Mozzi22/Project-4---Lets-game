@@ -64,7 +64,6 @@ const Select: React.FC<ISelect> = ({
                     value={el.value || options[1]}
                     key={el.id}
                     onClick={onClick}
-                    onChange={onChange}
                     selected={selected}
                 >
                     {el.label}
