@@ -2,9 +2,9 @@ export interface IInput{
     id: string;
     type?: string;
     name?: string;
-    width: string;
+    width?: string;
     label?: string;
-    value?: string;
+    value?: string | (() => void); 
     height?: string;
     margin?: string;
     onChange: (value: { name: string; value: string }) => void;

@@ -1,13 +1,14 @@
 import React from 'react';
-
-import Modal from '../UI/Modal';
+import RoomList from './RoomList';
+import RoomContent from './RoomContent';
+import { StMain } from './styled';
 
 const Main = () => {
     return (
-        <>
-            <p>fgfgfgfg</p>
-            <Modal />
-        </>
+        <StMain>
+            <RoomList/> 
+            <RoomContent/>
+        </StMain>
     );
 };
 

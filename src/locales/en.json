@@ -63,5 +63,7 @@
     "online": "Online Users",
     "dropdown_game": "game type",
     "option_game_1": "tic-tac-toe",
-    "option_game_2": "checkers"
+    "option_game_2": "checkers",
+    "your_turn": "Your turn",
+    "opponent`s_turn": "Opponent's turn"
 }
