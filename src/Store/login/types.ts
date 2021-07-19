@@ -11,4 +11,9 @@ export type TInitialLoginData = {
     password: string;
     success: null | boolean;
     isLoading: boolean;
+    userLogin: string
+}
+
+export type TUserLoginData = {
+    userLogin: string,
 }

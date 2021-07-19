@@ -7,7 +7,6 @@ import Form from 'src/components/UI/Form';
 import Input from 'src/components/UI/Input';
 import Button from 'src/components/UI/Button';
 import { TInitialLoginData, TLoginData, TLoginValue } from 'src/Store/login/types';
-import { useTheme } from 'src/components/Hooks/useTheme';
 import { StLoginDiv } from './styled';
 
 interface ILogin {
@@ -23,7 +22,6 @@ const Login = ({ sendLoginRequest, setLoginValue, fields, setValue }: ILogin) =>
     setValue({ name: 'success', value: false });
     return <Redirect to={APP_ROUTES.main} />;
   }
-  const { colors, theme } = useTheme();
   return (
     <StLoginDiv>
       <Form>
@@ -31,19 +29,20 @@ const Login = ({ sendLoginRequest, setLoginValue, fields, setValue }: ILogin) =>
         <p>{t('authorization')}</p>
         {logInputs.map(input => (
           <Input
-            width="400px"
             id={input.id}
-            height="auto"
             key={input.id}
             name={input.id}
-            padding="17px 15px"
+            label={t(input.label)}
+            value={fields[input.id]}
+            width="400px"
+            height="100%"
+            padding="17px 10px"
+            margin="0 0 20px"
             inputHeight="60px"
             border="0px"
             borderRadius="7px"
             color="#484b54"
             fontSizeInp="18px"
-            label={t(input.label)}
-            value={fields[input.id]}
             onChange={setLoginValue}
             placeholder={t(input.placeholder)}
           />
@@ -53,6 +52,7 @@ const Login = ({ sendLoginRequest, setLoginValue, fields, setValue }: ILogin) =>
           content="login_btn"
           id="login"
           onClick={sendLoginRequest}
+          backgroundSize='0'
         />
         <span>
           {t('login_span_text')}

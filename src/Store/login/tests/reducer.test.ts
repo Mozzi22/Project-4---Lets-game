@@ -30,10 +30,12 @@ describe('loginReducer', () => {
             });
     });
     it('LOGIN_REQUEST_SUCCESS', () => {
-        expect(reducer(initialState, reciveSuccessRequest()))
+        const testName = 'login';
+        expect(reducer(initialState, reciveSuccessRequest({ userLogin: testName })))
             .toEqual({
                 ...initialState,
                 isLoading: false,
+                userLogin: `${testName}`,
             });
     });
     it('LOGIN_REQUEST_ERROR', () => {

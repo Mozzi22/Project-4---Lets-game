@@ -1,11 +1,13 @@
 import styled from 'styled-components';
-import { TRANSPARENT_BACKGROUND } from '../UI/baseLayout';
+import { IAppDiv } from 'src/components/App/styled';
 
-export const StHeader = styled.div`
+export const StHeader = styled.div < IAppDiv > `
+    border-bottom: 2px solid;
+    border-color: ${({ colors, theme }) => colors[theme].borderColor};
     display:flex;
     justify-content: flex-start;
     align-items: center;
-    height:10vh;
-    ${({ backgroundColor = TRANSPARENT_BACKGROUND }) => backgroundColor && `background-color: ${backgroundColor}`};
+    height: 60px;
+    padding: 0 20px;
     ${({ transition = 'all 300ms ease-in-out' }) => transition && `transition: ${transition}`};
 `;
