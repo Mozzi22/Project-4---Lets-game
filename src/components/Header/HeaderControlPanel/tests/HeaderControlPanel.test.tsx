@@ -1,14 +1,18 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import Button from 'src/components/UI/Button';
-import Select from 'src/components/UI/Select';
 import HeaderControlPanel from '../HeaderControlPanel';
 
+jest.spyOn(localStorage, "setItem");
+localStorage.setItem = jest.fn();
+
+jest.spyOn(localStorage.__proto__, 'setItem');
+localStorage.__proto__.setItem = jest.fn();
+
 jest.mock('react-i18next', () => ({
-  useTranslation: jest
-    .fn()
-    .mockReturnValue({ i18n: { changeLanguage: jest.fn() }, t: jest.fn() }),
-}));
+   useTranslation: jest
+     .fn()
+     .mockReturnValue({ i18n: { changeLanguage: jest.fn() }, t: jest.fn() }),
+ }));
 
 describe('HeaderControlPanel', () => {
   it('Should match snapshot', () => {
@@ -16,11 +20,12 @@ describe('HeaderControlPanel', () => {
     expect(component.html()).toMatchSnapshot();
   });
   it('Should have Button', () => {
-    const component = mount(<Button />);
+    const component = mount(<HeaderControlPanel />);
     expect(component.find('Button')).toHaveLength(1);
-    });
-  it('Should have Select', () => {
-    const component = mount(<Select />);
-    expect(component.find('Select')).toHaveLength(1);
+  });
+  it('saves the key to the storage', () => {
+    const component = mount(<HeaderControlPanel />);
+    component.find('Select').getElement().props.onChange({ target: { value: 'asad' } });
+    expect(localStorage.setItem).toHaveBeenCalled();
   });
 });

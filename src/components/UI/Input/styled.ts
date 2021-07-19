@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { colors } from 'src/components/UI/themeStyles';
 import { IStInput, IStLabel, IStInputContainer } from './types';
 import {
   bgFocusColorDefault,

@@ -1,6 +1,5 @@
 
 import styled from 'styled-components';
-import { colors } from 'src/components/UI/themeStyles';
 import { colorDefault } from '../baseLayout';
 import { IStFormDiv } from './types';
 

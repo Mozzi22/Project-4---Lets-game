@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { colors } from 'src/components/UI/themeStyles';
 
 export const StNav = styled.div`
     display: flex;

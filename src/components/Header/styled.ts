@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { IAppDiv } from 'src/components/App/styled';
-import { colors } from 'src/components/UI/themeStyles';
 
 export const StHeader = styled.div < IAppDiv > `
     border-bottom: 2px solid;

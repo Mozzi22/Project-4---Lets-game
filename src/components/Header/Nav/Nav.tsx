@@ -17,7 +17,10 @@ const Nav = () => {
     };
 
     return (
-        <StNav >
+        <StNav
+            theme={theme}
+            colors={colors}
+        >
             <img src="/public/assets/images/game-logo.svg" onClick={goToMain} />
             <Link
                 theme={theme}
