@@ -1,12 +1,14 @@
 import React from 'react';
-
-import Statistics from '../Statistics';
+import RoomList from './RoomList';
+import RoomContent from './RoomContent';
+import { StMain } from './styled';
 
 const Main = () => {
     return (
-        <>
-            <Statistics />
-        </>
+        <StMain>
+            <RoomList/> 
+            <RoomContent/>
+        </StMain>
     );
 };
 

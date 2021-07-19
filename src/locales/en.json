@@ -43,7 +43,7 @@
     "create": "Create",
     "create_chat": "Create new room",
     "create_new_room_input_placeholder": "Enter the name of the new room...",
-    "create_room": "Create new room",
+    "create_room": "+",
     "exists_error": "This room already exists",
     "no_result": "No results",
     "try_new": "Try a new search.",
@@ -55,5 +55,9 @@
     "option_game_1": "tic-tac-toe",
     "option_game_2": "checkers",
     "statistics": "Statistics",
-    "main_page": "Main"
+    "main_page": "Main",
+    "your_turn": "Your turn",
+    "opponent`s_turn": "Opponent's turn",
+    "join_to_game": "Join",
+    "join_to_game_with_bot": "Play with Bot"
 }

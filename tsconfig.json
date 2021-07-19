@@ -42,8 +42,6 @@
     "**/*.js",
     "**/*.jsx",
     "**/*.test.js",
-    "**/*.test.ts",
     "**/*.test.jsx",
-    "**/*.test.tsx",
   ]
 }

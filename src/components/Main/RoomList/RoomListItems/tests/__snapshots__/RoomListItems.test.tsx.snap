@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchNoRes Should match snapshot 1`] = `"<div class=\\"styled__StRoomListItems-sc-19jz83q-0 gGwSht\\"><div class=\\"styled__StRoom-sc-19jz83q-2 jTeqUu\\"><p></p></div><button id=\\"join_to_game\\" name=\\"join_to_game\\" type=\\"button\\" width=\\"200px\\" class=\\"styled__StButton-sc-15f3n0p-0 fpLSlp\\">join_to_game</button></div>"`;
