@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import { IAppDiv } from 'src/components/App/styled';
 
-export const StNav = styled.div`
+export const StNav = styled.div < IAppDiv > `
     display: flex;
     justify-content: space-evenly;
     align-items: center;
