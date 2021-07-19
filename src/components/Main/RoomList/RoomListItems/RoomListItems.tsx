@@ -27,24 +27,19 @@ const RoomListItems: React.FC<IRoomListItems> = ({
   }, [currentRoomName]);
   const [state, setState] = useState({
     error: false,
-    src: img,
-    defaultImg: './public/assets/images/defaultChats.png',
     selected: false,
   });
-  const onError = () => setState({ ...state, error: true, src: state.defaultImg });
+  const onError = () => setState({ ...state, error: true });
   return (
     <StRoomListItems color={state.selected ? bgColorDefault : color} onClick={handleClick}>
-      <StPhoto>
-        <img src={img ? state.src : state.defaultImg} onError={onError} />
-      </StPhoto>
       <StRoom>
         <p>{content}</p>
       </StRoom>
       <Button
-            id='create_room'
-            name='create_room'
+            id='join_to_game'
+            name='join_to_game'
             onClick={handleJoinToGame}
-            content={t('create_room')}
+            content={t('join_to_game')}
             width="200px"
             margin="15px 0"
       />

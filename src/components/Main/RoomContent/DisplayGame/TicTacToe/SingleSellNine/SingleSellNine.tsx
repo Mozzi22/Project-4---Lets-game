@@ -1,15 +1,15 @@
 import React from 'react';
 import { StSingleSellNine } from './styled';
+import { TSingleSellNine } from './types'
 
-const SingleSell = ({ id }) => {
-    const handleClick = (e) => {
+const SingleSellNine: React.FC<TSingleSellNine> = ({ id }) => {
+    const handleClick = (e: React.MouseEvent) => {
         console.log(e.target.id);
     };
 
     return (
         <StSingleSellNine 
         id={id + 1} 
-        // style={{ background: parseInt((id / 10) + id) % 2 === 0 ? 'grey' : 'white' }} 
         onClick={handleClick}
         >
             {id + 1}
@@ -17,4 +17,4 @@ const SingleSell = ({ id }) => {
     );
 };
 
-export default SingleSell;
+export default SingleSellNine;

@@ -1,8 +1,9 @@
 import React from 'react';
 import { StSingleSell } from './styled';
+import { TSingleSell } from './types';
 
-const SingleSell = ({ id }) => {
-    const handleClick = (e) => {
+const SingleSell: React.FC<TSingleSell> = ({ id }) => {
+    const handleClick = (e: React.MouseEvent) => {
         console.log(e.target.id);
     };
 

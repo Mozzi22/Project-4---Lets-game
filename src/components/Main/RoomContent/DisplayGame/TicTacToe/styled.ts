@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StCheckers = styled.div`
+export const StTicTacToe = styled.div`
     background: white;
     width: 399px;
     height: 399px;

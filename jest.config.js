@@ -10,7 +10,7 @@ module.exports = {
         window: true,
     },
     collectCoverageFrom: ['**/*.jsx', '**/*.js', '**/*.ts', '**/*.tsx'],
-    moduleDirectories: ['node_modules', '.', 'src', 'tests'],
+    moduleDirectories: ['node_modules', '.', 'src'],
     testMatch: [
         '**/*.(test|spec).(js)',
         '**/*.(test|spec).(jsx)',

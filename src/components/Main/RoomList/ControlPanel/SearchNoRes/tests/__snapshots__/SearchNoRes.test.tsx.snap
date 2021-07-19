@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchNoRes Should match snapshot 1`] = `"<div class=\\"styled__StNoResWrapper-sc-dn15ik-0 pTUWO\\"><p class=\\"styled__StNoResTitle-sc-dn15ik-1 JSdxK\\">no_result</p><span class=\\"styled__StNoResText-sc-dn15ik-2 flNXeE\\">try_new</span></div>"`;

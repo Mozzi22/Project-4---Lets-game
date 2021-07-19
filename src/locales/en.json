@@ -65,5 +65,6 @@
     "option_game_1": "tic-tac-toe",
     "option_game_2": "checkers",
     "your_turn": "Your turn",
-    "opponent`s_turn": "Opponent's turn"
+    "opponent`s_turn": "Opponent's turn",
+    "join_to_game": "Join"
 }
