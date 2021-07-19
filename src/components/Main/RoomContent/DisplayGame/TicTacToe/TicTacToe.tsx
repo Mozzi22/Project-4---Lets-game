@@ -1,9 +1,10 @@
 import React from 'react';
 import { StTicTacToe } from './styled';
 import SingleSellNine from './SingleSellNine';
+import { ITEMS_FOR_TIC_TAC_TOE } from 'src/constants/ui';
 
 const TicTacToe = () => {
-    const items = [8, 7, 6, 5, 4, 3, 2, 1, 0];
+    const items = ITEMS_FOR_TIC_TAC_TOE
     return (
         <StTicTacToe>
             {items.map(item => <SingleSellNine id={item} key={item}/>)}

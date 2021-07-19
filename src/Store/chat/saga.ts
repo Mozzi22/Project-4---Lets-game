@@ -18,8 +18,8 @@ import {
     putMessageAudio,
 } from './actions';
 import { userInfo } from '../user/selectors';
-import { getRequest } from '../../helpers/requests';
-import { routes } from '../../constants/routes';
+import { getRequest } from 'src/helpers/requests';
+import { routes } from 'src/constants/routes';
 import { support } from '/src/helpers/support';
 
 export let globalSocket = { emit: () => { }, on: () => { } };
