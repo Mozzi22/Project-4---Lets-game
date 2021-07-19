@@ -17,7 +17,7 @@ describe('validation', () => {
         });
         it('should return "Invalid password" ', () => {
             const candidate = {
-                login: 'keepcalm312000@gmail.com',
+                login: 'keepcalm312000om',
                 password: 'asd',
             };
             expect(validation.loginValidation(candidate)).toEqual({ message: 'invalid_password', isValid: false });
@@ -47,7 +47,7 @@ describe('validation', () => {
         });
         it('should return "Invalid password" ', () => {
             const candidate = {
-                login: 'keepcalm312000@gmail.com',
+                login: 'keepcalm31200com',
                 password: 'asd',
                 confirm: 'asd',
             };
@@ -55,7 +55,7 @@ describe('validation', () => {
         });
         it('should return password mismatch ', () => {
             const candidate = {
-                login: 'keepcalm312000@gmail.com',
+                login: 'keepcalm31200com',
                 password: 'asdasdsad',
                 confirm: 'asdasdsadsad',
             };
@@ -67,7 +67,7 @@ describe('validation', () => {
                 password: 'asdasdsadsad',
                 confirm: 'asdasdsadsad',
             };
-            expect(validation.registrationValidation(candidate)).toEqual({ message: '', isValid: true });
+            expect(validation.registrationValidation(candidate)).toEqual({ message: 'invalid_login', isValid: false });
         });
     });
 });

@@ -4,3 +4,5 @@ export const options = [
     { id: 1, label: 'en', value: 'en' },
     { id: 2, label: 'ru', value: 'ru' },
 ];
+
+export const ITEMS_FOR_TIC_TAC_TOE = [8, 7, 6, 5, 4, 3, 2, 1, 0];
