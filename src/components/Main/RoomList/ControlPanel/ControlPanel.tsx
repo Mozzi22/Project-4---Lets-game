@@ -35,7 +35,7 @@ const ControlPanel: React.FC<IControlPanel> = ({ setValue, filterByRoomName, cha
                     name='create_room'
                     onClick={handleCreateRoom}
                     content={t('create_room')}
-                    width="200px"
+                    width="50px"
                     margin="15px 0"
                 />
             </StCreateRoom>
