@@ -13,6 +13,7 @@ const Nav = () => {
         <StNav theme={theme} colors={colors} >
             <img src="/public/assets/images/game-logo.svg" />
             {LINKS.map((el) => {
+                if (location.pathname === '/') return null;
                 return (
                     <Link
                         theme={theme}

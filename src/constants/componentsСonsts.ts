@@ -57,6 +57,7 @@ export const MODAL_USERS_BUTTON = [{
 export const LINKS = [
 {
     id: 'main-page',
+    rout: '/main',
     content: 'main_page',
     goToPage() {
         history.push('/main');
@@ -64,6 +65,7 @@ export const LINKS = [
 },
 {
     id: 'statistics',
+    rout: '/statistics',
     content: 'statistics',
     goToPage() {
         history.push('/statistics');

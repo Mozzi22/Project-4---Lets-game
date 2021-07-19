@@ -3,7 +3,7 @@ import { IAppDiv } from 'src/components/App/styled';
 
 export const StNav = styled.div < IAppDiv > `
     display: flex;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     align-items: center;
     width: 20%;
         h1{
