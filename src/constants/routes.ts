@@ -4,4 +4,5 @@ export const routes = {
         registration: 'registration/reg',
         login: 'authorization/auth',
     },
+    baseWebSocketUrl: 'ws://35.176.167.155:8089/game-menu'
 };
