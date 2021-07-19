@@ -24,21 +24,21 @@ export const StControlPanel = styled.div`
     border-radius: 0px;
 `;
 export const StItems = styled.div`
-     display: flex;
-     height: 68vh;
-     flex-direction: column;
-     width: 100%;
-     overflow-y: hidden;
-    :hover {
-      overflow-y: auto;
-      overflow-x: auto;
+    display: flex;
+    height: 68vh;
+    flex-direction: column;
+    width: 100%;
+    overflow-y: hidden;
+    &:hover {
+        overflow-y: auto;
+        overflow-x: auto;
     }
-        ::-webkit-scrollbar {
-          width: 8px;
-          height: 8px;
-        }
-            ::-webkit-scrollbar-thumb {
-              width: 8px;
-              background-color: ${({ color = bgColorDefault }) => color};
-            }
+    &::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+    &::-webkit-scrollbar-thumb {
+        width: 8px;
+        background-color: ${({ color = bgColorDefault }) => color};
+    }
 `;

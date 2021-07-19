@@ -5,6 +5,4 @@ export const StControlPanel = styled.div`
     border-top: 1px solid black;
     border-bottom: 1px solid black;    
 `;
-export const StCreateRoom = styled.div`
 
-`;

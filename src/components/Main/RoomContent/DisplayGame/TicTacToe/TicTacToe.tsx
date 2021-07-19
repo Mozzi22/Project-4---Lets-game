@@ -3,14 +3,10 @@ import { StTicTacToe } from './styled';
 import SingleSellNine from './SingleSellNine';
 
 const TicTacToe = () => {
-    const items = [];
-    for (let i = 8; i > -1; i--) {
-        items.push(i);
-    }
+    const items = [8, 7, 6, 5, 4, 3, 2, 1, 0];
     return (
         <StTicTacToe>
-            {items.map(item => <SingleSellNine id={item} key={item}/>,
-            )}
+            {items.map(item => <SingleSellNine id={item} key={item}/>)}
         </StTicTacToe>
     );
 };

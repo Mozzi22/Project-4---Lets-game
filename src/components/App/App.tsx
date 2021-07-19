@@ -6,13 +6,10 @@ import { useTranslation } from 'react-i18next';
 import { useTheme } from 'src/components/Hooks/useTheme';
 import Registration from '../Registration';
 import Login from '../Login';
-// import Component from '../UI/Modal/ModalTestComponent.jsx';
-// import ModalComponent from '../UI/Modal';
 import Header from '../Header';
 import Main from '../Main';
 import { APP_ROUTES } from '../../constants/reactRoutes';
 import { StAppDiv } from './styled';
-// import ModalInviteUsers from '../UI/Modals/ModalInviteUsers';
 import ModalCreateRoom from '../UI/Modals/ModalCreateRoom';
 
 const App = () => {
@@ -29,15 +26,10 @@ const App = () => {
         <Switch>
           <Route path={APP_ROUTES.login} exact component={Login} />
           <Route path={APP_ROUTES.registration} exact component={Registration} />
-          <Route path={APP_ROUTES.mainPage} exact component={Main} />
+          <Route path={APP_ROUTES.main} exact component={Main} />
         </Switch>
       </BrowserRouter>
-      {/* <ModalComponent
-        Component={Component}
-        headerTextKey="notification_settings"
-      /> */}
       <ModalCreateRoom />
-      {/* <ModalInviteUsers /> */}
       <NotificationContainer />
     </StAppDiv >
   );

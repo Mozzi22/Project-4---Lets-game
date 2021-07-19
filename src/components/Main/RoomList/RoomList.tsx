@@ -6,9 +6,6 @@ import SearchNoRes from './ControlPanel/SearchNoRes';
 import { TRoomListItems } from './types';
 
 const RoomList: React.FC<TRoomListItems> = ({ rooms = [] }) => {
-    // const handleCreateRoom = () => changeModalVisibility({
-    //     isOpen: true, data: {}, modalType: 'createChat',
-    // });
     return (
         <StRoomList>
             <StControlPanel>

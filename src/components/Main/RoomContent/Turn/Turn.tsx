@@ -1,9 +1,11 @@
 import React from 'react';
 // import { StTurn } from './styled';
 import { useTranslation } from 'react-i18next';
-import { TTurn } from './types';
-
-const Turn: React.FC<TTurn> = ({ turn, login }) => {
+interface IProps {
+    turn: string;
+    login: string;
+}
+const Turn: React.FC<IProps> = ({ turn, login }) => {
 const { t } = useTranslation();
         return turn === login
         ? <p>{t('your_turn')}</p>

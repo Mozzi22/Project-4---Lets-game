@@ -20,10 +20,6 @@ describe('ControlPanel', () => {
         const component = mount(<ControlPanel {...props}/>);
         expect(component.find('Input')).toHaveLength(1);
     });
-    it('should render StCreateRoom', () => {
-        const component = mount(<ControlPanel {...props}/>);
-        expect(component.find('styled__StCreateRoom')).toHaveLength(1);
-    });
     it('should render Button', () => {
         const component = mount(<ControlPanel {...props}/>);
         expect(component.find('Button')).toHaveLength(1);

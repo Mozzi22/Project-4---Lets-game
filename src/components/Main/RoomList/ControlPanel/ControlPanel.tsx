@@ -2,7 +2,7 @@ import React from 'react';
 import Button from 'src/components/UI/Button';
 import Input from 'src/components/UI/Input';
 import { useTranslation } from 'react-i18next';
-import { StControlPanel, StCreateRoom } from './styled';
+import { StControlPanel } from './styled';
 import { IControlPanel } from './types';
 
 const ControlPanel: React.FC<IControlPanel> = ({ setValue, filterByRoomName, changeModalVisibility }) => {
@@ -29,7 +29,6 @@ const ControlPanel: React.FC<IControlPanel> = ({ setValue, filterByRoomName, cha
                 borderColor="transparent"
                 padding="17px"
             />
-            <StCreateRoom>
                 <Button
                     id='create_room'
                     name='create_room'
@@ -38,7 +37,6 @@ const ControlPanel: React.FC<IControlPanel> = ({ setValue, filterByRoomName, cha
                     width="50px"
                     margin="15px 0"
                 />
-            </StCreateRoom>
         </StControlPanel> 
     );
 };

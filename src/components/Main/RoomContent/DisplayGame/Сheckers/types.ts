@@ -1,3 +1,3 @@
 export type TCheckers = {
-    id: number | string;
+    id: number;
 }
