@@ -11,7 +11,6 @@ const Select: React.FC<ISelect> = ({
     content,
     name,
     value,
-    selected,
     margin,
     padding,
     width,
@@ -28,6 +27,7 @@ const Select: React.FC<ISelect> = ({
     bgColorDisabled,
     options,
     defaultValue,
+    selected,
     }) => {
     const { t } = useTranslation();
     const { colors, theme } = useTheme();
@@ -60,11 +60,12 @@ const Select: React.FC<ISelect> = ({
         >
             {options.map(el => (
                 <StOption
-                    id={el.id}
-                    value={el.value || options[1]}
+                    id={id}
+                    value={el.value}
                     key={el.id}
                     onClick={onClick}
                     selected={selected}
+                    bgColor={bgColor}
                 >
                     {el.label}
                         {t(content)}

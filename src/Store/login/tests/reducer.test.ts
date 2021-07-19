@@ -1,4 +1,3 @@
-import { userLogin } from '../../user/selectors';
 import { reducer, initialState } from '../reducer';
 import {
     setLoginValue,
@@ -32,7 +31,7 @@ describe('loginReducer', () => {
     });
     it('LOGIN_REQUEST_SUCCESS', () => {
         const testName = 'login';
-        expect(reducer(initialState, reciveSuccessRequest({ userLogin: `${testName}` })))
+        expect(reducer(initialState, reciveSuccessRequest({ userLogin: testName })))
             .toEqual({
                 ...initialState,
                 isLoading: false,

@@ -8,7 +8,7 @@ import {
   activeBorder,
 } from '../baseLayout';
 
-import { ISelect } from './types';
+import { ISelect, IOption } from './types';
 
 export const StSelect = styled.select < ISelect > `
   ${({ margin = '0 0 3px 0' }) => margin && `margin: ${margin}`};
@@ -37,8 +37,7 @@ export const StSelect = styled.select < ISelect > `
     }
 `;
 
-export const StOption = styled.option`
+export const StOption = styled.option < IOption > `
   font-family: 'Poppins', sans-serif;
-  color: #000;
-  font-size: 14px;
+  font-size: 16px;
 `;

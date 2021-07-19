@@ -30,6 +30,7 @@ export const reducer: Reducer<TInitialLoginData, TActionsLogin> = (
             case AT.CLEAR_INPUTS_VALUES:
                 return {
                     ...state,
+                    login: '',
                     password: '',
                 };
             default: return { ...state };

@@ -7,7 +7,8 @@ export interface ISelect {
     onClick?: (e: React.MouseEvent<HTMLElement, MouseEvent>) => void;
     onChange?: (e: React.MouseEvent<HTMLElement, MouseEvent>) => void;
     content?: string;
-    selected: string;
+    key?: string;
+    label: string;
     margin?: string;
     padding?: string;
     width?: string;
@@ -24,4 +25,8 @@ export interface ISelect {
     bgColorDisabled?: string;
     options: Array<string>;
     defaultValue?: string;
+}
+
+export interface IOption extends ISelect {
+    selected?: string;
 }

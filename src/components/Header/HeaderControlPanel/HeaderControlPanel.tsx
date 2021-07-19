@@ -3,13 +3,8 @@ import { useTranslation } from 'react-i18next';
 import Button from 'src/components/UI/Button';
 import Select from 'src/components/UI/Select';
 import { Theme } from 'src/components/Hocs/withTheme';
-import { StOption } from 'src/components/UI/Select/styled';
+import { options } from 'src/constants/ui';
 import { StControl } from './styled';
-
-const options = [
-    { id: 1, label: 'en', value: 'en' },
-    { id: 2, label: 'ru', value: 'ru' },
-];
 
 const HeaderControlPanel = () => {
     const { i18n } = useTranslation();
@@ -40,7 +35,7 @@ const HeaderControlPanel = () => {
                 id='theme-btn'
                 fontSize='26px'
                 width='40px'
-                height="40px"
+                height='40px'
                 margin='0 15px 0'
                 borderRadius='0px'
                 onClick={toggleThemeMode}
@@ -51,21 +46,10 @@ const HeaderControlPanel = () => {
                 id={options.id}
                 options={options}
                 onChange={handleChangeLanguage}
-                value={selected}
-                width="70px"
-                bgColor=""
-            >
-            {options.map(el => (
-                <StOption
-                    key={el.id}
-                    id={el.id}
-                    value={el.value}
-                >
-                    {el.label}
-                </StOption>
-                ))
-            }
-            </Select>
+                value={selected || ''}
+                width='70px'
+                bgColor='#b16fdd'
+            />
         </StControl>
     );
 };
