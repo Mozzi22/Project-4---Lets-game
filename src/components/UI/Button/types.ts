@@ -15,8 +15,8 @@ export interface IBtn {
     fontSize?: string;
     focusColor?: string;
     bgColorDisabled?: string;
-    theme: 'dark' | 'light';
-    colors: typeof colors;
+    theme?: 'dark' | 'light';
+    colors?: typeof colors;
 }
 export interface IButton{
     id: string;

@@ -22,4 +22,15 @@ describe('registration selectors', () => {
             expect(selectors.registrationStore(state)).toEqual(state.registration);
         });
     });
+    describe('selectors.regValues', () => {
+        it('toBe defined', () => {
+            expect(selectors.regValues).toBeDefined();
+        });
+        it('toBe function', () => {
+            expect(typeof selectors.regValues).toBe('function');
+        });
+        it('should return value', () => {
+            expect(selectors.regValues(state)).toEqual({ login: '', password: '', confirm: '' });
+        });
+    });
 });

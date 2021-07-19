@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { changeModalVisibility } from 'src/Store/modals/actions';
-import CreateRoomsView from './CreateRoomsView.jsx';
+import CreateRoomsView from './CreateRoomsView';
 
 const mapDispatchToProps = dispatch => ({
     changeModalVisibility: payload => dispatch(changeModalVisibility(payload)),
