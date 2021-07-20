@@ -5,22 +5,37 @@ import { useTranslation } from 'react-i18next';
 import Input from 'src/components/UI/Input';
 import Button from 'src/components/UI/Button';
 import { CreateRoomsWrapper } from './styled';
+import { MODAL_CREATE_GAME } from 'src/constants/componentsСonsts';
 
-const CreateRoomsView = ({ createNewRoom, changeModalVisibility }) => {
+const CreateRoomsView = ({ createNewGame, changeModalVisibility }) => {
     const { t } = useTranslation();
-    const [state, setState] = useState({ newRoomName: '' });
+    const [state, setState] = useState({ newGameName: '' });
     const handleCreateNewRoom = () => {
-        if (!state.newRoomName) {
+        if (!state.newGameName) {
             return NotificationManager
                 .error(t('without_text_new_room'), t('input_error'), 2000);
         }
-        createNewRoom(state.newRoomName);
+        createNewGame(state.newGameName);
         changeModalVisibility({
-            isOpen: false, data: {}, modalType: 'createChat',
+            isOpen: false, data: {}, modalType: 'createGame',
         });
     };
     const handleOnChange = ({ value }) => {
-        setState({ ...state, newRoomName: value });
+        setState({ ...state, newGameName: value });
+    };
+      const handleCloseModal = () => changeModalVisibility({ modalType: 'createGame', data: {}, isOpen: false });
+    const handleSetNewUsersClick = () => {
+        // if (state.user_ids.length < 1) {
+        //     return NotificationManager.error(t('empty_users_list'), t('input_error'), 2000);
+        // }
+        setUserInRoom(state.user_ids);
+        handleCloseModal();
+    };
+     const getFunctionForButtons = (el) => {
+        switch (el.id) {
+            case 'createGame': return handleSetNewUsersClick;
+            default: return handleCloseModal;
+        }
     };
     return (
         <CreateRoomsWrapper>
@@ -32,14 +47,24 @@ const CreateRoomsView = ({ createNewRoom, changeModalVisibility }) => {
                 placeholder='create_new_room_input_placeholder'
                 width="400px"
             />
-            <Button
+             {MODAL_CREATE_GAME.map((el) => {
+                    return (
+                        <Button
+                            key={el.id}
+                            content={el.content}
+                            id={el.id}
+                            onClick={getFunctionForButtons(el)}
+                        />
+                    );
+                })}
+            {/* <Button
                 id="new_room_creator"
                 name="new_room_creator"
                 onClick={handleCreateNewRoom}
                 margin="20px"
                 width="200px"
                 content="create"
-            />
+            /> */}
         </CreateRoomsWrapper>
     );
 };

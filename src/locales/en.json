@@ -52,7 +52,7 @@
     "create": "Create",
     "create_chat": "Create new room",
     "create_new_room_input_placeholder": "Enter the name of the new room...",
-    "create_room": "+",
+    "create_room": "Add Game",
     "exists_error": "This room already exists",
     "no_result": "No results",
     "try_new": "Try a new search.",

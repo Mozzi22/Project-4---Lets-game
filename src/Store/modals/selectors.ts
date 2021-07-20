@@ -1,6 +1,7 @@
 import { createSelector } from 'reselect';
+import { AplicationState } from '../types';
 
-export const getModalState = state => state.modals;
+export const getModalState = (state: AplicationState) => state.modals;
 export const getModalVisibilityByType = createSelector(
     getModalState,
     (state, props) => props.modalType,

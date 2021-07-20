@@ -3,7 +3,7 @@ import ModalComponent from '../../Modal';
 import CreateRoomsView from './CreateRoomsView';
 
 const ModalCreateRoom = () => {
-    const modalType = 'createChat';
+    const modalType = 'createGame';
     return (
         <ModalComponent
             headerTextKey='create_chat'
