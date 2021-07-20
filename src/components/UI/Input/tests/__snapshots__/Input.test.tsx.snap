@@ -1,3 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Input Should match snapshot 1`] = `"<div width=\\"100px\\" class=\\"styled__StInputContainer-sc-153pik-3 bgRliG\\"><input type=\\"text\\" id=\\"id\\" name=\\"name\\" value=\\"value\\" maxLength=\\"120\\" placeholder=\\"Test\\" class=\\"styled__StInput-sc-153pik-1 lkALCg\\"/></div>"`;
+exports[`Input Should match snapshot 1`] = `"<div width=\\"100px\\" class=\\"styled__StInputContainer-sc-1hxx3n2-3 giJYXp\\"><input type=\\"text\\" id=\\"id\\" name=\\"name\\" value=\\"value\\" maxLength=\\"120\\" placeholder=\\"Test\\" class=\\"styled__StInput-sc-1hxx3n2-1 ixWASs\\"/></div>"`;

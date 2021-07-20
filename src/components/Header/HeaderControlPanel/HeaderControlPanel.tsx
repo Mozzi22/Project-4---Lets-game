@@ -1,100 +1,57 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
-import { HEADER_CONTROL_BTNS } from 'src/constants/componentsСonsts';
 import Button from 'src/components/UI/Button';
-import { APP_ROUTES } from 'src/constants/reactRoutes';
-import { ROUTS_WITHOUT_MY_ACCOUNT } from 'src/constants/ui';
-import { support } from 'src/helpers/support';
-import { colorDefault } from 'src/components/UI/baseLayout';
+import Select from 'src/components/UI/Select';
+import { Theme } from 'src/components/Hocs/withTheme';
+import { options } from 'src/constants/ui';
 import { StControl } from './styled';
 
-interface IHeaderControlPanel {
-    themeMode: string;
-    setValue: (data: TLoginData) => void ;
-    history: TInitialLoginData;
-    location: (data: TLoginValue) => void;
-    logOut: '';
-    userNotifSettings: '';
-    onlineUsersCount: '';
-}
-
-const HeaderControlPanel = ({
-    themeMode,
-    setValue,
-    history,
-    location,
-    logOut,
-    userNotifSettings,
-    onlineUsersCount }: IHeaderControlPanel) => {
+const HeaderControlPanel = () => {
     const { i18n } = useTranslation();
+    const { theme, changeTheme } = useContext(Theme);
+    const [selected, setSelected] = React.useState('');
+
+    React.useEffect(() => {
+        const lastSelected = localStorage.getItem('lang');
+        setSelected(lastSelected);
+    }, [localStorage.getItem('lang')]);
+
+    const onChangeLanguage = (lng, i18n) => {
+        i18n.changeLanguage(lng);
+        localStorage.setItem('lang', lng);
+    };
+
     const handleChangeLanguage = (e) => {
-        i18n.changeLanguage(e.target.value);
-        localStorage.setItem('lang', e.target.value);
+        onChangeLanguage(e.target.value, i18n);
     };
-    const handleThemeClick = ({ target }) => {
-        support.setSessionStorageItem('themeMode', target.value);
-        setValue({ name: 'themeMode', value: target.value });
-    };
-    const handleLogOutClick = () => {
-        logOut();
-        history.push(APP_ROUTES.login);
-    };
-    const handleNotifClick = (e) => {
-        setValue({ name: 'settings', value: { notifications: Boolean(e.target.value) } });
-        support.setSessionStorageItem('settings', { notifications: Boolean(e.target.value) });
-    };
-    const handleMyAccountClick = () => history.push(APP_ROUTES.account);
-    const getFunctionForButtons = (el) => {
-        switch (el.id) {
-            case 'theme_btn': return handleThemeClick;
-            case 'logOut': return handleLogOutClick;
-            case 'account': return handleMyAccountClick;
-            case 'notif_btn': return handleNotifClick;
-            default: return handleChangeLanguage;
-        }
-    };
+
+    const toggleThemeMode = () => changeTheme(
+        theme === 'dark' ? 'light' : 'dark',
+    );
+
     return (
-        <StControl >
-            <p>
-                {location.pathname === '/chat'
-                    ? `${i18n.t('online')}: ${onlineUsersCount === 0 ? 0 : onlineUsersCount - 1}`
-                    : null}
-            </p>
-            {' '}
-            {HEADER_CONTROL_BTNS.map((el) => {
-                if (el.value === themeMode) return null;
-                if (el.id === 'notif_btn' && Boolean(el.value) === userNotifSettings) return null;
-                if ((el.rout === '/account' && ROUTS_WITHOUT_MY_ACCOUNT.includes(location.pathname))
-                    || el.rout === location.pathname) return null;
-                return (
-                    <Button
-                        id={el.id}
-                        content={el.content}
-                        key={el.id}
-                        color={colorDefault}
-                        fontSize='26px'
-                        width='60px'
-                        height="10vh"
-                        borderRadius="0px"
-                        value={el.value}
-                        bgColor="transparent"
-                        onClick={getFunctionForButtons(el)}
-                    />
-                );
-            })}
+        <StControl>
+            <Button
+                id='theme-btn'
+                fontSize='26px'
+                width='40px'
+                height='40px'
+                margin='0 15px 0'
+                borderRadius='0px'
+                onClick={toggleThemeMode}
+                bgColor='transparent'
+                backgroundSize='cover'
+            />
+            <Select
+                id={options.id}
+                options={options}
+                onChange={handleChangeLanguage}
+                value={selected || ''}
+                width='70px'
+                bgColor='#b16fdd'
+            />
         </StControl>
     );
-};
-
-HeaderControlPanel.propTypes = {
-    setValue: PropTypes.func,
-    themeMode: PropTypes.string,
-    history: PropTypes.object,
-    location: PropTypes.object,
-    logOut: PropTypes.func,
-    userNotifSettings: PropTypes.bool,
-    onlineUsersCount: PropTypes.number,
 };
 
 export default HeaderControlPanel;

@@ -27,18 +27,24 @@ const Registration = ({ sendRegistrationRequest, setRegistrationValue, fields }:
     return (
         <StRegDiv>
             <Form>
+                <img src="./public/assets/images/sign-logo.svg" alt='sign in' />
                 <p>{t('registration')}</p>
                 {regInputs.map(input => (
                     <Input
-                        width="80%"
                         id={input.id}
-                        height="100px"
                         key={input.id}
                         name={input.id}
-                        inputHeight="50px"
-                        borderRadius="5px"
                         label={t(input.label)}
                         value={fields[input.id]}
+                        width="400px"
+                        height="100%"
+                        padding="17px 10px"
+                        margin="0 0 20px"
+                        inputHeight="60px"
+                        border="0px"
+                        borderRadius="7px"
+                        color="#484b54"
+                        fontSizeInp="18px"
                         onChange={handleOnChange}
                         placeholder={t(input.placeholder)}
                     />
@@ -48,6 +54,7 @@ const Registration = ({ sendRegistrationRequest, setRegistrationValue, fields }:
                     content="reg_btn"
                     id="registration"
                     onClick={sendRegistrationRequest}
+                    backgroundSize='0'
                 />
                 <span>
                     {t('reg_span_text')}

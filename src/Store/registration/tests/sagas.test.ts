@@ -50,7 +50,7 @@ describe('registrationSaga', () => {
                 .call([validation, validation.registrationValidation], authValue)
                 .next({ message: '', isValid: true })
                 .call(postRequest, path, authValue)
-                .next({ message: 'done' })
+                .next({ status: 200 })
                 .put(clearRegistrationInputs())
                 .next()
                 .put(setRegistrationValue({ name: 'success', value: true }))

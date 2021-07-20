@@ -1,14 +1,16 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { useTheme } from 'src/components/Hooks/useTheme';
 import { StSelect, StOption } from './styled';
 import { ISelect } from './types';
 
 const Select: React.FC<ISelect> = ({
     id,
     onClick,
+    onChange,
     content,
     name,
-    selected,
+    value,
     margin,
     padding,
     width,
@@ -25,14 +27,18 @@ const Select: React.FC<ISelect> = ({
     bgColorDisabled,
     options,
     defaultValue,
+    selected,
     }) => {
     const { t } = useTranslation();
+    const { colors, theme } = useTheme();
     return (
         <StSelect
             id={id}
             onClick={onClick}
+            onChange={onChange}
             content={content}
             name={name}
+            value={value}
             borderRadius={borderRadius}
             color={color}
             border={border}
@@ -49,18 +55,22 @@ const Select: React.FC<ISelect> = ({
             transition={transition}
             options={options}
             defaultValue={defaultValue}
+            theme={theme}
+            colors={colors}
         >
             {options.map(el => (
                 <StOption
                     id={id}
-                    value={el.value || options[1]}
-                    key={`${el.key}`}
+                    value={el.value}
+                    key={el.id}
                     onClick={onClick}
                     selected={selected}
+                    bgColor={bgColor}
                 >
-                    {t(el.content)}
+                    {el.label}
+                        {t(content)}
                 </StOption>
-            ))
+                ))
             }
         </StSelect>
     );
