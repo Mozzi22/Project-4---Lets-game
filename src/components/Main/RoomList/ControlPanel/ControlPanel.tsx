@@ -36,6 +36,8 @@ const ControlPanel: React.FC<IControlPanel> = ({ setValue, filterByRoomName, cha
                     content={t('create_room')}
                     width="100px"
                     height="60px"
+                    backgroundSize='0'
+                
                 />
         </StControlPanel> 
     );

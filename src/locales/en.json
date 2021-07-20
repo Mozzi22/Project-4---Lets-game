@@ -59,5 +59,7 @@
     "your_turn": "Your turn",
     "opponent`s_turn": "Opponent's turn",
     "join_to_game": "Join",
-    "join_to_game_with_bot": "Play with Bot"
+    "join_to_game_with_bot": "Play with Bot",
+    "TicTacToe": "Tic Tac Toe",
+    "Checkers": "Checkers"
 }

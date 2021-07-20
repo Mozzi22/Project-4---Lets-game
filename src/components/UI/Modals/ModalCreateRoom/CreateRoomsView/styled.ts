@@ -8,3 +8,9 @@ export const CreateRoomsWrapper = styled.div`
     height: 100%;
     flex-direction: column;
 `;
+
+export const StControlPanel = styled.div`
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+`;

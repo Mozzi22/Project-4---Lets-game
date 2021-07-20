@@ -52,10 +52,12 @@ const RoomListItems: React.FC<IRoomListItems> = ({
                           key={el.id}
                           name={el.id}
                           content={t(el.id)}
-                      width="200px"
-                      height="50px"
+                          width="200px"
+                          height="50px"
                           margin="15px 0"
                           onClick={getFunctionForButtons(el)}
+                          backgroundSize='0'
+                      
                       />
                   );
         })}

@@ -67,8 +67,7 @@ const Select: React.FC<ISelect> = ({
                     selected={selected}
                     bgColor={bgColor}
                 >
-                    {el.label}
-                        {t(content)}
+                    {t(el.label)}
                 </StOption>
                 ))
             }
