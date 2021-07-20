@@ -7,7 +7,7 @@ const mapStateToProps = state => ({ fields: loginStore(state) });
 
 const mapDispatchToProps = dispatch => ({
     setLoginValue: payload => dispatch(setLoginValue(payload)),
-    sendLoginRequest: () => dispatch(sendLoginRequest()),
+    sendLoginRequest: (payload) => dispatch(sendLoginRequest(payload)),
     setValue: payload => dispatch(setValue(payload)),
 });
 

@@ -1,11 +1,12 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from 'src/components/Hooks/useTheme';
 import Link from 'src/components/UI/Link';
 import { LINKS } from 'src/constants/componentsСonsts';
 import { StNav } from './styled';
 
-const Nav = () => {
+const Nav = ( {history} ) => {
     const { t } = useTranslation();
     const { colors, theme } = useTheme();
 
@@ -13,7 +14,7 @@ const Nav = () => {
         <StNav theme={theme} colors={colors} >
             <img src="/public/assets/images/game-logo.svg" />
             {LINKS.map((el) => {
-                if (location.pathname === '/') return null;
+                if (history.location.pathname === '/') return null;
                 return (
                     <Link
                         theme={theme}
@@ -35,4 +36,4 @@ const Nav = () => {
     );
 };
 
-export default Nav;
+export default withRouter(Nav);

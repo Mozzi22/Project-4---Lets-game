@@ -1,6 +1,8 @@
 import React from 'react';
+import { IAppDiv } from 'src/components/App/styled';
+import { colors } from 'src/components/UI/themeStyles';
 
-export interface ISelect {
+export interface ISelect extends IAppDiv {
     id: string;
     name?: string;
     value?: string;
@@ -25,6 +27,8 @@ export interface ISelect {
     bgColorDisabled?: string;
     options: Array<string>;
     defaultValue?: string;
+    theme: 'dark' | 'light';
+    colors: typeof colors;
 }
 
 export interface IOption extends ISelect {

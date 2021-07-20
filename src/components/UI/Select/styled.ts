@@ -1,13 +1,11 @@
 import styled from 'styled-components';
 
 import {
-  bgSelect,
   disabledColor,
   bgColorDisabledDefault,
   disabledBorder,
   activeBorder,
 } from '../baseLayout';
-
 import { ISelect, IOption } from './types';
 
 export const StSelect = styled.select < ISelect > `
@@ -25,10 +23,7 @@ export const StSelect = styled.select < ISelect > `
   ${({ transition = 'all 300ms ease-in-out' }) => transition && `transition: ${transition}`};
   font-size: ${({ fontSize = '16px' }) => fontSize};
   option {
-      background-color: ${({ bgColor = bgSelect }) => bgColor};
-      &:hover {
-          background-color: ${({ bgColor = bgSelect }) => bgColor};
-      }
+      background-color: ${({ colors, theme }) => colors[theme].backgroundSelect};
   }
   &:disabled{
     border: ${({ border = disabledBorder }) => border};

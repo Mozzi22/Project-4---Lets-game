@@ -14,6 +14,7 @@ export const initialState: TInitialLoginData = {
     success: null,
     isLoading: false,
     userLogin: '',
+    token: '',
 };
 
 export const reducer: Reducer<TInitialLoginData, TActionsLogin> = (

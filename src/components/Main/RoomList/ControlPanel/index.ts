@@ -1,3 +1,9 @@
 import ControlPanel from './ControlPanel';
+import { connect } from 'react-redux';
+import { setRooms } from 'src/Store/games/actions';
 
-export default ControlPanel;
+const mapDispatchToProps = dispatch => ({
+  setRooms: payload => dispatch(setRooms(payload))
+})
+
+export default connect(null, mapDispatchToProps)(ControlPanel);

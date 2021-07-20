@@ -13,6 +13,7 @@ import Login from '../Login';
 import Header from '../Header';
 import { APP_ROUTES } from '../../constants/reactRoutes';
 import { StAppDiv } from './styled';
+import Main from '../Main';
 
 const App = () => {
   const { i18n } = useTranslation();
@@ -28,6 +29,7 @@ const App = () => {
         <Switch>
           <Route path={APP_ROUTES.login} exact component={Login} />
           <Route path={APP_ROUTES.registration} exact component={Registration} />
+          <Route path={APP_ROUTES.main} exact component={Main} />
         </Switch>
       </BrowserRouter>
       {/* <ModalComponent

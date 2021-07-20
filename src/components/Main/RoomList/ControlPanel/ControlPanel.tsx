@@ -5,12 +5,13 @@ import { useTranslation } from 'react-i18next';
 import { StControlPanel } from './styled';
 import { IControlPanel } from './types';
 
-const ControlPanel: React.FC<IControlPanel> = ({ setValue, filterByRoomName, changeModalVisibility }) => {
+const ControlPanel: React.FC<IControlPanel> = ({ setValue, filterByRoomName, changeModalVisibility, setRooms }) => {
     const { t } = useTranslation();
-    const handleCreateRoom = () => changeModalVisibility({
-        isOpen: true, data: {}, modalType: 'createChat',
-    }); 
-    return ( 
+    // const handleCreateRoom = () => changeModalVisibility({
+    //     isOpen: true, data: {}, modalType: 'createChat',
+    // });
+
+    return (
         <StControlPanel>
             <Input
                 id='nameOfYourId'
@@ -22,7 +23,7 @@ const ControlPanel: React.FC<IControlPanel> = ({ setValue, filterByRoomName, cha
                 value={filterByRoomName}
                 onChange={setValue}
                 placeholder='placeholder_search_input'
-                margin="0 auto" 
+                margin="0 auto"
                 color="white"
                 bgColor="transparent"
                 fontSizeInp="20px"
@@ -32,12 +33,12 @@ const ControlPanel: React.FC<IControlPanel> = ({ setValue, filterByRoomName, cha
                 <Button
                     id='create_room'
                     name='create_room'
-                    onClick={handleCreateRoom}
+                    onClick={setRooms}
                     content={t('create_room')}
                     width="50px"
                     margin="15px 0"
                 />
-        </StControlPanel> 
+        </StControlPanel>
     );
 };
 
