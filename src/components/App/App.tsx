@@ -3,7 +3,7 @@ import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import { NotificationContainer } from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
 import { useTranslation } from 'react-i18next';
-import { useTheme } from 'src/components/Hooks/useTheme';
+import { useTheme } from '../Hooks/useTheme';
 // import ModalCreateRoom from 'src/components/UI/Modals/ModalCreateRoom';
 // import ModalInviteUsers from 'src/components/UI/Modals/ModalInviteUsers';
 import Registration from '../Registration';

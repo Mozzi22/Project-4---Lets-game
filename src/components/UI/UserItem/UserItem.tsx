@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import Input from 'src/components/UI/Input';
+import Input from '../Input';
 import { StChatListItems, StPhoto, StUsersView } from './styled';
 
 const UserItem = ({ img, login, id, onChange, isSelected, onlineUserslogins }) => {

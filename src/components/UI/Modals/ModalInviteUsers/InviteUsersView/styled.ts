@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { bgColorDefault } from 'src/components/UI/baseLayout';
+import { bgColorDefault } from '../../../baseLayout';
 
 export const StControlPanel = styled.div`
     display: flex;

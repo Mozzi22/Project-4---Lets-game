@@ -1,12 +1,12 @@
 import React from 'react';
 import { NavLink, Redirect } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { APP_ROUTES } from 'src/constants/reactRoutes';
-import { logInputs } from 'src/constants/componentsСonsts';
-import Form from 'src/components/UI/Form';
-import Input from 'src/components/UI/Input';
-import Button from 'src/components/UI/Button';
-import { TInitialLoginData, TLoginData, TLoginValue } from 'src/Store/login/types';
+import { APP_ROUTES } from '../../constants/reactRoutes';
+import { logInputs } from '../../constants/componentsСonsts';
+import Form from '../../components/UI/Form';
+import Input from '../../components/UI/Input';
+import Button from '../../components/UI/Button';
+import { TInitialLoginData, TLoginData, TLoginValue } from '../../Store/login/types';
 import { StLoginDiv } from './styled';
 
 interface ILogin {

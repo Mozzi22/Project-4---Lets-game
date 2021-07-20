@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { IAppDiv } from 'src/components/App/styled';
+import { IAppDiv } from '../../App/styled';
 
 export const StNav = styled.div < IAppDiv > `
     display: flex;

@@ -1,8 +1,8 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { useTheme } from 'src/components/Hooks/useTheme';
-import Link from 'src/components/UI/Link';
-import { LINKS } from 'src/constants/componentsСonsts';
+import { useTheme } from '../../Hooks/useTheme';
+import Link from '../../../components/UI/Link';
+import { LINKS } from '../../../constants/componentsСonsts';
 import { StNav } from './styled';
 
 const Nav = () => {

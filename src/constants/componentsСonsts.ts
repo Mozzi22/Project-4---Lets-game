@@ -1,4 +1,4 @@
-import history from 'src/helpers/history';
+import history from '../helpers/history';
 
 interface IRegInput {
     id: 'login' | 'password' | 'confirm';

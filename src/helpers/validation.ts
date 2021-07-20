@@ -1,4 +1,4 @@
-import { regExp } from 'src/constants/regExp';
+import { regExp } from '../constants/regExp';
 import { TRegBody, TLoginBody } from './types';
 
 export const validation = {

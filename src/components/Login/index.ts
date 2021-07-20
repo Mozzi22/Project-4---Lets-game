@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { setLoginValue, sendLoginRequest, setValue } from 'src/Store/login/actions';
-import { loginStore } from 'src/Store/login/selectors';
+import { setLoginValue, sendLoginRequest, setValue } from '../../Store/login/actions';
+import { loginStore } from '../../Store/login/selectors';
 import Login from './Login';
 
 const mapStateToProps = state => ({ fields: loginStore(state) });

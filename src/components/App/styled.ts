@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors } from 'src/components/UI/themeStyles';
+import { colors } from '../UI/themeStyles';
 
 export interface IAppDiv {
   theme: 'dark' | 'light';

@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
-import Button from 'src/components/UI/Button';
-import Select from 'src/components/UI/Select';
-import { Theme } from 'src/components/Hocs/withTheme';
-import { options } from 'src/constants/ui';
+import Button from '../../../components/UI/Button';
+import Select from '../../..//components/UI/Select';
+import { Theme } from '../../Hocs';
+import { options } from '../../../constants/ui';
 import { StControl } from './styled';
 
 const HeaderControlPanel = () => {

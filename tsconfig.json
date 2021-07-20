@@ -6,9 +6,9 @@
       "images/*": [
         "public/static/*"
       ],
-      "src/*": [
-        "./src/*"
-      ],
+//      "src/*": [
+//        "./src/*"
+//      ],
       "actions/*": [
         "./src/redux/actions*"
       ]

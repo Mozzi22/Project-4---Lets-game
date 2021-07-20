@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTheme } from 'src/components/Hooks/useTheme';
+import { useTheme } from '../../Hooks/useTheme';
 import { StFormDiv } from './styled';
 import { IForm } from './types';
 
