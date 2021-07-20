@@ -6,7 +6,7 @@ const ModalCreateRoom = () => {
     const modalType = 'createGame';
     return (
         <ModalComponent
-            headerTextKey='create_chat'
+            headerTextKey='create_game'
             modalType={modalType}
         >
             <CreateRoomsView modalType={modalType} />

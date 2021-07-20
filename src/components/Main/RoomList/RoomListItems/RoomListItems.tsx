@@ -48,11 +48,12 @@ const RoomListItems: React.FC<IRoomListItems> = ({
                   // if (user.id === user.id ? el.id === 'join_to_game_with_bot' : el.id === 'join_to_game' ) return null;
                   return (
                       <Button
-                          id='join_to_game'
-                          key='join_to_game'
-                          name='join_to_game'
-                          content={t('join_to_game')}
-                          width="200px"
+                          id={el.id}
+                          key={el.id}
+                          name={el.id}
+                          content={t(el.id)}
+                      width="200px"
+                      height="50px"
                           margin="15px 0"
                           onClick={getFunctionForButtons(el)}
                       />

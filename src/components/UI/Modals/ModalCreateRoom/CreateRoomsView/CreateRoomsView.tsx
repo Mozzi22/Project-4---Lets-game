@@ -57,14 +57,6 @@ const CreateRoomsView = ({ createNewGame, changeModalVisibility }) => {
                         />
                     );
                 })}
-            {/* <Button
-                id="new_room_creator"
-                name="new_room_creator"
-                onClick={handleCreateNewRoom}
-                margin="20px"
-                width="200px"
-                content="create"
-            /> */}
         </CreateRoomsWrapper>
     );
 };

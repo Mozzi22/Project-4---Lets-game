@@ -47,7 +47,7 @@
     "number_error": "Возраст должен быть числом",
     "without_text_new_room": "Вы не можете создать комнату без названия",
     "create": "Создать",
-    "create_chat": "Создать новую комнату",
+    "create_game": "Создать новую игру",
     "create_new_room_input_placeholder": "Введите название новой комнаты...",
     "create_room": "Добавить игру",
     "exists_error": "Такая комната уже существует",

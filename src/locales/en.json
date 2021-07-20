@@ -50,7 +50,7 @@
     "modal_users_confirm": "Confirm",
     "modal_users_cancel": "Cancel",
     "create": "Create",
-    "create_chat": "Create new room",
+    "create_game": "Create new game",
     "create_new_room_input_placeholder": "Enter the name of the new room...",
     "create_room": "Add Game",
     "exists_error": "This room already exists",
