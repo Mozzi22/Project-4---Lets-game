@@ -52,6 +52,31 @@ export const MODAL_USERS_BUTTON = [{
     id: 'sendMessage',
     content: 'modal_users_confirm',
     value: '',
+    }];
+interface IBurronJoinToGame {
+    id: string;
+    name: string;
+    content: string;
+}
+export const BUTTON_JOIN_TO_GAME: Array<IBurronJoinToGame>  = [{
+    id: 'join_to_game',
+    name: 'join_to_game',
+    content: 'join_to_game',
+},
+{
+    id: 'join_to_game_with_bot',
+    name: 'join_to_game_with_bot',
+    content: 'join_to_game_with_bot',
+}];
+export const MODAL_CREATE_GAME = [{
+    id: 'closeModal',
+    content: 'modal_users_cancel',
+    value: '',
+},
+{
+    id: 'createGame',
+    content: 'modal_users_confirm',
+    value: '',
 }];
 
 export const LINKS = [
