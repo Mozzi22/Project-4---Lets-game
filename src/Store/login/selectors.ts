@@ -8,5 +8,5 @@ export const logValues = createSelector(
 );
 export const getUserLogin = createSelector(
     loginStore,
-    ({ userLogin }) => ({ userLogin }),
+    (state) => (state.userLogin),
 );

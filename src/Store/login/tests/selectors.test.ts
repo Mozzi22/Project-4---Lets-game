@@ -7,6 +7,7 @@ describe('login selectors', () => {
             login: {
                 loginLog: '',
                 passwordLog: '',
+                userLogin: '',
             },
         };
     });
@@ -27,15 +28,15 @@ describe('login selectors', () => {
                     password: 'personal1',
             },
         };
-            expect(selectors.logValues(state)).toEqual({ login: 'personal', password: 'personal1' });
+        expect(selectors.logValues(state)).toEqual({ login: 'personal', password: 'personal1' });
         });
         it('should return value of selectors getUserLogin', () => {
             const state = {
                 login: {
-                    userLogin: 'personal',
+                    userLogin: 'persona'
             },
         };
-            expect(selectors.getUserLogin(state)).toEqual({ userLogin: 'personal'});
+        expect(selectors.getUserLogin(state)).toEqual('persona');
         });
     });
 });
