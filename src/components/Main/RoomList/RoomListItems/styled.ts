@@ -20,13 +20,6 @@ export const StRoomListItems = styled.div`
             }
         }
 `;
-export const StPhoto = styled.div`
-    margin: 5px 10px;
-    img{
-        width: 50px;
-        height: 50px;
-    }
-`;
 export const StRoom = styled.div < IStRoom > `
     display:flex;
     justify-content: flex-start;
@@ -34,6 +27,10 @@ export const StRoom = styled.div < IStRoom > `
     width: 100%;
         p{
             width:80%;
+        }
+        div{
+            width: 80%;
+            font-size: 16px;
         }
         span{
             width: 30px;

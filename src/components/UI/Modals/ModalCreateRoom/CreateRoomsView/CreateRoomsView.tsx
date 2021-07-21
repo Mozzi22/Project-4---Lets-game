@@ -1,52 +1,61 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import { NotificationManager } from 'react-notifications';
 import { useTranslation } from 'react-i18next';
-import Input from 'src/components/UI/Input';
 import Button from 'src/components/UI/Button';
-import { CreateRoomsWrapper } from './styled';
+import { CreateRoomsWrapper, StControlPanel } from './styled';
+import { MODAL_CREATE_GAME } from 'src/constants/componentsСonsts';
+import Select from 'src/components/UI/Select';
+import { GameOptions } from 'src/constants/ui';
+import { TModalData } from 'src/Store/modals/types';
 
-const CreateRoomsView = ({ createNewRoom, changeModalVisibility }) => {
+interface ICreateRoomsView {
+    createNewGame: () => void;
+    changeModalVisibility: (arg: TModalData) => void;
+}
+const CreateRoomsView: React.FC<ICreateRoomsView> = ({ createNewGame, changeModalVisibility }) => {
     const { t } = useTranslation();
-    const [state, setState] = useState({ newRoomName: '' });
-    const handleCreateNewRoom = () => {
-        if (!state.newRoomName) {
-            return NotificationManager
-                .error(t('without_text_new_room'), t('input_error'), 2000);
+    const [state, setState] = useState({ newGameName: '' });
+    const handleChangeTypeGame = ({ value }) => {
+        setState({ ...state, newGameName: value });
+    };
+    const handleCloseModal = () => changeModalVisibility({ modalType: 'createGame', data: {}, isOpen: false });
+    const handleCreateNewGame = () => {
+        createNewGame(state.newGameName);
+        handleCloseModal();
+
+    };
+     const getFunctionForButtons = (el) => {
+        switch (el.id) {
+            case 'createGame': return handleCreateNewGame;
+            default: return handleCloseModal;
         }
-        createNewRoom(state.newRoomName);
-        changeModalVisibility({
-            isOpen: false, data: {}, modalType: 'createChat',
-        });
     };
-    const handleOnChange = ({ value }) => {
-        setState({ ...state, newRoomName: value });
-    };
+
     return (
         <CreateRoomsWrapper>
-            <Input
-                id="create_room_input"
-                name="create__room_input"
-                onChange={handleOnChange}
+            <Select
+                id={GameOptions.id}
+                options={GameOptions}
+                onChange={handleChangeTypeGame}
                 value={state.value}
-                placeholder='create_new_room_input_placeholder'
-                width="400px"
+                content={GameOptions.content}
+                width='200px'
+                bgColor='#b16fdd'
             />
-            <Button
-                id="new_room_creator"
-                name="new_room_creator"
-                onClick={handleCreateNewRoom}
-                margin="20px"
-                width="200px"
-                content="create"
-            />
+            <StControlPanel>
+                {MODAL_CREATE_GAME.map((el) => {
+                    return (
+                        <Button
+                            key={el.id}
+                            content={el.content}
+                            id={el.id}
+                            onClick={getFunctionForButtons(el)}
+                            backgroundSize='0'
+                        />
+                    );
+                })}
+            </StControlPanel>
         </CreateRoomsWrapper>
     );
-};
-
-CreateRoomsView.propTypes = {
-    createNewRoom: PropTypes.func.isRequired,
-    changeModalVisibility: PropTypes.func.isRequired,
 };
 
 export default CreateRoomsView;

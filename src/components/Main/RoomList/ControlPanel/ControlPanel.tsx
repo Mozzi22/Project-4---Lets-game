@@ -9,9 +9,8 @@ const ControlPanel: React.FC<IControlPanel> = ({ setValue, filterByRoomName, cha
     const { t } = useTranslation();
     const handleCreateRoom = () => changeModalVisibility({
         isOpen: true, data: {}, modalType: 'createGame',
-    });
-
-    return (
+    }); 
+    return ( 
         <StControlPanel>
             <Input
                 id='nameOfYourId'
@@ -35,8 +34,8 @@ const ControlPanel: React.FC<IControlPanel> = ({ setValue, filterByRoomName, cha
                     name='create_room'
                     onClick={handleCreateRoom}
                     content={t('create_room')}
-                    width="50px"
-                    margin="15px 0"
+                    width="100px"
+                    height="60px"
                 />
         </StControlPanel>
     );
