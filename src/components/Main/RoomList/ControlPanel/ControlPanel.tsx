@@ -5,11 +5,11 @@ import { useTranslation } from 'react-i18next';
 import { StControlPanel } from './styled';
 import { IControlPanel } from './types';
 
-const ControlPanel: React.FC<IControlPanel> = ({ setValue, filterByRoomName, changeModalVisibility, setRooms }) => {
+const ControlPanel: React.FC<IControlPanel> = ({ setValue, filterByRoomName, changeModalVisibility }) => {
     const { t } = useTranslation();
-    // const handleCreateRoom = () => changeModalVisibility({
-    //     isOpen: true, data: {}, modalType: 'createChat',
-    // });
+    const handleCreateRoom = () => changeModalVisibility({
+        isOpen: true, data: {}, modalType: 'createGame',
+    });
 
     return (
         <StControlPanel>
@@ -33,7 +33,7 @@ const ControlPanel: React.FC<IControlPanel> = ({ setValue, filterByRoomName, cha
                 <Button
                     id='create_room'
                     name='create_room'
-                    onClick={setRooms}
+                    onClick={handleCreateRoom}
                     content={t('create_room')}
                     width="50px"
                     margin="15px 0"

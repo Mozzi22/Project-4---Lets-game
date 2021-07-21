@@ -8,10 +8,10 @@ import { validation } from 'src/helpers/validation';
 import { httpStatusCode } from 'src/constants/httpStatusCode';
 import { actionTypes } from './actionTypes';
 import { logValues } from './selectors';
-import { setLoginValue, clearLoginInputs, reciveErrorRequest, reciveSuccessRequest } from './actions';
+import { setLoginValue, clearLoginInputs, reciveErrorRequest, reciveSuccessRequest, setValue } from './actions';
 import { initialWebSocket } from '../games/actions';
 
-export function* workerLogin({payload}): SagaIterator {
+export function* workerLogin( {payload} ): SagaIterator {
     try {
         const data = yield select(logValues);
         const { message: validateMessage, isValid } = yield call(validation.loginValidation, data);
@@ -23,11 +23,12 @@ export function* workerLogin({payload}): SagaIterator {
         const answer = yield call(postRequest, routes.account.login, data);
 
         if (answer.status < httpStatusCode.MULTIPLE_CHOICES) {
+            const token = yield call([answer, answer.text]);
             yield put(clearLoginInputs());
             yield put(reciveSuccessRequest({ userLogin: data.login }));
             yield put(setLoginValue({ name: 'success', value: true }));
-            yield put(setLoginValue({ name: 'token', value: true }));
-            yield put(initialWebSocket());
+            yield put(setValue({ name: 'token', value: token }));
+            yield put(initialWebSocket(token));
             yield call([payload, payload.push], "/main")
         } else {
             yield put(setLoginValue({ name: 'success', value: false }));
@@ -36,6 +37,7 @@ export function* workerLogin({payload}): SagaIterator {
                 i18next.t(message), i18next.t('login_error'), 2000);
         }
     } catch (e) {
+        console.log(e);
         yield put(setLoginValue({ name: 'success', value: false }));
         yield put(reciveErrorRequest());
         return yield call([NotificationManager, NotificationManager.error],

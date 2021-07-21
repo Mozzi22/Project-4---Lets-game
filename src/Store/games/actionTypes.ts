@@ -1,5 +1,5 @@
 export enum actionTypes{
-    INITIALIZE_WEB_SOCKETS_CHANNEL = '@@games/INITIALIZE_WEB_SOCKETS_CHANNEL',
+    CONNECT_WEB_SOCKET = '@@games/CONNECT_WEB_SOCKET',
     SET_ROOMS= '@@games/SET_ROOMS',
     SET_USER_LOGIN = '@@games/SET_USER_LOGIN',
     JOIN_ROOM = '@@games/JOIN_ROOM',

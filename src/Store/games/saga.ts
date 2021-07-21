@@ -1,90 +1,77 @@
-import { eventChannel, END } from 'redux-saga';
+import { eventChannel, SagaIterator } from 'redux-saga';
 import { routes } from 'src/constants/routes';
 import { takeEvery, call, put, take, select } from 'redux-saga/effects';
 import { actionTypes } from './actionTypes';
 import { NotificationManager } from 'react-notifications';
 import i18next from 'i18next';
-import {
-  initialWebSocket, setRooms, setUserLogin, joinRoom, playWithBot
-} from './actions';
-import SockJS from 'socket.io-client';
+import { setRooms } from './actions';
+import { Stomp, CompatClient } from '@stomp/stompjs';
+import { v4 as uuidv4 } from 'uuid';
+import { getUserLogin } from './selectors';
 
-export let globalSocket = { emit: () => { }, on: () => { } };
+let stompClient: CompatClient;
 
-// export const connect = () => {
-//       globalSocket = new SockJS(routes.baseWebSocketUrl, null, {
-//       transports: ['xhr-streaming'],
-//       headers: { 'Authorization': 'Basic ' + btoa(username + ":" + password) }
-//     });
-// };
+export const connectSocket = (token: string) => {
+    const socket = new WebSocket(routes.baseWebSocketUrl);
+    const stompClient = Stomp.over(socket);
+    return new Promise((resolve) => stompClient.connect({ Authorization: `Bearer ${token}` }, () => resolve(stompClient)));
+};
 
-function* setRoom() {
-  try {
-    console.log("globalSocket", globalSocket);
-    // const rooms = yield call(getRequest, routes.rooms);
-    // yield put(setRooms(rooms));
-      yield call([globalSocket, globalSocket.send], '/createRoom ', {"creatorLogin":"mary", "gameType":"Checkers", "id":null});
-  } catch (e) {
-    console.log(e);
-        // yield put(reciveErrorRoomsRequest());
-      yield call([NotificationManager, NotificationManager.error],
-            i18next.t('server_error_text'), i18next.t('server_error'), 2000);
-  }
-}
+const errorCatcher = ({ body }) => {
+    const { body: parsedBody } = JSON.parse(body);
+    NotificationManager.error(parsedBody, i18next.t('game_error'), 3000);
+};
 
-export const createSocketChannel = socket => eventChannel((emit) => {
-    socket.onmessage('set_user_login', data => emit(setUserLogin(data)));
-    socket.onmessage('join_room', data => emit(joinRoom(data)));
-    socket.onmessage('play-with-bot', data => emit(playWithBot(data)));
-    socket.onmessage('*', data => emit(console.log(data)));
-    socket.onmessage('error', ({ error }) => {
-        NotificationManager.error(i18next.t(error), i18next.t('input_error'), 2000);
-    });
+export const createStompChannel = (stompClient: CompatClient) => eventChannel((emit) => {
+    const roomsSub = stompClient.subscribe(routes.websocket.rooms, ({ body }) => emit(setRooms(JSON.parse(body))));
+    const errorSub = stompClient.subscribe(routes.websocket.errors, errorCatcher);
     return () => {
-        socket.onclose = () => {
-      emit(END);
-      };
+        roomsSub.unsubscribe();
+        errorSub.unsubscribe();
     };
 });
 
-// function* createEventChannel(socket) {
-//   return eventChannel(emit => {
-//     socket.onmessage((event) => emit(event.data));
-//     socket.onclose = () => {
-//       emit(END);
-//     };
+export const init = (stompClient: CompatClient) => {
+    stompClient.send(routes.websocket.update_room);
+};
 
-//     const unsubscribe = () => {
-//       socket.onmessage = null;
-//     };
+const getTokenFromCookie = (name: string) => {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(';').shift();
+};
 
-//     return unsubscribe;
-//   });
-// }
+export function* createRoom({ payload }): SagaIterator {
+    const creatorLogin = yield select(getUserLogin);
+    const body = {
+        creatorLogin,
+        gameType: payload,
+        id: uuidv4(),
+    };
+    const token: string = yield call([getTokenFromCookie, getTokenFromCookie], 'token');
+    yield call(
+        [stompClient, stompClient.send], routes.websocket.create_room, { Authorization: token }, JSON.stringify(body),
+        );
+    yield call([stompClient, stompClient.send], routes.websocket.update_room, { Authorization: token });
+}
 
-function* initializeWebSocketsChannel() {
-  console.log('globalSocket22', globalSocket);
-  globalSocket = new SockJS(routes.baseWebSocketUrl, null, {
-  transports: ['xhr-streaming'],
-  headers: { 'Authorization': 'Bearer  ' + token}
-});
-  // const socket = new WebSocket(routes.baseWebSocketUrl);
-  console.log('globalSocket3333333', globalSocket);
-  globalSocket.onopen = () => {
-    console.log('open');
-    globalSocket.send('test');
-  };
-  globalSocket.onerror = (e) => {
-    console.error(e);
-  };
-  const channel = yield call(createSocketChannel, globalSocket);
-  while (channel) {
-    const action = yield take(channel);
-    yield put(action);
-  }
+export function* workerConnection(): SagaIterator {
+    try {
+        const token: string = yield call([getTokenFromCookie, getTokenFromCookie], 'token');
+        const stompClient = yield call(connectSocket, token);
+        const stompChannel = yield call(createStompChannel, stompClient);
+        yield call(init, stompClient);
+        while (stompChannel) {
+            const payload = yield take(stompChannel);
+            yield put(payload);
+        }
+    } catch (e) {
+        yield call([NotificationManager, NotificationManager.error],
+            i18next.t('server_error_text'), i18next.t('server_error'), 2000);
+    }
 }
 
 export function* watcherGames() {
-  yield takeEvery(actionTypes.INITIALIZE_WEB_SOCKETS_CHANNEL, initializeWebSocketsChannel);
-  yield takeEvery(actionTypes.SET_ROOMS, setRoom);
+  yield takeEvery(actionTypes.CONNECT_WEB_SOCKET, connectSocket);
+  yield takeEvery(actionTypes.SET_ROOMS, createRoom);
 }

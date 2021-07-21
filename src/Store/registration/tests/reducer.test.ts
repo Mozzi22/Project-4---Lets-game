@@ -39,5 +39,4 @@ describe('registrationReducer', () => {
                 error: null,
             });
     });
-    // it('default', () => expect(reducer(undefined, { type: actionTypes.REGISTRATION_REQUEST_SUCCESS })).toEqual(initialState));
 });
