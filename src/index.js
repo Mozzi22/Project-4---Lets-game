@@ -9,14 +9,14 @@ import App from './components/App';
 import rootSaga from './Store/saga';
 import './i18n';
 
-// const devTools = window?.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
+const devTools = window?.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
 const saga = createSagaMiddleware();
 
 const store = createStore(
   rootReducer,
   compose(
     applyMiddleware(saga),
-    // devTools,
+    devTools,
   ),
 );
 saga.run(rootSaga);

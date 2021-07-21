@@ -36,8 +36,6 @@ const ModalComponent = ({
                         id="closeModal"
                         onClick={handleCloseModal}
                         bgColor="transparent"
-                        backgroundSize='0'
-                    
                     />
             </StModalHeader>
                 {children}

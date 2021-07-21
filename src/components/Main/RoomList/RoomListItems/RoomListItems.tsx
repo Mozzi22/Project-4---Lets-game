@@ -14,6 +14,16 @@ const RoomListItems: React.FC<IRoomListItems> = ({
     typeGame,
     currentRoomName,
 }) => {
+    useEffect(() => {
+        if (currentRoomName === login) {
+          return setState({ ...state, selected: true });
+        }
+        setState({ ...state, selected: false });
+    }, [currentRoomName]);
+      const [state, setState] = useState({
+        error: false,
+        selected: false,
+    });
     const { t } = useTranslation();
     const handleJoinToGame = () => {
     };
@@ -22,16 +32,6 @@ const RoomListItems: React.FC<IRoomListItems> = ({
     const handleClick = () => {
       setValue({ name: 'currentRoom', value: { room_id: id, room_name: login } });
     };
-    useEffect(() => {
-      if (currentRoomName === login) {
-        return setState({ ...state, selected: true });
-      }
-      setState({ ...state, selected: false });
-    }, [currentRoomName]);
-    const [state, setState] = useState({
-      error: false,
-      selected: false,
-    });
     const onError = () => setState({ ...state, error: true });
     const getFunctionForButtons = (el) => {
           switch (el.id) {
@@ -56,8 +56,6 @@ const RoomListItems: React.FC<IRoomListItems> = ({
                           height="50px"
                           margin="15px 0"
                           onClick={getFunctionForButtons(el)}
-                          backgroundSize='0'
-                      
                       />
                   );
         })}

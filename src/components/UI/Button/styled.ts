@@ -23,7 +23,7 @@ export const StButton = styled.button < IBtn > `
   font-size: ${({ fontSize = '16px' }) => fontSize};
   background-color: ${({ bgColor = 'transparent' }) => bgColor};
   background-image: ${({ colors, theme }) => colors[theme].backgroundImage};
-  background-size:  ${({ backgroundSize = 'cover' }) => backgroundSize};
+  background-size:  ${({ backgroundSize = '0' }) => backgroundSize};
   &:hover {
     border: ${({ border = 'none' }) => border};
     }
