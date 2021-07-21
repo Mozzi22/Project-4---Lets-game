@@ -1,5 +1,4 @@
 export type TInitialUserData = {
-    userLogin: string
     rooms: TRoom[] | [];
 }
 

@@ -18,3 +18,7 @@ export type TInitialLoginData = {
 export type TUserLoginData = {
     userLogin: string,
 }
+
+export type TLoginRequest = {
+    isLoading: boolean;
+}

@@ -29,5 +29,13 @@ describe('login selectors', () => {
         };
             expect(selectors.logValues(state)).toEqual({ login: 'personal', password: 'personal1' });
         });
+        it('should return value of selectors getUserLogin', () => {
+            const state = {
+                login: {
+                    userLogin: 'personal',
+            },
+        };
+            expect(selectors.getUserLogin(state)).toEqual({ userLogin: 'personal'});
+        });
     });
 });

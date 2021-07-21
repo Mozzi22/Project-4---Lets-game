@@ -6,3 +6,7 @@ export const logValues = createSelector(
     loginStore,
     ({ login, password }) => ({ login, password }),
 );
+export const getUserLogin = createSelector(
+    loginStore,
+    ({ userLogin }) => ({ userLogin }),
+);

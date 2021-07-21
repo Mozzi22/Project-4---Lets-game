@@ -7,7 +7,7 @@ import i18next from 'i18next';
 import { setRooms } from './actions';
 import { Stomp, CompatClient } from '@stomp/stompjs';
 import { v4 as uuidv4 } from 'uuid';
-import { getUserLogin } from './selectors';
+import { getUserLogin } from '../login/selectors';
 
 let stompClient: CompatClient;
 
@@ -48,7 +48,7 @@ export function* createRoom({ payload }): SagaIterator {
         gameType: payload,
         id: uuidv4(),
     };
-    const token: string = yield call([getTokenFromCookie, getTokenFromCookie], 'token');
+    const token: string = yield call(getTokenFromCookie, 'token');
     yield call(
         [stompClient, stompClient.send], routes.websocket.create_room, { Authorization: token }, JSON.stringify(body),
         );
@@ -57,7 +57,7 @@ export function* createRoom({ payload }): SagaIterator {
 
 export function* workerConnection(): SagaIterator {
     try {
-        const token: string = yield call([getTokenFromCookie, getTokenFromCookie], 'token');
+        const token: string = yield call(getTokenFromCookie, 'token');
         const stompClient = yield call(connectSocket, token);
         const stompChannel = yield call(createStompChannel, stompClient);
         yield call(init, stompClient);

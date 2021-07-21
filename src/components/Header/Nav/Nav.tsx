@@ -6,7 +6,7 @@ import Link from 'src/components/UI/Link';
 import { LINKS } from 'src/constants/componentsСonsts';
 import { StNav } from './styled';
 
-const Nav = ( {history} ) => {
+const Nav = ({history}) => {
     const { t } = useTranslation();
     const { colors, theme } = useTheme();
 

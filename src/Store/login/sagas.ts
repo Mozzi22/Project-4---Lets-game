@@ -11,7 +11,7 @@ import { logValues } from './selectors';
 import { setLoginValue, clearLoginInputs, reciveErrorRequest, reciveSuccessRequest, setValue } from './actions';
 import { initialWebSocket } from '../games/actions';
 
-export function* workerLogin( {payload} ): SagaIterator {
+export function* workerLogin({payload}): SagaIterator {
     try {
         const data = yield select(logValues);
         const { message: validateMessage, isValid } = yield call(validation.loginValidation, data);
@@ -37,7 +37,6 @@ export function* workerLogin( {payload} ): SagaIterator {
                 i18next.t(message), i18next.t('login_error'), 2000);
         }
     } catch (e) {
-        console.log(e);
         yield put(setLoginValue({ name: 'success', value: false }));
         yield put(reciveErrorRequest());
         return yield call([NotificationManager, NotificationManager.error],

@@ -34,7 +34,6 @@ describe('game Saga', () => {
                 .next()
                 .isDone();
         });
-
         it('should error in connectionSaga ', () => {
             action = { type: actionTypes.CONNECT };
             const error = 'error';
@@ -46,8 +45,6 @@ describe('game Saga', () => {
                 .next()
                 .isDone();
         });
-
-
         it('should call getAllRoomsSaga', () => {
             const mockRooms = [{ room_id: 1, room_name: 'global' }];
             const mockRoomsFolder = { global: [] };
@@ -85,7 +82,6 @@ describe('game Saga', () => {
                 .next()
                 .isDone();
         });
-
         describe('fork', () => {
             it('should fork watchers', () => {
                 expectSaga(sagas.watcherGames)

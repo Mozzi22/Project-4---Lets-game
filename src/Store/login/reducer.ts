@@ -32,8 +32,7 @@ export const reducer: Reducer<TInitialLoginData, TActionsLogin> = (
                 return {
                     ...state,
                     login: '',
-                    password: '',
-                    token: ''
+                    password: ''
                 };
             default: return { ...state };
         }

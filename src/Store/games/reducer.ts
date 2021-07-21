@@ -9,15 +9,12 @@ type TActions = typeof actionTypesAll ;
 export type TActionsLogin = ActionType<TActions>;
 
 export const initialState: TInitialUserData = {
-    userLogin: '',
     rooms: [],
 };
 
 export const reducer: Reducer<TInitialUserData, TActionsLogin> = (
     state = initialState, action) => {
     switch (action.type) {
-            case AT.SET_USER_LOGIN:
-                return { ...state, userLogin: action.payload };
             case AT.SET_ROOMS: return { ...state, rooms: action.payload };
                 default: return { ...state };
         }
