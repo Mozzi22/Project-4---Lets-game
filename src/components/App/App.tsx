@@ -4,12 +4,10 @@ import { NotificationContainer } from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from 'src/components/Hooks/useTheme';
-// import ModalCreateRoom from 'src/components/UI/Modals/ModalCreateRoom';
-// import ModalInviteUsers from 'src/components/UI/Modals/ModalInviteUsers';
+import ModalCreateRoom from 'src/components/UI/Modals/ModalCreateRoom';
 import Registration from '../Registration';
 import Login from '../Login';
-// import Component from '../UI/Modal/ModalTestComponent.jsx';
-// import ModalComponent from '../UI/Modal';
+import Main from '../Main';
 import Header from '../Header';
 import { APP_ROUTES } from '../../constants/reactRoutes';
 import { StAppDiv } from './styled';
@@ -32,12 +30,7 @@ const App = () => {
           <Route path={APP_ROUTES.main} exact component={Main} />
         </Switch>
       </BrowserRouter>
-      {/* <ModalComponent
-        Component={Component}
-        headerTextKey="notification_settings"
-      /> */}
-      {/* <ModalCreateRoom />
-      <ModalInviteUsers /> */}
+      <ModalCreateRoom />
       <NotificationContainer />
     </StAppDiv >
   );

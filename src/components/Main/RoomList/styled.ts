@@ -12,7 +12,6 @@ export const StRoomList = styled.div`
     border-radius: 0px;
     position: relative;
     height: 90vh;
-    border-right: 1px solid black;
 `;
 export const StControlPanel = styled.div`
     display: flex;

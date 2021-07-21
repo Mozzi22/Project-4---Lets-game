@@ -24,22 +24,6 @@ export const StTextHeader = styled.div`
     font-size: 36px;
 `;
 
-export const Component = {
-    margin: 'auto',
-    overflow: 'visible',
-    transition: 'transform 0.2s ease 0s, opacity 0.2s ease 0s',
-    transform: 'scale(0.9)',
-    opacity: '1',
-    backgroundColor: 'rgba(0, 0, 0, 0.4)',
-    minHeight: '40vh',
-    maxHeight: '80vh',
-    width: '40%',
-    justifyContent: 'center',
-    fontFamily: 'Oxanium, cursive',
-    display: 'flex',
-    overflowY: 'hidden',
-};
-
 export const customStyles = {
     overlay: {
     backgroundColor: 'rgba(0, 0, 0, 0.6)',
@@ -58,8 +42,7 @@ export const customStyles = {
         opacity: '1',
         flexFlow: 'column',
         backgroundColor: 'rgba(0, 0, 0, 0.4)',
-        minHeight: '40vh',
-        maxHeight: '80vh',
+        height: '50vh',
         width: '40%',
         fontFamily: 'Oxanium, cursive',
         display: 'flex',

@@ -10,10 +10,11 @@ export interface IRoomListItems {
     id: string;
     img?: string;
     color?: string;
-    content?: string;
+    login?: string;
     setValue: (arg: TRegistrationData) => void;
     currentRoomName: string;
     rooms: string;
+    typeGame: string;
 }
 export interface IStRoom {
     bgColor?: string;
