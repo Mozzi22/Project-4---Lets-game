@@ -11,6 +11,7 @@ import Main from '../Main';
 import Header from '../Header';
 import { APP_ROUTES } from '../../constants/reactRoutes';
 import { StAppDiv } from './styled';
+import Main from '../Main';
 
 const App = () => {
   const { i18n } = useTranslation();

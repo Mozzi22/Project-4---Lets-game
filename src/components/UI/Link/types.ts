@@ -1,7 +1,8 @@
 import React from 'react';
-import { colors } from 'src/components/UI/baseLayout';
+import { IAppDiv } from 'src/components/App/styled';
+import { colors } from 'src/components/UI/themeStyles';
 
-export interface ILink {
+export interface ILink extends IAppDiv {
     id: string;
     name?: string;
     onClick: (e: React.MouseEvent<HTMLElement, MouseEvent>) => void;

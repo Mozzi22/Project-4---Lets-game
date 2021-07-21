@@ -22,7 +22,7 @@ const ControlPanel: React.FC<IControlPanel> = ({ setValue, filterByRoomName, cha
                 value={filterByRoomName}
                 onChange={setValue}
                 placeholder='placeholder_search_input'
-                margin="0 auto" 
+                margin="0 auto"
                 color="white"
                 bgColor="transparent"
                 fontSizeInp="20px"
@@ -37,7 +37,7 @@ const ControlPanel: React.FC<IControlPanel> = ({ setValue, filterByRoomName, cha
                     width="100px"
                     height="60px"
                 />
-        </StControlPanel> 
+        </StControlPanel>
     );
 };
 

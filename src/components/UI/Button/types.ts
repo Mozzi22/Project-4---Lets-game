@@ -1,7 +1,8 @@
 import React from 'react';
-import { colors } from 'src/components/UI/baseLayout';
+import { colors } from 'src/components/UI/themeStyles';
+import { IAppDiv } from 'src/components/App/styled';
 
-export interface IBtn {
+export interface IBtn extends IAppDiv {
     margin?: string;
     padding?: string;
     width?: string;
@@ -19,10 +20,8 @@ export interface IBtn {
     fontSize?: string;
     focusColor?: string;
     bgColorDisabled?: string;
-    theme?: 'dark' | 'light';
-    colors?: typeof colors;
 }
-export interface IButton{
+export interface IButton {
     id: string;
     name?: string;
     onClick: (e : React.MouseEvent<HTMLElement, MouseEvent>) => void;
@@ -46,4 +45,6 @@ export interface IButton{
     margin?: string;
     content?: string;
     transition?: string;
+    theme?: 'dark' | 'light';
+    colors?: typeof colors;
 }

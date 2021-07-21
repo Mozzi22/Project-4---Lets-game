@@ -14,13 +14,14 @@ export const initialState: TInitialLoginData = {
     success: null,
     isLoading: false,
     userLogin: '',
+    token: '',
 };
 
 export const reducer: Reducer<TInitialLoginData, TActionsLogin> = (
     state = initialState, action) => {
-        switch (action.type) {
+    switch (action.type) {
             case AT.SET_VALUE:
-                return { ...state, [action.payload.name]: action.payload.value };
+                return { ...state, [action.payload.name]: action.payload.value};
             case AT.SEND_LOGIN_REQUEST:
                 return { ...state, isLoading: true };
             case AT.LOGIN_REQUEST_SUCCESS:
@@ -31,7 +32,7 @@ export const reducer: Reducer<TInitialLoginData, TActionsLogin> = (
                 return {
                     ...state,
                     login: '',
-                    password: '',
+                    password: ''
                 };
             default: return { ...state };
         }

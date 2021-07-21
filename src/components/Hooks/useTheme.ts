@@ -1,5 +1,4 @@
 import { useContext } from 'react';
-
 import { colors } from 'src/components/UI/themeStyles';
 import { Theme } from '../Hocs';
 
