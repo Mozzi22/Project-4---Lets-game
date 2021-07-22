@@ -4,10 +4,11 @@ import { takeEvery, call, put, take, select } from 'redux-saga/effects';
 import { actionTypes } from './actionTypes';
 import { NotificationManager } from 'react-notifications';
 import i18next from 'i18next';
-import { setRooms } from './actions';
+import { setRooms, sendRoomsRequest, reciveSuccessRoomsRequest, reciveErrorRoomsRequest, setAllRooms } from './actions';
 import { Stomp, CompatClient } from '@stomp/stompjs';
 import { v4 as uuidv4 } from 'uuid';
 import { getUserLogin } from '../login/selectors';
+import { getRequest } from 'src/helpers/requests';
 
 let stompClient: CompatClient;
 
@@ -41,6 +42,21 @@ const getTokenFromCookie = (name: string) => {
   if (parts.length === 2) return parts.pop().split(';').shift();
 };
 
+export function* getAllRoomsSaga(): SagaIterator {
+    try {
+        const rooms = yield call(getRequest, routes.websocket.update_room);
+        console.log(rooms);
+        yield put(reciveSuccessRoomsRequest());
+        yield put(setAllRooms(rooms));
+        yield call([stompClient, stompClient.send], routes.websocket.update_room, rooms);
+            return rooms;
+    } catch (e) {
+        yield put(reciveErrorRoomsRequest());
+        yield call([NotificationManager, NotificationManager.error],
+            i18next.t('server_error_text'), i18next.t('server_error'), 2000);
+    }
+}
+
 export function* createRoom({ payload }): SagaIterator {
     const creatorLogin = yield select(getUserLogin);
     const body = {
@@ -72,6 +88,7 @@ export function* workerConnection(): SagaIterator {
 }
 
 export function* watcherGames() {
-  yield takeEvery(actionTypes.CONNECT_WEB_SOCKET, connectSocket);
-  yield takeEvery(actionTypes.SET_ROOMS, createRoom);
+    yield takeEvery(actionTypes.CONNECT_WEB_SOCKET, connectSocket);
+    yield takeEvery(actionTypes.SET_ROOMS, createRoom);
+    yield takeEvery(actionTypes.GET_ALL_ROOMS, getAllRoomsSaga);
 }

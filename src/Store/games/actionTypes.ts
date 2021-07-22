@@ -4,4 +4,10 @@ export enum actionTypes{
     CREATE_ROOM = '@@game/CREATE_ROOM',
     JOIN_ROOM = '@@games/JOIN_ROOM',
     PLAY_WITH_BOT = '@@games/PLAY_WITH_BOT',
+
+    SET_VALUE = '@@games/SET_VALUE',
+    GET_ALL_ROOMS = '@@games/GET_ALL_ROOMS',
+    SEND_ROOMS_REQUEST= '@@games/SEND_ROOMS_REQUEST',
+    ROOMS_REQUEST_SUCCESS= '@@games/ROOMS_REQUEST_SUCCESS',
+    ROOMS_REQUEST_ERROR= '@@games/ROOMS_REQUEST_ERROR',
 }

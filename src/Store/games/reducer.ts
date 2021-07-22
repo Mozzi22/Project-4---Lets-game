@@ -10,12 +10,23 @@ export type TActionsLogin = ActionType<TActions>;
 
 export const initialState: TInitialUserData = {
     rooms: [],
+    currentRoom: { room_id: null, room_name: '' },
+    error: false,
 };
 
 export const reducer: Reducer<TInitialUserData, TActionsLogin> = (
     state = initialState, action) => {
     switch (action.type) {
-            case AT.SET_ROOMS: return { ...state, rooms: action.payload };
-                default: return { ...state };
-        }
+        case AT.SET_VALUE:
+            return { ...state, [action.payload.name]: action.payload.value };
+        case AT.SET_ROOMS:
+            return { ...state, rooms: action.payload };
+        case AT.SEND_ROOMS_REQUEST:
+            return { ...state, isLoading: true };
+        case AT.ROOMS_REQUEST_SUCCESS:
+            return { ...state, isLoading: false, error: false };
+        case AT.ROOMS_REQUEST_ERROR:
+            return { ...state, isLoading: false, error: true };
+        default: return { ...state };
+    }
 };
