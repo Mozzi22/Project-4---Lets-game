@@ -6,8 +6,8 @@ import { StRoomList, StControlPanel, StItems } from './styled';
 import { TRoomListItems } from './types';
 import { TInitialUserGame, TRoom } from 'src/Store/game/types';
 
-const RoomList  = ({ rooms }: TInitialUserGame) => {
-    console.log(rooms);
+const RoomList  = ({ rooms, userLogin }: TInitialUserGame) => {
+    console.log("rooms", rooms, userLogin);
     return (
         <StRoomList>
             <StControlPanel>
@@ -18,8 +18,10 @@ const RoomList  = ({ rooms }: TInitialUserGame) => {
                     return (
                         <RoomListItems
                             key={room.id}
-                            content={room.name}
                             id={room.id}
+                            userLogin={userLogin}
+                            gameType={room.gameType}
+                            content={room.name}
                         />
                     );
             })}

@@ -436,7 +436,7 @@
 
 # README - Websocket Requests
 
-      WebSocket connection url - ws://35.176.167.155:8089/game-menu
+      WebSocket connection url - ws://35.176.167.155:8082/game-menu
       Note: before connect you have to authorize user and get Json Web Token,
       then you have to set it in to the connection request header in format:
       Authorization: "Bearer " + token
@@ -483,7 +483,6 @@
        invalid: {"creatorLogin":"jeid","id":"trolan"}
        answer: {"headers":{"Content-Type":["application/json"]},"body":"Invalid UUID string: asdasd","statusCode":"BAD_REQUEST",
        "statusCodeValue":400}
-
 
 - After joining room game will automatically start
   4)/joinRoom (validation: don`t existing room, empty or blank login, incorrect uuid signature or null uuid)

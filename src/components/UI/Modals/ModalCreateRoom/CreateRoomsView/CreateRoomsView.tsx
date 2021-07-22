@@ -8,18 +8,18 @@ import { GameOptions } from 'src/constants/ui';
 import { TModalData } from 'src/Store/modals/types';
 
 interface ICreateRoomsView {
-    createNewGame: () => void;
+    createRoom: () => void;
     changeModalVisibility: (arg: TModalData) => void;
 }
-const CreateRoomsView: React.FC<ICreateRoomsView> = ({ createNewGame, changeModalVisibility }) => {
+const CreateRoomsView: React.FC<ICreateRoomsView> = ({ createRoom, changeModalVisibility }) => {
     const { t } = useTranslation();
-    const [state, setState] = useState({ newGameName: '' });
-    const handleChangeTypeGame = ({ value }) => {
-        setState({ ...state, newGameName: value });
+    const [state, setState] = useState({ gameType: 'tic_tac_toe' });
+    const handleChangeTypeGame = (e) => {
+        setState({ ...state, gameType: e.target.value });
     };
     const handleCloseModal = () => changeModalVisibility({ modalType: 'createGame', data: {}, isOpen: false });
     const handleCreateNewGame = () => {
-        createNewGame(state.newGameName);
+        createRoom(state.gameType);
         handleCloseModal();
 
     };
@@ -36,7 +36,7 @@ const CreateRoomsView: React.FC<ICreateRoomsView> = ({ createNewGame, changeModa
                 id={GameOptions.id}
                 options={GameOptions}
                 onChange={handleChangeTypeGame}
-                value={state.value}
+                value={state.gameType}
                 content={GameOptions.content}
                 width='200px'
                 bgColor='#b16fdd'

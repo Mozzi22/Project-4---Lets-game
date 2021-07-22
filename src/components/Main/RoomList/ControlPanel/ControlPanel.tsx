@@ -9,8 +9,8 @@ const ControlPanel: React.FC<IControlPanel> = ({ setValue, filterByRoomName, cha
     const { t } = useTranslation();
     const handleCreateRoom = () => changeModalVisibility({
         isOpen: true, data: {}, modalType: 'createGame',
-    }); 
-    return ( 
+    });
+    return (
         <StControlPanel>
             <Input
                 id='nameOfYourId'
