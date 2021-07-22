@@ -5,7 +5,7 @@ export const routes = {
         login: 'authorization/auth',
     },
     baseWebSocketUrl: 'ws://35.176.167.155:8089/game-menu',
-    websocket: {
+    ws: {
         rooms: '/topic/rooms',
         errors: '/user/topic/errors',
         possible_steps: '/user/topic/game/',

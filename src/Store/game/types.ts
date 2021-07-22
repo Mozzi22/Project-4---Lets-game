@@ -1,4 +1,4 @@
-export type TInitialUserData = {
+export type TInitialUserGame = {
     rooms: TRoom[] | [];
 }
 
