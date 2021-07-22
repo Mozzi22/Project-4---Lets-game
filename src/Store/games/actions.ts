@@ -7,3 +7,5 @@ export const setRooms = (payload: TRoom) => action(AT.SET_ROOMS, payload);
 export const createRoom = (payload: string) => action(AT.CREATE_ROOM, payload);
 export const joinRoom = () => action(AT.JOIN_ROOM);
 export const playWithBot = (payload: string) => action(AT.PLAY_WITH_BOT, payload);
+
+export const setCheckerDesk = (payload) => action(AT.SET_CHECKER_DESK, payload)

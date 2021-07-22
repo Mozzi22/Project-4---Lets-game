@@ -9,7 +9,6 @@ export const GameOptions = [
     { id: 1, label: 'TicTacToe', value: 'TicTacToe' },
     { id: 2, label: 'Checkers', value: 'Checkers' },
 ];
-// const obj = {position: 63, isChecked: true, color: white }
 
 export const ITEMS_FOR_TIC_TAC_TOE = [{
     position: 8,
@@ -56,3 +55,20 @@ export const ITEMS_FOR_TIC_TAC_TOE = [{
     isChecked: false,
     figure: null,
 }];
+
+export const INITIAL_STATE_FOR_CHECKER = Array.from({ length: 64 }, (_, i) => {
+    let color = null
+    let isChecked = null
+    if (i >= 41 && i <= 64) {
+        color = "black"
+        if (parseInt((i / 8) + i) % 2 === 0) {
+            isChecked = true
+        }
+    } else if (i >= 0 && i <= 23) {
+        color = "white"
+        if (parseInt((i / 8) + i) % 2 === 0) {
+            isChecked = true
+        }
+    }
+    return { position: 63 - i, isChecked, color }
+})
