@@ -1,6 +1,6 @@
 import { routes } from 'src/constants/routes';
 import { takeEvery, call, take, put, select} from 'redux-saga/effects';
-import { Stomp, CompatClient } from '@stomp/stompjs';
+import { CompatClient, Stomp } from '@stomp/stompjs';
 import { v4 as uuidv4 } from 'uuid';
 import { NotificationManager } from 'react-notifications';
 import { eventChannel, SagaIterator } from 'redux-saga';
@@ -10,10 +10,9 @@ import { actionTypes } from './actionTypes';
 import { setAllRooms } from './actions';
 import { getUserLogin } from '../login/selectors';
 
-let stompClient: CompatClient | null = null;
+export let stompClient: CompatClient | null = null;
 
 export const connection = (token: string) => {
-    console.log("connection");
     const socket = new WebSocket(`${routes.baseWebSocketUrl}${routes.game_menu}`);
     stompClient = Stomp.over(socket);
     return new Promise((resolve) => stompClient
@@ -21,8 +20,11 @@ export const connection = (token: string) => {
 };
 
 export const createStompChannel = (stompClient: CompatClient) => eventChannel((emit) => {
-    const roomsSub = stompClient.subscribe(`${routes.baseWebSocketUrl2}${routes.ws.update_room}`, ({ body }) => emit(setAllRooms(JSON.parse(body))));
-    console.log("roomsSub", roomsSub);
+    const roomsSub = stompClient.subscribe(routes.ws.rooms, ({ body }) => {
+        console.log(body)
+        return emit(setAllRooms(JSON.parse(body)));
+});
+
     const errorSub = stompClient.subscribe(routes.ws.errors, support.errorCatcher);
     return () => {
         roomsSub.unsubscribe();
@@ -31,21 +33,19 @@ export const createStompChannel = (stompClient: CompatClient) => eventChannel((e
 });
 
 export const init = (stompClient: CompatClient) => {
-    console.log("init");
     stompClient.send(routes.ws.update_room);
 };
 
 export function* workerConnection(): SagaIterator {
-    console.log("workerConnection");
     try {
         const token: string = yield call([support, support.getTokenFromCookie], 'token');
         const stompClient = yield call(connection, token);
         const stompChannel = yield call(createStompChannel, stompClient);
 
-        console.log("createStompChannel23232323", createStompChannel);
         yield call(init, stompClient);
         while (stompChannel) {
             const payload = yield take(stompChannel);
+            console.log(payload);
             yield put(payload);
         }
     } catch (e) {
@@ -57,14 +57,12 @@ export function* workerConnection(): SagaIterator {
 export function* createRoomSaga({ payload }): SagaIterator {
     try {
         const creatorLogin = yield select(getUserLogin);
-        console.log("creatorLogin", creatorLogin);
-    const body = {
-        creatorLogin,
-        gameType: payload,
-        id: uuidv4(),
-        };
+        const body = {
+            creatorLogin,
+            gameType: payload,
+            id: uuidv4(),
+            };
         const token: string = yield call([support, support.getTokenFromCookie], 'token');
-        console.log("token", token);
     yield call(
         [stompClient, stompClient.send], routes.ws.create_room, { Authorization: token }, JSON.stringify(body),
         );

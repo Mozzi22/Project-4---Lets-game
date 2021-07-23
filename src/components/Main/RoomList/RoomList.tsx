@@ -3,11 +3,10 @@ import ControlPanel from './ControlPanel';
 import RoomListItems from './RoomListItems';
 import { StRoomList, StControlPanel, StItems } from './styled';
 // import SearchNoRes from './ControlPanel/SearchNoRes';
-import { TRoomListItems } from './types';
 import { TInitialUserGame, TRoom } from 'src/Store/game/types';
 
-const RoomList  = ({ rooms, userLogin }: TInitialUserGame) => {
-    console.log("rooms", rooms, userLogin);
+const RoomList  = ({ rooms }: TInitialUserGame) => {
+    console.log("rooms", rooms);
     return (
         <StRoomList>
             <StControlPanel>
@@ -19,9 +18,9 @@ const RoomList  = ({ rooms, userLogin }: TInitialUserGame) => {
                         <RoomListItems
                             key={room.id}
                             id={room.id}
-                            userLogin={userLogin}
                             gameType={room.gameType}
                             content={room.name}
+                            creatorLogin={room.creatorLogin}
                         />
                     );
             })}

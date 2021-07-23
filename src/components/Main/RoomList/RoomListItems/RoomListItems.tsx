@@ -13,7 +13,13 @@ const RoomListItems: React.FC<IRoomListItems> = ({
     setValue,
     typeGame,
     currentRoomName,
+    userLogin,
+    creatorLogin
 }) => {
+
+
+console.log(creatorLogin, "xzxz");
+
     useEffect(() => {
         if (currentRoomName === login) {
           return setState({ ...state, selected: true });
@@ -39,13 +45,19 @@ const RoomListItems: React.FC<IRoomListItems> = ({
               default: return handleJoinToGameWithBot;
           }
     };
+
     return (
       <StRoomListItems color={state.selected ? bgColorDefault : color} onClick={handleClick}>
         <StRoom>
           {/* <p>{login}name<div>{typeGame}type</div></p> */}
         </StRoom>
         {BUTTON_JOIN_TO_GAME.map((el) => {
-                  // if (user.id === user.id ? el.id === 'join_to_game_with_bot' : el.id === 'join_to_game' ) return null;
+          console.log(userLogin, "userLogin");
+          console.log(creatorLogin, "creatorUserLogin");
+
+          if (userLogin === creatorLogin && el.id === "join_to_game") return null;
+           if (userLogin !== creatorLogin &&  el.id === "join_to_game_with_bot") return null;
+          // creatorUserLogin === userLogin ? el.id === 'join_to_game_with_bot' : el.id === 'join_to_game';
                   return (
                       <Button
                           id={el.id}

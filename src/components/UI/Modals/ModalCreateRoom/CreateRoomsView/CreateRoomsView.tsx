@@ -13,7 +13,7 @@ interface ICreateRoomsView {
 }
 const CreateRoomsView: React.FC<ICreateRoomsView> = ({ createRoom, changeModalVisibility }) => {
     const { t } = useTranslation();
-    const [state, setState] = useState({ gameType: 'tic_tac_toe' });
+    const [state, setState] = useState({ gameType: 'Tic-tac-toe' });
     const handleChangeTypeGame = (e) => {
         setState({ ...state, gameType: e.target.value });
     };
