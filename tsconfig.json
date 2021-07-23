@@ -34,7 +34,8 @@
   },
   "include": [
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
+    "src/helpers/testHelper.js"
   ],
   "exclude": [
     "__tests__",

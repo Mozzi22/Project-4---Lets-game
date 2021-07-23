@@ -7,7 +7,7 @@ const TicTacToe = () => {
     const items = ITEMS_FOR_TIC_TAC_TOE
     return (
         <StTicTacToe>
-            {items.map(item => <SingleSellNine id={item} key={item}/>)}
+            {items.map(item => <SingleSellNine id={item.position} key={item.position}/>)}
         </StTicTacToe>
     );
 };
