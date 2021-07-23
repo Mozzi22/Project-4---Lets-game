@@ -20,6 +20,11 @@ export const reducer: Reducer<TInitialUserData, TActionsLogin> = (
     state = initialState, action) => {
     switch (action.type) {
         case AT.SET_ROOMS: return { ...state, rooms: action.payload };
-                default: return { ...state };
+        case AT.SET_CURRENT_CHECKER: return {
+            ...state,
+           currentChecker: action.payload.currentChecker
+        }
+        default: return { ...state };
+        
         }
 };

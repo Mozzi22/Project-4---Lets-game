@@ -14,7 +14,7 @@ const SingleSell: React.FC<TSingleSell> = ({ id, isChecked, color }) => {
             backgroungColor={background}
             onClick={handleClick}
         >
-            {isChecked ? <Checker color={color}/> : null}
+            {isChecked ? <Checker position={id} isChecked={isChecked} color={color}/> : null}
         </StSingleSell>
     );
 };

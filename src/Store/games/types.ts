@@ -1,7 +1,7 @@
 export type TInitialUserData = {
     rooms: TRoom[] | [];
     checker: TChecker;
-    currentChecker: {};
+    currentChecker: TCurrentChecker | {};
 }
 
 export type TRoom = {
@@ -15,6 +15,9 @@ export type TChecker = {
 }
 export type TCheckers = {
     position: number;
-    isChecked: boolean;
-    color: string;
+    isChecked: boolean | null;
+    color: string | null;
+}
+export type TCurrentChecker = {
+    currentChecker: TCheckers;
 }
