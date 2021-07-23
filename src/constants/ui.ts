@@ -71,4 +71,4 @@ export const INITIAL_STATE_FOR_CHECKER = Array.from({ length: 64 }, (_, i) => {
         }
     }
     return { position: 63 - i, isChecked, color }
-})
+});

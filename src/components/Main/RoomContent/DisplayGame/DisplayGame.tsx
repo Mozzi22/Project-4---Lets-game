@@ -4,8 +4,6 @@ import Checkers from './Сheckers';
 import TicTacToe from './TicTacToe';
 
 const DisplayGame = () => {
-    console.log( Checkers)
-
     return (
         <StDisplayGame>
             <TicTacToe/>
