@@ -10,7 +10,7 @@ interface IProps {
 
 const Checker: React.FC<IProps> = ({ setCurrentChecker, color, position, isChecked  }) => {
     const onCheckerClick = () => {
-        setCurrentChecker({currentChecker: { color, position, isChecked }})
+        setCurrentChecker({ currentChecker: { color, position, isChecked } })
     };
     return (
         <StChecker
@@ -18,8 +18,7 @@ const Checker: React.FC<IProps> = ({ setCurrentChecker, color, position, isCheck
                 ? 'black'
                 : 'white'}
             onClick={onCheckerClick}
-        >
-        </StChecker>
+        />
     );
 };
 

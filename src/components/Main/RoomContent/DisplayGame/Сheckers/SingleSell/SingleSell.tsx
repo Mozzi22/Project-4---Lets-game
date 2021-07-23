@@ -2,6 +2,7 @@ import React from 'react';
 import { StSingleSell } from './styled';
 import Checker from 'src/components/Main/RoomContent/DisplayGame/Сheckers/SingleSell/Checker';
 import { TSingleSell } from 'src/components/Main/RoomContent/DisplayGame/types';
+
 const SingleSell: React.FC<TSingleSell> = ({ id, isChecked, color }) => {
     const handleClick = (e: React.MouseEvent) => {
         console.log(e.target.id);

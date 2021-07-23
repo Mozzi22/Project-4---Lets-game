@@ -4,12 +4,16 @@ import SingleSell from './SingleSell';
 import { TCheckers } from 'src/Store/games/types';
 
 const Checkers: React.FC<TCheckers> = ({ checker }) => {
-    const onHandleClick = (e:React.MouseEvent) => {
-    console.log(e.target.value)
-    }
     return (
         <StCheckers>
-            {checker.map((item: TCheckers) => <SingleSell id={item.position} key={item.position} isChecked={item.isChecked} color={item.color} onClick={onHandleClick}/>)}
+            {checker.map((item: TCheckers) =>
+                <SingleSell
+                    id={item.position}
+                    key={item.position}
+                    isChecked={item.isChecked}
+                    color={item.color}
+                />
+            )}
         </StCheckers>
     );
 };
