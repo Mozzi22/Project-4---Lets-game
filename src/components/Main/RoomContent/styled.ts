@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const StRoomContent = styled.div`
-    width: 80%;
+    width: 75%;
     display: flex;
     align-content: center;
     height: 90vh;

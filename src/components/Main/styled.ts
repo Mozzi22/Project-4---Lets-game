@@ -8,7 +8,7 @@ export const StMain = styled.div`
     justify-content: space-between;
     align-items: space-between;
     color: ${({ color = textColorBlack }) => color};
-    font-family: 'Play', sans-serif;
+    font-family: 'Poppins', sans-serif;
     border-radius: 0px;
     position: relative;
     overflow:  hidden;

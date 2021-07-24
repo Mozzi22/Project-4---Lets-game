@@ -40,7 +40,7 @@ export const INPUT__MESSAGE = [{
 
 export const INPUT_PLACEHOLDER_SEARCH = [{
         id: 'search',
-        placeholder: 'placeholder_shearch_input',
+        placeholder: 'placeholder_search_input',
 }];
 
 export const MODAL_USERS_BUTTON = [{
@@ -68,19 +68,19 @@ export const BUTTON_JOIN_TO_GAME: Array<IBurronJoinToGame>  = [{
     name: 'join_to_game_with_bot',
     content: 'join_to_game_with_bot',
 }];
+
 export const MODAL_CREATE_GAME = [{
-    id: 'closeModal',
-    content: 'modal_users_cancel',
-    value: '',
-},
-{
     id: 'createGame',
     content: 'modal_users_confirm',
     value: '',
+},
+    {
+    id: 'closeModal',
+    content: 'modal_users_cancel',
+    value: '',
 }];
 
-export const LINKS = [
-{
+export const LINKS = [{
     id: 'main-page',
     rout: '/main',
     content: 'main_page',

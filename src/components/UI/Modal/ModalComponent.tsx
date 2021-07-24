@@ -21,24 +21,23 @@ const ModalComponent = ({
                 onRequestClose={handleCloseModal}
                 style={customStyles}
             >
-            <StModalHeader
-                fontSize={fontSize}
-            >
-                <StTextHeader>{t(headerTextKey)}</StTextHeader>
-                    <Button
-                        height="50px"
-                        width="50px"
-                        content="×"
-                        fontSize="45px"
-                        borderRadius="0px"
-                        margin="0px"
-                        padding="0"
-                        id="closeModal"
-                        onClick={handleCloseModal}
-                        bgColor="transparent"
-                    />
-            </StModalHeader>
-                {children}
+                <Button
+                    height="40px"
+                    width="40px"
+                    content="×"
+                    fontSize="45px"
+                    lineHeight="45px"
+                    borderRadius="0px"
+                    margin="0 0 0 90%"
+                    padding="0"
+                    id="closeModal"
+                    onClick={handleCloseModal}
+                    bgColor="transparent"
+                />
+                    <StModalHeader fontSize={fontSize} >
+                        <StTextHeader>{t(headerTextKey)}</StTextHeader>
+                    </StModalHeader>
+                        {children}
             </Modal>
     );
 };

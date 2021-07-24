@@ -10,6 +10,7 @@ import { actionTypes } from './actionTypes';
 import { logValues } from './selectors';
 import { setLoginValue, clearLoginInputs, reciveErrorRequest, reciveSuccessRequest, setValue } from './actions';
 import { initialWebSocket } from '../games/actions';
+import { support } from 'src/helpers/support';
 
 export function* workerLogin({payload}): SagaIterator {
     try {
@@ -28,6 +29,7 @@ export function* workerLogin({payload}): SagaIterator {
             yield put(reciveSuccessRequest({ userLogin: data.login }));
             yield put(setLoginValue({ name: 'success', value: true }));
             yield put(setValue({ name: 'token', value: token }));
+            yield call([support, support.setTokenInCookie], token);
             yield put(initialWebSocket(token));
             yield call([payload, payload.push], "/main")
         } else {

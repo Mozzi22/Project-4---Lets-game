@@ -4,19 +4,22 @@ export const routes = {
         registration: 'registration/reg',
         login: 'authorization/auth',
     },
-    baseWebSocketUrl: 'ws://35.176.167.155:8089/game-menu',
-    websocket: {
+    baseWebSocketUrl: 'ws://35.176.167.155:8082',
+    game_menu: '/game-menu',
+    ws: {
         rooms: '/topic/rooms',
-        errors: '/user/topic/errors',
-        possible_steps: '/user/topic/game/',
         game: '/topic/game/',
         bot_steps: '/topic/bot/',
+        errors: '/user/topic/errors',
+        possible_steps: '/user/topic/game/',
         create_room: '/radioactive/create-room',
         update_room: '/radioactive/update-room',
-        delete_room: '/radioactive/deleteRoom',
+        delete_room: '/radioactive/delete-room',
+        join_room: '/radioactive/join-room',
         get_possible_steps: '/radioactive/get-possible-steps',
         do_step: '/radioactive/do-step',
         get_bot_step: '/radioactive/get-bot-step',
-        get_step_order: '/radioactive/get-step-order'
+        get_step_order: '/radioactive/get-step-order',
+        leave_game: '/radioactive/leave-the-game'
     }
 };

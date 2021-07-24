@@ -10,3 +10,8 @@ export const getUserLogin = createSelector(
     loginStore,
     (state) => (state.userLogin),
 );
+
+export const getToken = createSelector(
+    loginStore,
+    (state) => (state.userLogin),
+);

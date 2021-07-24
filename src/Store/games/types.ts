@@ -1,5 +1,5 @@
-export type TInitialUserData = {
-    rooms: TRoom[] | [];
+export type TInitialUserGame = {
+    rooms: Array<TRoom>;
     checker: TChecker;
     currentChecker: TCurrentChecker | {};
 }
@@ -13,11 +13,13 @@ export type TRoom = {
 export type TChecker = {
     desk: TCheckers;
 }
+
 export type TCheckers = {
     position: number;
     isChecked: boolean | null;
     color: string | null;
 }
+
 export type TCurrentChecker = {
     currentChecker: TCheckers;
 }
