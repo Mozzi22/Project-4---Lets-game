@@ -2,7 +2,7 @@ import { Reducer } from 'redux';
 import { ActionType } from 'typesafe-actions';
 import * as actions from './actions';
 import { actionTypes as AT } from './actionTypes';
-import { TInitialUserData } from './types';
+import { TInitialUserGame } from './types';
 import { INITIAL_STATE_FOR_CHECKER } from 'src/constants/ui';
 
 const actionTypesAll = actions;
@@ -22,10 +22,9 @@ export const reducer: Reducer<TInitialUserGame, TActionsLogin> = (
     switch (action.type) {
         case AT.SET_ALL_ROOMS:
             return { ...state, rooms: action.payload };
-        case AT.SET_ROOMS: return { ...state, rooms: action.payload };
         case AT.SET_CURRENT_CHECKER: return {
             ...state,
-           currentChecker: action.payload.currentChecker
+            currentChecker: action.payload.currentChecker
         }
         default: return { ...state };
     }
