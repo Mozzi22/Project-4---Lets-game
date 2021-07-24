@@ -3,7 +3,7 @@ import ControlPanel from './ControlPanel';
 import RoomListItems from './RoomListItems';
 import { StRoomList, StControlPanel, StItems } from './styled';
 // import SearchNoRes from './ControlPanel/SearchNoRes';
-import { TInitialUserGame, TRoom } from 'src/Store/game/types';
+import { TInitialUserGame, TRoom } from 'src/Store/games/types';
 
 const RoomList  = ({ rooms }: TInitialUserGame) => {
     console.log("rooms", rooms);

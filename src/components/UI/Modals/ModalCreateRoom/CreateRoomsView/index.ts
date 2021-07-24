@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import { changeModalVisibility } from 'src/Store/modals/actions';
-import { createRoom } from 'src/Store/game/actions';
+import { createRoom } from 'src/Store/games/actions';
 import CreateRoomsView from './CreateRoomsView';
 import { TModalData } from 'src/Store/modals/types';
 

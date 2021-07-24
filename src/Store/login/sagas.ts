@@ -9,7 +9,7 @@ import { httpStatusCode } from 'src/constants/httpStatusCode';
 import { actionTypes } from './actionTypes';
 import { logValues } from './selectors';
 import { setLoginValue, clearLoginInputs, reciveErrorRequest, reciveSuccessRequest, setValue } from './actions';
-import { initialWebSocket } from '../game/actions';
+import { initialWebSocket } from '../games/actions';
 import { support } from 'src/helpers/support';
 
 export function* workerLogin({payload}): SagaIterator {
