@@ -3,12 +3,10 @@ import { StSingleSellNine } from './styled';
 import { TSingleSell } from 'src/components/Main/RoomContent/DisplayGame/types';
 
 const SingleSellNine: React.FC<TSingleSell> = ({ id }) => {
-    const handleClick = (e: React.MouseEvent) => {
-        console.log(e.target.id);
-    };
+    const handleClick = (e: React.MouseEvent) => {};
     const currentId = id + 1;
     return (
-        <StSingleSellNine 
+        <StSingleSellNine
         onClick={handleClick}
         >
             {currentId}

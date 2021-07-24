@@ -46,7 +46,7 @@ const RoomListItems: React.FC<IRoomListItems> = ({
     return (
       <StRoomListItems color={state.selected ? bgColorDefault : color} onClick={handleClick}>
         <StRoom>
-          <p>{gameType}<div>{userLogin}</div></p>
+          <p>{gameType}<div>{creatorLogin}</div></p>
         </StRoom>
         {BUTTON_JOIN_TO_GAME.map((el) => {
             if (userLogin === creatorLogin && el.id === "join_to_game") return null;

@@ -6,7 +6,6 @@ import { StRoomList, StControlPanel, StItems } from './styled';
 import { TInitialUserGame, TRoom } from 'src/Store/games/types';
 
 const RoomList  = ({ rooms }: TInitialUserGame) => {
-    console.log("rooms", rooms);
     return (
         <StRoomList>
             <StControlPanel>

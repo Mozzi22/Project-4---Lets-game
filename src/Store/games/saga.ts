@@ -21,7 +21,6 @@ export const connection = (token: string) => {
 
 export const createStompChannel = (stompClient: CompatClient) => eventChannel((emit) => {
     const roomsSub = stompClient.subscribe(routes.ws.rooms, ({ body }) => {
-        console.log(body)
         return emit(setAllRooms(JSON.parse(body)));
 });
 
@@ -45,7 +44,6 @@ export function* workerConnection(): SagaIterator {
         yield call(init, stompClient);
         while (stompChannel) {
             const payload = yield take(stompChannel);
-            console.log(payload);
             yield put(payload);
         }
     } catch (e) {
