@@ -19,3 +19,11 @@ export const getCurrentChecker = createSelector(
     gameStore,
     (currentChecker) => currentChecker,
 )
+export const getTicTacToe = createSelector(
+    gameStore,
+    (game) => game.ticTacToe,
+)
+export const getTicTacToeDesk = createSelector(
+    getTicTacToe,
+    (ticTacToe) => ticTacToe.desk,
+)

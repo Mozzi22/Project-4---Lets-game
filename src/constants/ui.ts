@@ -13,7 +13,7 @@ export const GameOptions = [
 export const ITEMS_FOR_TIC_TAC_TOE = [{
     position: 8,
     isChecked: false,
-    figure: null,
+    figure: 'cross',
 },
 {
     position: 7,

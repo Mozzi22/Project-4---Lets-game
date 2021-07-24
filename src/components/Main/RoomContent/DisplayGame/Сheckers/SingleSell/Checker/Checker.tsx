@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { TCurrentChecker } from 'src/Store/games/types';
 import { StChecker } from './styled'
 interface IProps {
