@@ -1,3 +1,4 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SearchNoRes Should match snapshot 1`] = `"<div class=\\"styled__StRoomListItems-sc-19jz83q-0 diLJtX\\"><div class=\\"styled__StRoom-sc-19jz83q-1 claMUq\\"><p><div></div></p></div><button id=\\"join_to_game_with_bot\\" name=\\"join_to_game_with_bot\\" type=\\"button\\" height=\\"50px\\" width=\\"200px\\" class=\\"styled__StButton-sc-15atqtm-0 dgoXYA\\">join_to_game_with_bot</button></div>"`;
+exports[`SearchNoRes Should match snapshot 1`] = `"<div class=\\"styled__StRoomListItems-sc-19jz83q-0 gGwSht\\"><div class=\\"styled__StRoom-sc-19jz83q-1 gdfRgL\\"><p>name<div>type</div></p></div><button id=\\"join_to_game\\" name=\\"join_to_game\\" type=\\"button\\" height=\\"50px\\" width=\\"200px\\" class=\\"styled__StButton-sc-15atqtm-0 iBDrOU\\">join_to_game</button><button id=\\"join_to_game_with_bot\\" name=\\"join_to_game_with_bot\\" type=\\"button\\" height=\\"50px\\" width=\\"200px\\" class=\\"styled__StButton-sc-15atqtm-0 iBDrOU\\">join_to_game_with_bot</button></div>"`;
+
