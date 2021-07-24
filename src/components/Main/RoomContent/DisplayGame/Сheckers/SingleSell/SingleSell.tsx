@@ -1,10 +1,12 @@
 import React from 'react';
 import { StSingleSell } from './styled';
+import Checker from 'src/components/Main/RoomContent/DisplayGame/Сheckers/SingleSell/Checker';
 import { TSingleSell } from 'src/components/Main/RoomContent/DisplayGame/types';
-const SingleSell: React.FC<TSingleSell> = ({ id }) => {
+
+const SingleSell: React.FC<TSingleSell> = ({ id, isChecked, color }) => {
     const handleClick = (e: React.MouseEvent) => {
     };
-    const background = parseInt((id / 8) + id) % 2 === 0 ? 'black' : 'white';
+    const background = parseInt((id / 8) + id) % 2 === 0 ? 'grey' : 'white';
     const currentId = id + 1;
     return (
         <StSingleSell
@@ -12,7 +14,7 @@ const SingleSell: React.FC<TSingleSell> = ({ id }) => {
             backgroungColor={background}
             onClick={handleClick}
         >
-            {currentId}
+            {isChecked ? <Checker position={id} isChecked={isChecked} color={color}/> : null}
         </StSingleSell>
     );
 };

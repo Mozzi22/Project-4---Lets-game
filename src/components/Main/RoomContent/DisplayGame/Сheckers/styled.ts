@@ -10,4 +10,6 @@ export const StCheckers = styled.div`
     flex-direction: row-reverse;
     color:red;
     margin: 10px auto;
+    justify-content: center;
+    align-items: center;
 `;
