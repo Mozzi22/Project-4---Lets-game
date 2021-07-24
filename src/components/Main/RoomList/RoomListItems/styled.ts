@@ -29,15 +29,18 @@ export const StRoom = styled.div < IStRoom > `
     justify-content: flex-start;
     align-items: center;
     width: 100%;
-        p{
+        h2{
             font-size: 26px;
-            width:80%;
+            margin: 0;
+        }
+        h3{
+            font-size: 16px;
+            text-transform: capitalize;
+            margin: 0;
         }
         div{
             width: 80%;
-            font-size: 16px;
             color: #eee;
-            text-transform: capitalize;
         }
         span{
             width: 30px;

@@ -15,7 +15,7 @@ describe('SingleSell', () => {
     const props = {
         id: '',
         position: 1,
-        isChecked: false, 
+        isChecked: false,
         color: 'red',
     }
     it('Should match snapshot', () => {

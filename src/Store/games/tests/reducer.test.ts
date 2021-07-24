@@ -1,7 +1,5 @@
 import { reducer, initialState } from '../reducer';
-import {
-    setAllRooms,
-} from '../actions';
+import { setAllRooms } from '../actions';
 
 describe('gameReducer', () => {
     it('SET_ALL_ROOMS', () => {

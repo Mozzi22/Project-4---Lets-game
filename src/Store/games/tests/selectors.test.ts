@@ -28,10 +28,13 @@ describe('login selectors', () => {
                 }],
             },
         };
-        expect(selectors.getRooms(state)).toEqual([{ creatorLogin: 'mary',
+            expect(selectors.getRooms(state)).toEqual(
+                [{
+                    creatorLogin: 'mary',
                     gameType: 'Checkers',
                     id: 1234
-                }]);
+                }]
+            );
         });
     });
 });

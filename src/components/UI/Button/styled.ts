@@ -4,7 +4,8 @@ import {
   disabledColor,
   bgColorDisabledDefault,
   disabledBorder,
-  focusColorDefault
+  focusColorDefault,
+  bgColorRoom
 } from '../baseLayout';
 import { IBtn } from './types';
 
@@ -22,7 +23,7 @@ export const StButton = styled.button < IBtn > `
   ${({ transition = 'all 300ms ease-in-out' }) => transition && `transition: ${transition}`};
   font-size: ${({ fontSize = '16px' }) => fontSize};
   line-height ${({ lineHeight = '16px' }) => lineHeight};
-  background-color: ${({ bgColor = 'transparent' }) => bgColor};
+  ${({ bgColor = bgColorRoom }) => bgColor && `background-color: ${bgColor}`};
   background-image: ${({ colors, theme }) => colors[theme].backgroundImage};
   background-size:  ${({ backgroundSize = '0' }) => backgroundSize};
   &:hover {

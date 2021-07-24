@@ -7,5 +7,4 @@ const mapStateToProps = (state: AplicationState) => ({
   userLogin: getUserLogin(state)
 });
 
-export default connect(mapStateToProps, null)(RoomListItems);
-
+export default connect(mapStateToProps)(RoomListItems);

@@ -8,6 +8,7 @@ export const TRANSPARENT_BACKGROUND = 'rgba(0, 0, 0, 0.4)';
 
 //Button
 export const bgColorDefault = '#5523c1';
+export const bgColorRoom = '#b16fdd';
 export const colorDefault = '#fff';
 export const focusColorDefault = '#8f35ca';
 export const hoverBgDefault = '#d62ad0';

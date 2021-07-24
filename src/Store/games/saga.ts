@@ -65,11 +65,12 @@ export function* createRoomSaga({ payload }): SagaIterator {
             [stompClient, stompClient.send],
             routes.ws.create_room, { Authorization: token },
             JSON.stringify(body)
-        );
+            );
         yield call(
             [stompClient, stompClient.send],
             routes.ws.update_room, {},
-            JSON.stringify(body));
+            JSON.stringify(body)
+        );
         } catch (error) {
             console.log("error", error);
         }
