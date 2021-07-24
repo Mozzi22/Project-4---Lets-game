@@ -5,7 +5,6 @@ import { TSingleSell } from 'src/components/Main/RoomContent/DisplayGame/types';
 
 const SingleSell: React.FC<TSingleSell> = ({ id, isChecked, color }) => {
     const handleClick = (e: React.MouseEvent) => {
-        console.log(e.target.id);
     };
     const background = parseInt((id / 8) + id) % 2 === 0 ? 'grey' : 'white';
     const currentId = id + 1;

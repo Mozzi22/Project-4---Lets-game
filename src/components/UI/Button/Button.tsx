@@ -15,6 +15,7 @@ const Button = ({
     isDisabled,
     color,
     fontSize,
+    lineHeight,
     bgColorDisabled,
     bgColor,
     backgroundImage,
@@ -25,6 +26,7 @@ const Button = ({
     margin,
     content,
     transition,
+    hoverColor
 }: IButton) => {
     const { t } = useTranslation();
     const { colors, theme } = useTheme();
@@ -43,12 +45,14 @@ const Button = ({
             disabled={isDisabled}
             color={color}
             fontSize={fontSize}
+            lineHeight={lineHeight}
             bgColor={bgColor}
             height={height}
             width={width}
             padding={padding}
             margin={margin}
             transition={transition}
+            hoverColor={hoverColor}
             theme={theme}
             colors={colors}
         >

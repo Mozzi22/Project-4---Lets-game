@@ -3,24 +3,27 @@ import ControlPanel from './ControlPanel';
 import RoomListItems from './RoomListItems';
 import { StRoomList, StControlPanel, StItems } from './styled';
 // import SearchNoRes from './ControlPanel/SearchNoRes';
-import { TRoomListItems } from './types';
+import { TInitialUserGame, TRoom } from 'src/Store/games/types';
 
-const RoomList: React.FC<TRoomListItems> = ({ rooms = [] }) => {
+const RoomList  = ({ rooms }: TInitialUserGame) => {
     return (
         <StRoomList>
             <StControlPanel>
                 <ControlPanel />
             </StControlPanel>
             <StItems>
-                {/* {rooms?.length > 0 ? rooms.map(room => ( */}
-                    <RoomListItems
-                        // key={room.room_id}
-                        // content={room.room_name}
-                        // id={room.room_id}
-                    />
-                {/* )) : < SearchNoRes />} */}
+                {rooms.map((room: TRoom) => {
+                    return (
+                        <RoomListItems
+                            key={room.id}
+                            id={room.id}
+                            gameType={room.gameType}
+                            content={room.name}
+                            creatorLogin={room.creatorLogin}
+                        />
+                    );
+            })}
             </StItems>
-
         </StRoomList>
     );
 };

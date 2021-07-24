@@ -8,7 +8,7 @@ export const StModalHeader = styled.div`
     justify-content: center;
     align-items: center;
     color: ${({ color = colorDefault }) => color};
-    font-size: 36px;
+    font-size: 30px;
         button{
             margin-left: auto;
         }
@@ -19,9 +19,8 @@ export const StTextHeader = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
     color: ${({ color = colorDefault }) => color};
-    font-size: 36px;
+    font-size: 26px;
 `;
 
 export const customStyles = {
@@ -41,10 +40,11 @@ export const customStyles = {
         transform: 'scale(0.9)',
         opacity: '1',
         flexFlow: 'column',
-        backgroundColor: 'rgba(0, 0, 0, 0.4)',
-        height: '50vh',
-        width: '40%',
-        fontFamily: 'Oxanium, cursive',
+        backgroundColor: 'rgb(36 36 36)',
+        height: '35vh',
+        width: '30%',
+        fontFamily: 'Poppins, sans-serif',
+        lineHeight: '45px',
         display: 'flex',
         overflowY: 'hidden',
     },

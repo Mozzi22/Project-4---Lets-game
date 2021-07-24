@@ -13,11 +13,13 @@ export interface IBtn extends IAppDiv {
     backgroundImage?: string;
     backgroundSize?: string;
     focusColorDefault?: string;
+    hoverColor?: string;
     borderRadius?: string;
     border?: string;
     outline?: string;
     transition?: string;
     fontSize?: string;
+    lineHeight?: string;
     focusColor?: string;
     bgColorDisabled?: string;
 }
@@ -32,6 +34,7 @@ export interface IButton {
     isDisabled?: boolean;
     color?: string;
     fontSize?: string;
+    lineHeight?: string;
     fontWeight?: string;
     bgColorDisabled?: string;
     bgColor?: string;
@@ -39,6 +42,7 @@ export interface IButton {
     backgroundImage?: string;
     backgroundSize?: string;
     focusColorDefault?: string;
+    hoverColor?: string;
     height?: string;
     width?: string;
     padding?: string;

@@ -8,8 +8,9 @@ export const TRANSPARENT_BACKGROUND = 'rgba(0, 0, 0, 0.4)';
 
 //Button
 export const bgColorDefault = '#5523c1';
+export const bgColorRoom = '#b16fdd';
 export const colorDefault = '#fff';
-export const focusColorDefault = '#fff';
+export const focusColorDefault = '#8f35ca';
 export const hoverBgDefault = '#d62ad0';
 export const disabledColor = '#666';
 export const bgColorDisabledDefault = '#ccc';
@@ -21,7 +22,7 @@ export const bgFocusColorDefault = '#a4a4a4';
 export const focusColorDefaultInput = '#fff';
 export const colorDefaultInput = '#000';
 
-export const bgColorDefaultFon = 'rgba(0, 0, 0, 0.4)';
+export const bgColorDefaultFon = 'rgb(164 164 164 / 40%)';
 export const bgMessage = 'rgba(196, 196, 196, 0.5)';
 export const textColorBlack = '#000';
 export const textColorGray = '#484848';

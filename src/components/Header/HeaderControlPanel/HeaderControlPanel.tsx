@@ -41,6 +41,8 @@ const HeaderControlPanel = () => {
                 onClick={toggleThemeMode}
                 bgColor='transparent'
                 backgroundSize='cover'
+                hoverColor='transparent'
+                bgColorDisabled='transparent'
             />
             <Select
                 id={options.id}
