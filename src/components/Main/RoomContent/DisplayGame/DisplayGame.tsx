@@ -3,10 +3,11 @@ import { StDisplayGame } from './styled';
 import Checkers from './Сheckers';
 import TicTacToe from './TicTacToe';
 
-const DisplayGame = () => {
+const DisplayGame = ({ currentRoomName }) => {
+    console.log(currentRoomName.room_name)
     return (
         <StDisplayGame>
-            <TicTacToe/>
+            <TicTacToe />
             <Checkers />
         </StDisplayGame>
     );

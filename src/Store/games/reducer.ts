@@ -11,7 +11,7 @@ export type TActionsLogin = ActionType<TActions>;
 
 export const initialState: TInitialUserGame = {
     rooms: [],
-    currentRoom: '',
+    currentRoom: {},
     checker: {
         desk: INITIAL_STATE_FOR_CHECKER
     },

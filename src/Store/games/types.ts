@@ -2,6 +2,7 @@ export type TInitialUserGame = {
     rooms: Array<TRoom>;
     checker: TChecker;
     currentChecker: TCurrentChecker | {};
+    currentRoom: TCurrentRoom
 }
 
 export type TRoom = {
@@ -11,7 +12,12 @@ export type TRoom = {
 }
 
 export type TCurrentRoom = {
-    name: string, value: string | null | boolean
+    name: string, value: TCurrentRoomValue
+}
+
+export type TCurrentRoomValue = {
+    room_id: string,
+    room_name: string
 }
 
 export type TJoinRoom = {
