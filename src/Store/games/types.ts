@@ -10,6 +10,15 @@ export type TRoom = {
     id: string | null;
 }
 
+export type TCurrentRoom = {
+    name: string, value: string | null | boolean
+}
+
+export type TJoinRoom = {
+    guestLogin: string;
+    id: string | null;
+}
+
 export type TChecker = {
     desk: TCheckers;
 }

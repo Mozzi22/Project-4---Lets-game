@@ -10,12 +10,13 @@ const RoomListItems: React.FC<IRoomListItems> = ({
     id,
     color,
     login,
-    setValue,
+    setCurrentRoom,
+    joinRoom,
+    playWithBot,
     gameType,
     currentRoomName,
     userLogin,
     creatorLogin,
-    bgColorRoom,
 }) => {
 
     useEffect(() => {
@@ -24,17 +25,25 @@ const RoomListItems: React.FC<IRoomListItems> = ({
         }
         setState({ ...state, selected: false });
     }, [currentRoomName]);
-      const [state, setState] = useState({
+
+    const [state, setState] = useState({
         error: false,
         selected: false,
     });
+
     const { t } = useTranslation();
     const handleJoinToGame = () => {
+      joinRoom(id);
+      console.log('playyyyyy handleJoinToGame', id)
     };
-    const handleJoinToGameWithBot = () => {
+
+  const handleJoinToGameWithBot = () => {
+      joinRoom(id);
+      playWithBot();
+      console.log('playyyyyy handleJoinToGameWithBot')
     };
     const handleClick = () => {
-      setValue({ name: 'currentRoom', value: { room_id: id, room_name: login } });
+      setCurrentRoom({ name: 'currentRoom', value: { room_id: id, room_name: gameType }});
     };
     const onError = () => setState({ ...state, error: true });
     const getFunctionForButtons = (el) => {
@@ -45,7 +54,9 @@ const RoomListItems: React.FC<IRoomListItems> = ({
     };
 
     return (
-      <StRoomListItems color={state.selected ? bgColorDefault : color} onClick={handleClick}>
+      <StRoomListItems color={state.selected ? bgColorDefault : color}
+        onClick={handleClick}
+      >
         <StRoom>
           <div><h2>{gameType}</h2><h3>{creatorLogin}</h3></div>
         </StRoom>

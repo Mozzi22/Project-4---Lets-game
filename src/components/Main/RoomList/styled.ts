@@ -25,7 +25,7 @@ export const StControlPanel = styled.div`
 `;
 export const StItems = styled.div`
     display: flex;
-    height: 68vh;
+    height: 100%;
     flex-direction: column;
     width: 100%;
     overflow-y: hidden;

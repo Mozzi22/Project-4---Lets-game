@@ -5,7 +5,8 @@ import { StRoomList, StControlPanel, StItems } from './styled';
 // import SearchNoRes from './ControlPanel/SearchNoRes';
 import { TInitialUserGame, TRoom } from 'src/Store/games/types';
 
-const RoomList  = ({ rooms }: TInitialUserGame) => {
+const RoomList = ({ rooms }: TInitialUserGame) => {
+    console.log(rooms)
     return (
         <StRoomList>
             <StControlPanel>
