@@ -10,4 +10,5 @@ describe('gameReducer', () => {
         ];
         expect(reducer(initialState, setAllRooms(rooms))).toEqual({ ...initialState, rooms });
     });
+    it('default', () => expect(reducer(undefined, { type: '' })).toEqual(initialState));
 });
