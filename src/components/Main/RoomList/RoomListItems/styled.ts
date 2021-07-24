@@ -4,10 +4,14 @@ import { IStRoom } from './types';
 
 export const StRoomListItems = styled.div`
     display: flex;
-    width: 100%;
+    overflow: hidden;
     height: 60px;
     align-items: center;
     color: ${({ color = colorDefault }) => color};
+    margin: 0 0 20px;
+    border-radius: 5px;
+    padding: 7px 15px;
+    background-color: #2acbb9;
     cursor: pointer;
         ul {
           padding-left: 1rem;
@@ -26,11 +30,14 @@ export const StRoom = styled.div < IStRoom > `
     align-items: center;
     width: 100%;
         p{
+            font-size: 26px;
             width:80%;
         }
         div{
             width: 80%;
             font-size: 16px;
+            color: #eee;
+            text-transform: capitalize;
         }
         span{
             width: 30px;

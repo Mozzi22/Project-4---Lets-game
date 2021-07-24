@@ -3,12 +3,13 @@ import { bgColorDefault, bgColorDefaultFon } from 'src/components/UI/baseLayout'
 
 export const StRoomList = styled.div`
     background-color: ${({ color = bgColorDefaultFon }) => color};
+    padding: 15px;
     display: flex;
-    width: 20%;
+    width: 25%;
     margin-right: 0;
     font-size: 24px;
     flex-direction: column;
-    font-family: 'Play', sans-serif;
+    font-family: 'Poppins', sans-serif;
     border-radius: 0px;
     position: relative;
     height: 90vh;
@@ -19,7 +20,7 @@ export const StControlPanel = styled.div`
     margin-right: 0;
     font-size: 24px;
     flex-direction: column;
-    font-family: 'Play', sans-serif;
+    font-family: 'Poppins', sans-serif;
     border-radius: 0px;
 `;
 export const StItems = styled.div`

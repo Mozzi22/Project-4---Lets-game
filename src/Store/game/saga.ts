@@ -63,16 +63,21 @@ export function* createRoomSaga({ payload }): SagaIterator {
             id: uuidv4(),
             };
         const token: string = yield call([support, support.getTokenFromCookie], 'token');
-    yield call(
-        [stompClient, stompClient.send], routes.ws.create_room, { Authorization: token }, JSON.stringify(body),
+        yield call(
+            [stompClient, stompClient.send],
+            routes.ws.create_room, { Authorization: token },
+            JSON.stringify(body)
         );
-    yield call([stompClient, stompClient.send], routes.ws.update_room, { }, JSON.stringify(body));
-    } catch (error) {
-        console.log("error", error);
-    }
+        yield call(
+            [stompClient, stompClient.send],
+            routes.ws.update_room, {},
+            JSON.stringify(body));
+        } catch (error) {
+            console.log("error", error);
+        }
 }
 
 export function* watcherGames() {
-    yield takeEvery(actionTypes.CONNECT_WEB_SOCKET, workerConnection);
+    yield takeEvery(actionTypes.INITIAL_WEB_SOCKET, workerConnection);
     yield takeEvery(actionTypes.CREATE_ROOM, createRoomSaga);
 }

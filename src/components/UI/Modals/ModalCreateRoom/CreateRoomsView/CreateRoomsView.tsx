@@ -38,7 +38,7 @@ const CreateRoomsView: React.FC<ICreateRoomsView> = ({ createRoom, changeModalVi
                 onChange={handleChangeTypeGame}
                 value={state.gameType}
                 content={GameOptions.content}
-                width='200px'
+                width='250px'
                 bgColor='#b16fdd'
             />
             <StControlPanel>
@@ -50,6 +50,7 @@ const CreateRoomsView: React.FC<ICreateRoomsView> = ({ createRoom, changeModalVi
                             id={el.id}
                             onClick={getFunctionForButtons(el)}
                             backgroundSize='0'
+                            bgColor="#e155c6"
                         />
                     );
                 })}

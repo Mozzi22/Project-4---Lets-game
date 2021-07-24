@@ -11,13 +11,15 @@ export const routes = {
         game: '/topic/game/',
         bot_steps: '/topic/bot/',
         errors: '/user/topic/errors',
+        possible_steps: '/user/topic/game/',
         create_room: '/radioactive/create-room',
         update_room: '/radioactive/update-room',
-        delete_room: '/radioactive/deleteRoom',
-        possible_steps: '/user/topic/game/',
+        delete_room: '/radioactive/delete-room',
+        join_room: '/radioactive/join-room',
         get_possible_steps: '/radioactive/get-possible-steps',
         do_step: '/radioactive/do-step',
         get_bot_step: '/radioactive/get-bot-step',
-        get_step_order: '/radioactive/get-step-order'
+        get_step_order: '/radioactive/get-step-order',
+        leave_game: '/radioactive/leave-the-game'
     }
 };

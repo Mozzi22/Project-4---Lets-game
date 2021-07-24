@@ -7,8 +7,3 @@ export const getRooms = createSelector(
     gameStore,
     ({ rooms }) => rooms,
 );
-
-export const getLoginCreator = createSelector(
-    getRooms,
-    (rooms) => rooms.map(el => el.creatorLogin),
-);
