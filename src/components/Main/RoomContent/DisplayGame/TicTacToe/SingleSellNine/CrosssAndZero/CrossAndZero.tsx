@@ -7,18 +7,17 @@ interface IProps {
     // setCurrentChecker: (arg: TCurrentChecker) => void;
 }
 
-const CrossAndZero: React.FC<IProps> = ({ content, figure }) => {
+const CrossAndZero: React.FC<IProps> = ({ figure, position }) => {
     // const onCheckerClick = () => {
     //     setCurrentChecker({ currentChecker: { color, position, isChecked } })
     // };
+    const handleClick = () => onClick(position);
+    console.log(position)
     return (
         <StCrossAndZero
-            content={figure === 'cross'
-                ? 'X'
-                : 'O'}
-            // onClick={onCheckerClick}
+            onClick={figure ? null : handleClick}
         >
-            {content}
+            {figure}
         </StCrossAndZero>
     );
 };

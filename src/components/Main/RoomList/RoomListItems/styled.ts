@@ -30,7 +30,7 @@ export const StRoom = styled.div < IStRoom > `
     align-items: center;
     width: 100%;
         h2{
-            font-size: 26px;
+            font-size: 18px;
             margin: 0;
         }
         h3{

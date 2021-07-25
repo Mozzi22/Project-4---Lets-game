@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { getTicTacToeDesk } from 'src/Store/games/selectors';
+import { do_step } from 'src/Store/games/actions';
 import { AplicationState } from 'src/Store/types';
 import TicTacToe from './TicTacToe';
 
@@ -7,4 +8,8 @@ const mapStateToProps = (state: AplicationState) => ({
     ticTacToe: getTicTacToeDesk(state),
 });
 
-export default connect(mapStateToProps)(TicTacToe);
+const mapDispatchToProps = {
+  do_step,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(TicTacToe);
