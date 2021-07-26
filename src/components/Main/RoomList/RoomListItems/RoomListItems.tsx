@@ -39,7 +39,7 @@ const RoomListItems: React.FC<IRoomListItems> = ({
 
   const handleJoinToGameWithBot = () => {
       joinRoom(id);
-      playWithBot();
+      // playWithBot();
       console.log('playyyyyy handleJoinToGameWithBot')
     };
     const handleClick = () => {
