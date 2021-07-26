@@ -5,7 +5,7 @@ import { StRoomList, StControlPanel, StItems } from './styled';
 // import SearchNoRes from './ControlPanel/SearchNoRes';
 import { TInitialUserGame, TRoom } from 'src/Store/games/types';
 
-const RoomList = ({ rooms }: TInitialUserGame) => {
+const RoomList = ({ rooms, userLogin }: TInitialUserGame) => {
     return (
         <StRoomList>
             <StControlPanel>
@@ -17,9 +17,10 @@ const RoomList = ({ rooms }: TInitialUserGame) => {
                         <RoomListItems
                             key={room.id}
                             id={room.id}
-                            gameType={room.gameType}
                             content={room.name}
-                            creatorLogin={room.creatorLogin}
+                             creatorLogin={room.creatorLogin}
+                        userLogin={userLogin}
+                        gameType={room.gameType}
                         />
                     );
             })}

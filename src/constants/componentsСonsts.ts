@@ -59,12 +59,12 @@ interface IBurronJoinToGame {
     content: string;
 }
 export const BUTTON_JOIN_TO_GAME: Array<IBurronJoinToGame>  = [{
-    id: 'join_to_game',
+    id: 'join',
     name: 'join_to_game',
     content: 'join_to_game',
 },
 {
-    id: 'join_to_game_with_bot',
+    id: 'play_with_bot',
     name: 'join_to_game_with_bot',
     content: 'join_to_game_with_bot',
 }];

@@ -1,14 +1,14 @@
 import { all, fork } from '@redux-saga/core/effects';
 import { watcherRegistration } from './registration/sagas';
 import { watcherLogin } from './login/sagas';
-import { watcherGames } from './games/saga';
-// import { watcherNewUserData } from './user/saga';
+import { watcherGame } from './games/saga';
+// import { watcherStatistic } from './statistic/saga';
 
 const sagas = [
     watcherRegistration,
     watcherLogin,
-    watcherGames
-    // watcherNewUserData,
+    watcherGame,
+    // watcherStatistic,
 ];
 
 export default function* rootSaga() {

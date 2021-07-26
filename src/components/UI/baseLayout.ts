@@ -31,3 +31,6 @@ export const textColorGray = '#484848';
 export const bgSelect = '#fff';
 export const activeBorder = '1px solid #c4c4c4';
 export const boxShadowColor = '0px 4px 4px rgba(0, 0, 0, 0.25)';
+
+export const white = '#ffffff';
+export const blackPic = 'rgba(0, 0, 0)';

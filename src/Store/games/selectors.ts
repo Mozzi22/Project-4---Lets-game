@@ -1,34 +1,101 @@
+// import { createSelector } from 'reselect';
+// import { ApplicationState } from '../types';
+
+// export const gameStore = (state: ApplicationState) => state.game;
+
+// export const getRooms = createSelector(
+//     gameStore,
+//     ({ rooms }) => rooms,
+// );
+
+// export const getChecker = createSelector(
+//     gameStore,
+//     (game) => game.checker,
+// );
+
+// export const getCheckerDesk = createSelector(
+//     getChecker,
+//     (checker) => checker.desk,
+// );
+
+// export const getCurrentChecker = createSelector(
+//     gameStore,
+//     (currentChecker) => currentChecker,
+// );
+
+// export const getTicTacToeDesk = createSelector(
+//     gameStore,
+//     (game) => game.ticTacToe,
+// )
+
+// export const getCurrentRoom = createSelector(
+//     gameStore,
+//     (game) => game.currentRoom,
+// );
+
 import { createSelector } from 'reselect';
+import i18next from 'i18next';
+import { DRAW } from 'src/constants/simpleConstants';
 import { ApplicationState } from '../types';
 
-export const gameStore = (state: ApplicationState) => state.game;
+export const gameStore = (store: ApplicationState) => store.game;
 
 export const getRooms = createSelector(
     gameStore,
     ({ rooms }) => rooms,
 );
 
-export const getChecker = createSelector(
+export const getUserLogin = createSelector(
     gameStore,
-    (game) => game.checker,
+    ({ userLogin }) => userLogin,
 );
 
-export const getCheckerDesk = createSelector(
-    getChecker,
-    (checker) => checker.desk,
+export const getActualRoom = createSelector(
+    gameStore,
+    ({ actualRoom }) => actualRoom,
 );
 
-export const getCurrentChecker = createSelector(
-    gameStore,
-    (currentChecker) => currentChecker,
+export const getActualRoomGameType = createSelector(
+    getActualRoom,
+    ({ gameType }) => gameType,
 );
 
-export const getTicTacToeDesk = createSelector(
+export const getStepOrderSelector = createSelector(
     gameStore,
-    (game) => game.ticTacToe,
-)
+    ({ stepOrder }) => stepOrder,
+);
 
-export const getCurrentRoom = createSelector(
+export const getTicStatus = createSelector(
     gameStore,
-    (game) => game.currentRoom,
+    (_store, id: number) => id,
+    ({ stepHistory }, id) => stepHistory[id],
+);
+
+export const getPossibleSteps = createSelector(
+    gameStore,
+    ({ possibleSteps }) => possibleSteps,
+);
+
+export const getPossibleStepPosition = createSelector(
+    gameStore,
+    (_store, id: number) => id,
+    ({ possibleSteps }, id) => {
+        const position = possibleSteps.find(el => el.stepIndex === id);
+        if (position) return true;
+        return null;
+    },
+);
+
+export const getWinner = createSelector(
+    gameStore,
+    ({ winner, userLogin }) => {
+        switch (winner) {
+            case userLogin: return i18next.t('winner');
+            case DRAW: return i18next.t(DRAW);
+            default: {
+                if (winner === '') return '';
+                if (winner !== userLogin) return i18next.t('loser');
+            }
+        }
+    },
 );

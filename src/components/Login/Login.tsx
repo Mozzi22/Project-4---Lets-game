@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, withRouter } from 'react-router-dom';
+import { NavLink, Redirect, withRouter } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { APP_ROUTES } from 'src/constants/reactRoutes';
 import { logInputs } from 'src/constants/componentsСonsts';
@@ -16,11 +16,12 @@ interface ILogin {
     setValue: (data: TLoginValue) => void;
 }
 
-const Login = ({ sendLoginRequest, setLoginValue, fields, setValue, history }: ILogin) => {
+const Login = ({ sendLoginRequest, setLoginValue, fields, setValue }: ILogin) => {
   const { t } = useTranslation();
 
-  const handleSendLoginRequest = () => {
-    sendLoginRequest(history)
+if (fields.success) {
+    setValue({ name: 'success', value: false });
+    return <Redirect to={APP_ROUTES.main} />;
   }
 
   return (
@@ -52,7 +53,7 @@ const Login = ({ sendLoginRequest, setLoginValue, fields, setValue, history }: I
           height="50px"
           content="login_btn"
           id="login"
-          onClick={handleSendLoginRequest}
+          onClick={sendLoginRequest}
           backgroundSize='0'
         />
         <span>
@@ -64,4 +65,4 @@ const Login = ({ sendLoginRequest, setLoginValue, fields, setValue, history }: I
   );
 };
 
-export default withRouter(Login);
+export default Login;

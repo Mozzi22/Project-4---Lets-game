@@ -3,8 +3,8 @@ import { StDisplayGame } from './styled';
 import Checkers from './Сheckers';
 import TicTacToe from './TicTacToe';
 
-const DisplayGame = ({ currentRoomName }) => {
-    switch (currentRoomName.room_name) {
+const DisplayGame = ({ gameType }) => {
+    switch (gameType) {
         case 'Checkers': return (
             <StDisplayGame>
                 {/* <Turn/> */}
