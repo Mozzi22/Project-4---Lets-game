@@ -5,7 +5,7 @@ import { IStRoom } from './types';
 export const StRoomListItems = styled.div`
     display: flex;
     overflow: hidden;
-    height: 60px;
+    min-height: 60px;
     align-items: center;
     color: ${({ color = colorDefault }) => color};
     margin: 0 0 20px;
@@ -30,7 +30,7 @@ export const StRoom = styled.div < IStRoom > `
     align-items: center;
     width: 100%;
         h2{
-            font-size: 26px;
+            font-size: 18px;
             margin: 0;
         }
         h3{

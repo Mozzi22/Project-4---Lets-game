@@ -4,9 +4,9 @@ import { changeModalVisibility } from 'src/Store/modals/actions';
 import { getModalVisibilityIsOpen } from 'src/Store/modals/selectors';
 import ModalComponent from './ModalComponent';
 import { TModalData } from 'src/Store/modals/types';
-import { AplicationState } from 'src/Store/types';
+import { ApplicationState } from 'src/Store/types';
 
-const mapStateToProps = (state: AplicationState, ownProps) => ({
+const mapStateToProps = (state: ApplicationState, ownProps) => ({
     isOpen: getModalVisibilityIsOpen(state, ownProps),
 });
 

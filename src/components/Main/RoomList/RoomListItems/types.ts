@@ -1,7 +1,7 @@
 import { EnumType } from "typescript"
 
 export type TRegistrationValue = {
-     room_id: string, room_name?: string 
+    room_id: string, room_name?: string
 }
 export type TRegistrationData = {
     name: string, value: TRegistrationValue
@@ -12,6 +12,8 @@ export interface IRoomListItems {
     color?: string;
     login?: string;
     setValue: (arg: TRegistrationData) => void;
+    joinRoom: () => void;
+    playWithBot: () => void,
     currentRoomName: string;
     rooms: string;
     typeGame: string;

@@ -56,6 +56,11 @@ export const ITEMS_FOR_TIC_TAC_TOE = [{
     figure: null,
 }];
 
+export const TIC_TAC_ITEM = {
+    X: 'X',
+    O: 'O',
+};
+
 export const INITIAL_STATE_FOR_CHECKER = Array.from({ length: 64 }, (_, i) => {
     let color = null
     let isChecked = null

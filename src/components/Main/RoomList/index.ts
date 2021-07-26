@@ -1,10 +1,10 @@
 import { getUserLogin } from 'src/Store/login/selectors';
 import RoomList from './RoomList';
 import { connect } from 'react-redux';
-import { AplicationState } from 'src/Store/types';
+import { ApplicationState } from 'src/Store/types';
 import { getRooms } from 'src/store/games/selectors';
 
-const mapStateToProps = (state: AplicationState) => ({
+const mapStateToProps = (state: ApplicationState) => ({
     rooms: getRooms(state),
     userLogin: getUserLogin(state)
 });

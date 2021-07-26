@@ -1,15 +1,15 @@
 import React from 'react';
 import { StSingleSellNine } from './styled';
 import { TSingleSell } from 'src/components/Main/RoomContent/DisplayGame/types';
+import CrossAndZero from './CrosssAndZero';
 
-const SingleSellNine: React.FC<TSingleSell> = ({ id }) => {
-    const handleClick = (e: React.MouseEvent) => {};
-    const currentId = id + 1;
+const SingleSellNine: React.FC<TSingleSell> = ({ onClick, id, isChecked, figure }) => {
+    const handleClick = () => onClick(id);
     return (
-        <StSingleSellNine
-        onClick={handleClick}
+        <StSingleSellNine 
+        onClick={figure ? null : handleClick}
         >
-            {currentId}
+            {figure ? <CrossAndZero position={id} isChecked={isChecked} figure={figure}/> : null}
         </StSingleSellNine>
     );
 };

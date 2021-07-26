@@ -62,4 +62,52 @@ describe('game actions', () => {
                 .toEqual({ type: actionTypes.PLAY_WITH_BOT });
         });
     });
+    describe('actions.do_step', () => {
+        it('toBe defined', () => {
+            expect(actions.do_step).toBeDefined();
+        });
+        it('toBe function', () => {
+            expect(typeof actions.do_step).toBe('function');
+        });
+        it('should return value', () => {
+            expect(actions.do_step())
+                .toEqual({ type: actionTypes.DO_STEP });
+        });
+    });
+    describe('actions.setCurrentChecker', () => {
+        it('toBe defined', () => {
+            expect(actions.setCurrentChecker).toBeDefined();
+        });
+        it('toBe function', () => {
+            expect(typeof actions.setCurrentChecker).toBe('function');
+        });
+        it('should return value', () => {
+            expect(actions.setCurrentChecker())
+                .toEqual({ type: actionTypes.SET_CURRENT_CHECKER });
+        });
+    });
+    describe('actions.setCheckerDesk', () => {
+        it('toBe defined', () => {
+            expect(actions.setCheckerDesk).toBeDefined();
+        });
+        it('toBe function', () => {
+            expect(typeof actions.setCheckerDesk).toBe('function');
+        });
+        it('should return value', () => {
+            expect(actions.setCheckerDesk())
+                .toEqual({ type: actionTypes.SET_CHECKER_DESK });
+        });
+    });
+    describe('actions.setCurrentRoom', () => {
+        it('toBe defined', () => {
+            expect(actions.setCurrentRoom).toBeDefined();
+        });
+        it('toBe function', () => {
+            expect(typeof actions.setCurrentRoom).toBe('function');
+        });
+        it('should return value', () => {
+            expect(actions.setCurrentRoom())
+                .toEqual({ type: actionTypes.SET_CURRENT_ROOM });
+        });
+    });
 });

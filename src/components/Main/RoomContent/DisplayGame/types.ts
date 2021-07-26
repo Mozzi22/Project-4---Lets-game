@@ -3,4 +3,6 @@ export type TSingleSell = {
     isChecked: boolean | null;
     color: string | null;
     position: number;
+    onClick: (arg: number) => void,
+    figure: string | null,
 }
