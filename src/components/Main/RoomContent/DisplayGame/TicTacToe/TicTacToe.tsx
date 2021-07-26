@@ -1,23 +1,20 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { StTicTacToe } from './styled';
 import SingleSellNine from './SingleSellNine';
 
-const TicTacToe = ({ ticTacToe, do_step }) => {
-    console.log(ticTacToe)
-      const renderSquares = useMemo(() => {
-    return ticTacToe.map((item) => (
-      <SingleSellNine
-        key={new Date().getDate()}
-        id={item.position}
-        figure={item.figure}
-        isChecked={item.isChecked}
-        onClick={do_step}
-      />
-    ));
-  },[ticTacToe]);
+const TicTacToe = ({ ticTacToe, doStepTicTacToe }) => {
+
     return (
         <StTicTacToe>
-            {renderSquares}
+           {ticTacToe.map((item) =>
+                <SingleSellNine
+                    key={item.position}
+                    id={item.position}
+                    figure={item.figure}
+                    isChecked={item.isChecked}
+                    onClick={doStepTicTacToe}
+                />
+            )}
         </StTicTacToe>
     );
 };

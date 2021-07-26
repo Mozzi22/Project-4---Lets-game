@@ -32,16 +32,9 @@ const RoomListItems: React.FC<IRoomListItems> = ({
     });
 
     const { t } = useTranslation();
-    const handleJoinToGame = () => {
-      joinRoom(id);
-      console.log('playyyyyy handleJoinToGame', id)
-    };
+    const handleJoinToGame = () => joinRoom(id);
 
-  const handleJoinToGameWithBot = () => {
-      joinRoom(id);
-      // playWithBot();
-      console.log('playyyyyy handleJoinToGameWithBot')
-    };
+  const handleJoinToGameWithBot = () => joinRoom(id);
     const handleClick = () => {
       setCurrentRoom({ name: 'currentRoom', value: { room_id: id, room_name: gameType }});
     };

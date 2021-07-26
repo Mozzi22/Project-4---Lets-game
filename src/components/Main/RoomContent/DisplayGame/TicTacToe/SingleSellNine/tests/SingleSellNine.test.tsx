@@ -2,7 +2,7 @@ import React from 'react';
 import SingleSellNine from '../SingleSellNine';
 import { mount, shallow } from 'enzyme';
 import configureStore from 'redux-mock-store';
-import { shallowSmart, mountSmart } from 'src/helpers/testHelper';
+import { mountSmart } from 'src/helpers/testHelper';
 
 const mockStore = configureStore();
 const store = mockStore({
@@ -10,10 +10,10 @@ const store = mockStore({
 });
 describe('SingleSellNine', () => {
     const props = {
-        id: 12,
-        onClick: jest.fn(),
-        isChecked: true ,
-        figure: null,
+    id: 12,
+    onClick: jest.fn(),
+    isChecked: true ,
+    figure: null,
     }
     it('Should match snapshot', () => {
         const component = shallow(<SingleSellNine {...props}/>);
@@ -29,10 +29,10 @@ describe('SingleSellNine', () => {
     });
     it('should render CrossAndZero', () => {
         const props = {
-            id: 12,
-            onClick: jest.fn(),
-            isChecked: true, 
-            figure: 'X',
+        id: 12,
+        onClick: jest.fn(),
+        isChecked: true, 
+        figure: 'X',
         }
             const component = mountSmart(<SingleSellNine {...props} />, store);
         expect(component.find('CrossAndZero')).toHaveLength(1);

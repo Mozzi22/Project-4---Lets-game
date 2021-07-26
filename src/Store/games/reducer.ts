@@ -21,7 +21,7 @@ export const initialState: TInitialUserGame = {
         count: 0,
         isUserStep: null,
   },
-    join: ''
+    joinToRoom: ''
 };
 
 export const reducer: Reducer<TInitialUserGame, TActionsLogin> = (
@@ -32,7 +32,7 @@ export const reducer: Reducer<TInitialUserGame, TActionsLogin> = (
         case AT.SET_CURRENT_ROOM:
             return { ...state, [action.payload.name]: action.payload.value};
         case AT.JOIN_ROOM:
-            return { ...state, join: action.payload };
+            return { ...state, joinToRoom: action.payload };
         case AT.PLAY_WITH_BOT:
             return { ...state, rooms: action.payload };
         case AT.SET_CURRENT_CHECKER: return {
@@ -58,8 +58,6 @@ export const reducer: Reducer<TInitialUserGame, TActionsLogin> = (
                     count: state.steps.count + 1,
                 }
             };
-     
-      
         default: return { ...state };
     }
 };

@@ -2,10 +2,10 @@ export type TInitialUserGame = {
     rooms: Array<TRoom>;
     checker: TChecker;
     currentChecker: TCurrentChecker | {};
-    ticTacToe: TTicTacToe[];
+    ticTacToe: Array<TTicTacToe>;
     currentRoom: TCurrentRoom | {};
     steps: TSteps;
-    join: string;
+    joinToRoom: string;
 }
 
 export type TRoom = {
@@ -29,7 +29,7 @@ export type TJoinRoom = {
 }
 
 export type TChecker = {
-    desk: TCheckers[];
+    desk: Array<TCheckers>;
 }
 
 export type TCheckers = {

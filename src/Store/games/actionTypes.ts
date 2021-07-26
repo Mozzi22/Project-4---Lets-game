@@ -7,5 +7,5 @@ export enum actionTypes {
     PLAY_WITH_BOT = '@@game/PLAY_WITH_BOT',
     SET_CHECKER_DESK = '@@games/SET_CHECKER_DESK',
     SET_CURRENT_CHECKER = '@@games/SET_CURRENT_CHECKER',
-    DO_STEP = '@@DO_STEP',
+    DO_STEP = '@@games/DO_STEP',
 }

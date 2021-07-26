@@ -44,7 +44,6 @@ export function* workerConnection(): SagaIterator {
         yield call(init, stompClient);
         while (stompChannel) {
             const payload = yield take(stompChannel);
-            console.log("payload", payload)
             yield put(payload);
         }
     } catch (e) {
@@ -61,7 +60,6 @@ export function* createRoomSaga({ payload }): SagaIterator {
             gameType: payload,
             id: uuidv4(),
         };
-        console.log("createRoomSaga", body)
         const token: string = yield call([support, support.getTokenFromCookie], 'token');
         yield call(
             [stompClient, stompClient.send],
@@ -85,7 +83,6 @@ export function* joinRoomSaga({ payload }): SagaIterator {
             guestLogin,
             id: payload,
         };
-        console.log('payload JOIN', payload);
 
         yield call(
             [stompClient, stompClient.subscribe],

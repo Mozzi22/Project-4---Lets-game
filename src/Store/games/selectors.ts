@@ -32,8 +32,3 @@ export const getCurrentRoom = createSelector(
     gameStore,
     (game) => game.currentRoom,
 );
-
-export const getCurrentRoomName = createSelector(
-    getCurrentRoom,
-    (currentRoom) => currentRoom,
-);

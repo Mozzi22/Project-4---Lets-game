@@ -7,5 +7,5 @@ export const StCrossAndZero = styled.div`
     align-items: center;
     color: black;
     justify-content: center;
-    background-color: wheat;
-`;  
+    font-size: 40px;
+`;

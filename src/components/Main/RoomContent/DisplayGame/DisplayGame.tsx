@@ -4,7 +4,6 @@ import Checkers from './Сheckers';
 import TicTacToe from './TicTacToe';
 
 const DisplayGame = ({ currentRoomName }) => {
-        console.log(currentRoomName.room_name)
     switch (currentRoomName.room_name) {
         case 'Checkers': return (
             <StDisplayGame>
