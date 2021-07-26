@@ -21,7 +21,6 @@ const CreateRoomsView: React.FC<ICreateRoomsView> = ({ createRoom, changeModalVi
     const handleCreateNewGame = () => {
         createRoom(state.gameType);
         handleCloseModal();
-
     };
      const getFunctionForButtons = (el) => {
         switch (el.id) {

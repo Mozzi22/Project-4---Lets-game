@@ -44,6 +44,7 @@ export function* workerConnection(): SagaIterator {
         yield call(init, stompClient);
         while (stompChannel) {
             const payload = yield take(stompChannel);
+            console.log("payload", payload)
             yield put(payload);
         }
     } catch (e) {
@@ -59,7 +60,8 @@ export function* createRoomSaga({ payload }): SagaIterator {
             creatorLogin,
             gameType: payload,
             id: uuidv4(),
-            };
+        };
+        console.log("createRoomSaga", body)
         const token: string = yield call([support, support.getTokenFromCookie], 'token');
         yield call(
             [stompClient, stompClient.send],
@@ -76,7 +78,64 @@ export function* createRoomSaga({ payload }): SagaIterator {
         }
 }
 
+export function* joinRoomSaga({ payload }): SagaIterator {
+    try {
+        const guestLogin = yield select(getUserLogin);
+        const body = {
+            guestLogin,
+            id: payload,
+        };
+        console.log('payload JOIN', payload);
+
+        yield call(
+            [stompClient, stompClient.subscribe],
+            `${routes.ws.game}${payload}`);
+
+        yield call(
+            [stompClient, stompClient.send],
+            routes.ws.join_room, {},
+            JSON.stringify(body)
+        );
+        yield call(
+            [stompClient, stompClient.send],
+            routes.ws.update_room,
+            JSON.stringify(body)
+            );
+        } catch (error) {
+            console.log("error", error);
+        }
+}
+
+// export function* workerSubscribeRoom({ payload }): SagaIterator {
+//     yield call([stompClient, stompClient.subscribe], `${routes.ws.subs.newGame}${payload}`, support.subGame);
+// }
+
+// export function* playWithBotSaga({ payload }): SagaIterator {
+    // try {
+    //     const creatorLogin = yield select(getUserLogin);
+    //     const body = {
+    //         creatorLogin,
+    //         gameType: payload,
+    //         id: uuidv4(),
+    //         };
+    //     const token: string = yield call([support, support.getTokenFromCookie], 'token');
+    //     yield call(
+    //         [stompClient, stompClient.send],
+    //         routes.ws.create_room, { Authorization: token },
+    //         JSON.stringify(body)
+    //         );
+    //     yield call(
+    //         [stompClient, stompClient.send],
+    //         routes.ws.update_room, {},
+    //         JSON.stringify(body)
+    //     );
+    //     } catch (error) {
+    //         console.log("error", error);
+    //     }
+
+
 export function* watcherGames() {
     yield takeEvery(actionTypes.INITIAL_WEB_SOCKET, workerConnection);
     yield takeEvery(actionTypes.CREATE_ROOM, createRoomSaga);
+    yield takeEvery(actionTypes.JOIN_ROOM, joinRoomSaga);
 }

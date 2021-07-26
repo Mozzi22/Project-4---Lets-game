@@ -1,3 +1,3 @@
 import rootReducer from './index';
 
-export type AplicationState = ReturnType<typeof rootReducer>
+export type ApplicationState = ReturnType<typeof rootReducer>
