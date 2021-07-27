@@ -13,7 +13,7 @@
                 ],
                 "alias": {
                     "constants": "src/constants",
-                    "store": "src/store",
+                    "store": "src/Store",
                     "src": "src",
                     "helpers": "src/helpers"
                 },

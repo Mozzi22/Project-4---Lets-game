@@ -1,7 +1,7 @@
 import RoomList from './RoomList';
 import { connect } from 'react-redux';
 import { ApplicationState } from 'src/Store/types';
-import { getRooms, getUserLogin } from 'src/store/games/selectors';
+import { getRooms, getUserLogin } from 'src/Store/games/selectors';
 
 const mapStateToProps = (state: ApplicationState) => ({
     rooms: getRooms(state),
