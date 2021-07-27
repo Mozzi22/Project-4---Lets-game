@@ -2,12 +2,12 @@ import { NotificationManager } from 'react-notifications';
 import i18next from 'i18next';
 import moment from 'moment';
 import { store } from '../index';
-import { 
+import {
   gameEvent,
   doBotStepTic,
   putPossibleSteps,
 } from 'src/Store/games/actions';
-import { BOT_CHECKERS, BOT_TIC } from 'src/constants/simpleConstants';
+import { BOT_CHECKERS, BOT_TIC } from 'src/constants/componentsСonsts';
 
 export const support = {
     setTokenInCookie: (payload: string, age: number = 3600 * 8) => {
@@ -25,7 +25,7 @@ export const support = {
     const { body: parsedBody } = JSON.parse(body);
     switch (parsedBody) {
       case BOT_TIC:
-      case BOT_CHECKERS: 
+      case BOT_CHECKERS:
       case 'Invalid step Bot1':
       case 'Invalid step Bot2':
       case 'Invalid step Bot3':

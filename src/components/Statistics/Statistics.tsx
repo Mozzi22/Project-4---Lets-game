@@ -1,19 +1,24 @@
 import React, { useEffect } from 'react';
 
-const Statistics = ({ getStatistics, statistics }) => {
+const Statistics = ({ getStatistics, statistics, userLogin }) => {
 useEffect(() => {
     getStatistics();
-    
 }, []);
-    console.log(getStatistics());
     return (
         <div>
-             {statistics.map((el) => (
-            <p id={el.login} key={el.login} />
-        ))}
-        <div>GHJGHJHGHJHG</div>
+            {
+                statistics.length > 0
+                        ? statistics.map((game) => (
+                            <div
+                                key={game.userLogin}
+                                winnerLogin={game.winnerLogin}
+                                guestLogin={game.guestLogin}
+                            />
+                    ))
+                    : '-'
+                }
         </div>
-    );
+    )
 };
 
 export default Statistics;

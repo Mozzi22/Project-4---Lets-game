@@ -1,41 +1,6 @@
-// import { createSelector } from 'reselect';
-// import { ApplicationState } from '../types';
-
-// export const gameStore = (state: ApplicationState) => state.game;
-
-// export const getRooms = createSelector(
-//     gameStore,
-//     ({ rooms }) => rooms,
-// );
-
-// export const getChecker = createSelector(
-//     gameStore,
-//     (game) => game.checker,
-// );
-
-// export const getCheckerDesk = createSelector(
-//     getChecker,
-//     (checker) => checker.desk,
-// );
-
-// export const getCurrentChecker = createSelector(
-//     gameStore,
-//     (currentChecker) => currentChecker,
-// );
-
-// export const getTicTacToeDesk = createSelector(
-//     gameStore,
-//     (game) => game.ticTacToe,
-// )
-
-// export const getCurrentRoom = createSelector(
-//     gameStore,
-//     (game) => game.currentRoom,
-// );
-
 import { createSelector } from 'reselect';
 import i18next from 'i18next';
-import { DRAW } from 'src/constants/simpleConstants';
+import { DRAW } from 'src/constants/componentsСonsts';
 import { ApplicationState } from '../types';
 
 export const gameStore = (store: ApplicationState) => store.game;
@@ -103,9 +68,4 @@ export const getWinner = createSelector(
 export const getStatisticsList = createSelector(
   gameStore,
   ({ statistics }) => statistics
-);
-
-export const getIsLoading = createSelector(
-  gameStore,
-  ({ isLoading }) => isLoading
 );
