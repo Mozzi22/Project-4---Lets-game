@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { shallowSmart } from 'src/helpers/testHelper';
+import { shallowSmart } from 'src/helpers/tests/testHelper';
 import ModalComponent from '../ModalComponent';
 import Component from '../ModalTestComponent';
 

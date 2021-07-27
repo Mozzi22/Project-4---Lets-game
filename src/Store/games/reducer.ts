@@ -84,10 +84,12 @@ export const initialState: TInitialGame = {
         : [],
     winner: '',
     possibleSteps: [],
+    filterByRoomName: '',
 };
 
 export const reducer: Reducer<TInitialGame, TActionsRegistration> = (state = initialState, action) => {
     switch (action.type) {
+        case AT.SET_VALUE_SEARCH: return { ...state, [action.payload.name]: action.payload.value}
         case AT.PUT_ROOMS: return { ...state, rooms: action.payload };
         case AT.SET_USER_LOGIN: return { ...state, userLogin: action.payload };
         case AT.SET_ACTUAL_ROOM: return { ...state, actualRoom: action.payload };

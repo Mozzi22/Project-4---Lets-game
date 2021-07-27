@@ -1,8 +1,10 @@
-export const BOT_NAME = 'Bot';
-export const DRAW = 'draw';
-export const CHECKERS = 'Checkers';
-export const BOT_TIC = 'Not your turn Bot';
-export const BOT_CHECKERS = 'NOT YOU TURN Bot';
+import i18next from 'i18next';
+
+export const BOT_NAME = i18next.t('bot');
+export const DRAW = i18next.t('draw');
+export const CHECKERS = i18next.t('сheckers');
+export const BOT_TIC = i18next.t('Not your turn Bot');
+export const BOT_CHECKERS = i18next.t('NOT YOU TURN Bot');
 export const CHECKER_FIELD_INIT = [
   null,
   {

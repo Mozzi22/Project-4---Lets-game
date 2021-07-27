@@ -17,6 +17,7 @@ import { action } from 'typesafe-actions';
 import { actionTypes as AT } from './actionTypes';
 import { TRoom, TStepOrder, THistory } from './types';
 
+export const setValueSearch = payload => action(AT.SET_VALUE_SEARCH, payload);
 export const getSockJSConnection = () => action(AT.GET_SOCKJS_CONNECTION);
 export const putRooms = (payload: TRoom[]) => action(AT.PUT_ROOMS, payload);
 export const setUserLogin = (payload: string) => action(AT.SET_USER_LOGIN, payload);

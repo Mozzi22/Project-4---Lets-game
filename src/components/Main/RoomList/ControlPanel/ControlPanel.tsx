@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { StControlPanel } from './styled';
 import { IControlPanel } from './types';
 
-const ControlPanel: React.FC<IControlPanel> = ({ setValue, filterByRoomName, changeModalVisibility }) => {
+const ControlPanel: React.FC<IControlPanel> = ({ setValueSearch, filterByRoomName, changeModalVisibility }) => {
     const { t } = useTranslation();
     const handleCreateRoom = () => changeModalVisibility({
         isOpen: true, data: {}, modalType: 'createGame',
@@ -21,7 +21,7 @@ const ControlPanel: React.FC<IControlPanel> = ({ setValue, filterByRoomName, cha
                 inputHeight="45px"
                 borderRadius="0px"
                 value={filterByRoomName}
-                onChange={setValue}
+                onChange={setValueSearch}
                 placeholder='placeholder_search_input'
                 margin="0 auto"
                 color="white"

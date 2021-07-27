@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallowSmart, mountSmart } from 'src/helpers/testHelper';
+import { shallowSmart, mountSmart } from 'src/helpers/tests/testHelper';
 import Registration from '../Registration';
 import 'react-router-dom';
 import 'src/i18n';

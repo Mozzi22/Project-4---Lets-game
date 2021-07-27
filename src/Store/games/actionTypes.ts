@@ -10,6 +10,7 @@
 //     DO_STEP = '@@games/DO_STEP',
 // }
 export enum actionTypes{
+    SET_VALUE_SEARCH = '@@game/SET_VALUE_SEARCH',
     GET_SOCKJS_CONNECTION = '@@game/GET_SOCKJS_CONNECTION',
     PUT_ROOMS = '@@game/PUT_ROOMS',
     SET_USER_LOGIN = '@@game/SET_USER_LOGIN',
