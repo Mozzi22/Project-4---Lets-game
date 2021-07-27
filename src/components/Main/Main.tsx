@@ -8,7 +8,7 @@ const Main = ({getSockJSConnection, disconnect}) => {
         getSockJSConnection();
         return () => disconnect();
     },
-             []);
+    []);
     return (
         <StMain>
             <RoomList/> 

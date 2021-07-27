@@ -21,8 +21,6 @@
     "invalid_login": "Mail must be in the format mail@gmail.com",
     "invalid_password": "The password should only consist of letters and numbers from 6 to 25 characters long",
     "password_mismatch": "Password mismatch",
-    "invalid_first_name": "The name must be only letters from 2 to 30 characters",
-    "invalid_last_name": "The surname must only consist of letters from 6 to 25 characters",
     "input_error": "Input Error",
     "reg_error": "Registration error",
     "login_error": "Login failed",
@@ -61,5 +59,7 @@
     "join_to_game": "Join",
     "join_to_game_with_bot": "Play with Bot",
     "TicTacToe": "Tic Tac Toe",
-    "Checkers": "Checkers"
+    "Checkers": "Checkers",
+    "not_your_turn": "Opponent turn",
+    "game_error": ""
 }

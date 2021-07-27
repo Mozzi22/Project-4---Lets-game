@@ -59,5 +59,7 @@
     "join_to_game": "Присоединиться",
     "join_to_game_with_bot": "Играть с ботом",
     "TicTacToe": "Крестики-нолики",
-    "Checkers": "Шашки"
+    "Checkers": "Шашки",
+    "not_your_turn": "Очередь соперника",
+    "game_error": ""
 }
