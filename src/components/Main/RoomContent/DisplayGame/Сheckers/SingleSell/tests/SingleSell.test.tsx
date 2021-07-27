@@ -1,7 +1,7 @@
 import React from 'react';
 import SingleSell from '../SingleSell';
 import { mount, shallow } from 'enzyme';
-import { shallowSmart, mountSmart } from 'src/helpers/testHelper';
+import { shallowSmart, mountSmart } from 'src/helpers/tests/testHelper';
 import configureStore from 'redux-mock-store';
 
 const mockStore = configureStore();

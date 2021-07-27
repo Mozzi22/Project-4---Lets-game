@@ -1,6 +1,6 @@
 import React from 'react';
 import configureStore from 'redux-mock-store';
-import { shallowSmart } from 'src/helpers/testHelper';
+import { shallowSmart } from 'src/helpers/tests/testHelper';
 import App from '../App';
 import 'src/i18n';
 

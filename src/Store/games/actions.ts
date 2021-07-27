@@ -5,7 +5,7 @@ import { TRoom, TCurrentRoom, TStepOrder, THistory, TCheckers, TCurrentChecker, 
 export const initialWebSocket = () => action(AT.INITIAL_WEB_SOCKET);
 export const setAllRooms = (payload: TRoom[]) => action(AT.SET_ALL_ROOMS, payload);
 export const createRoom = (payload: string) => action(AT.CREATE_ROOM, payload);
-
+export const setValueSearch = (payload: string) => action(AT.SET_VALUE_SEARCH, payload);
 export const joinRoom = (payload: string) => action(AT.JOIN_ROOM, payload);
 export const playWithBot = (payload: string) => action(AT.PLAY_WITH_BOT, payload);
 

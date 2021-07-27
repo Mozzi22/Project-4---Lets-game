@@ -1,6 +1,6 @@
 import React from 'react';
 import TicTacToe from '../TicTacToe';
-import { mountSmart } from 'src/helpers/testHelper';
+import { mountSmart } from 'src/helpers/tests/testHelper';
 import { mount, shallow } from 'enzyme';
 
 describe('TicTacToe', () => {

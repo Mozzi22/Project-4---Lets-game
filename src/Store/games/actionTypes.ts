@@ -1,4 +1,7 @@
 export enum actionTypes{
+    SET_VALUE_SEARCH = '@@game/SET_VALUE_SEARCH',
+    GET_SOCKJS_CONNECTION = '@@game/GET_SOCKJS_CONNECTION',
+    PUT_ROOMS = '@@game/PUT_ROOMS',
     INITIAL_WEB_SOCKET = '@@game/INITIAL_WEB_SOCKET',
     SET_ALL_ROOMS = '@@game/SET_ALL_ROOMS',
     SET_USER_LOGIN = '@@game/SET_USER_LOGIN',

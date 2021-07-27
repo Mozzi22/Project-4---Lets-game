@@ -21,6 +21,7 @@ export const initialState: TInitialUserGame = {
         : [],
     winner: '',
     possibleSteps: [],
+    filterByRoomName: '',
     statistics: [],
     currentChecker: {},
     ticTacToe: ITEMS_FOR_TIC_TAC_TOE,
@@ -31,6 +32,8 @@ export const initialState: TInitialUserGame = {
 
 export const reducer: Reducer<TInitialUserGame, TActionsGames> = (state = initialState, action) => {
     switch (action.type) {
+        case AT.SET_VALUE_SEARCH:
+            return { ...state, [action.payload.name]: action.payload.value}
         case AT.SET_ALL_ROOMS:
             return { ...state, rooms: action.payload };
         case AT.SET_USER_LOGIN:
@@ -48,5 +51,5 @@ export const reducer: Reducer<TInitialUserGame, TActionsGames> = (state = initia
         case AT.SET_STATISTICS_SUCCESS:
             return { ...state, statistics: action.payload };
                 default: return state;
-        }
+    }
 };

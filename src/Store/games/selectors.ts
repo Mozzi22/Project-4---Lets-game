@@ -5,9 +5,23 @@ import { ApplicationState } from '../types';
 
 export const gameStore = (store: ApplicationState) => store.game;
 
+export const getFilterByRoomName = createSelector(
+    gameStore,
+    ({ filterByRoomName }) => filterByRoomName,
+);
+
 export const getRooms = createSelector(
     gameStore,
-    ({ rooms }) => rooms,
+    getFilterByRoomName,
+    ({ rooms }, filterByRoomName ) => {
+        if (rooms.length === 0) {
+            return []
+        }
+        if (!filterByRoomName) {
+            return rooms
+        }
+        return rooms.filter(room => room.creatorLogin.toLowerCase().includes(filterByRoomName.toLowerCase()));
+    },
 );
 
 export const getUserLogin = createSelector(

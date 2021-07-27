@@ -10,13 +10,12 @@ const RoomListItems: React.FC<IRoomListItems> = ({ creatorLogin, gameType, userL
     joinRoom, playWithBot, subscribeRoom
 }) => {
     const { t } = useTranslation();
-    const roomOwner: string = creatorLogin === userLogin ? t('your_room') : creatorLogin;
-    const { content, onClickFunc } = onClickDistributor(creatorLogin, userLogin);
+    // const roomOwner: string = creatorLogin === userLogin ? creatorLogin : creatorLogin;
     const onClickDistributor = (creatorLogin: string, userLogin: string)=> {
         return creatorLogin === userLogin
             ? {
                 content: 'play_with_bot',
-                onClickFunc: e => playWithBot(e.target.id),
+                onClickFunc: (e) => playWithBot(e.target.id),
             }
             : {
                 content: 'join',
@@ -26,11 +25,13 @@ const RoomListItems: React.FC<IRoomListItems> = ({ creatorLogin, gameType, userL
                 },
             };
     };
+    const { content, onClickFunc } = onClickDistributor(creatorLogin, userLogin);
+
 
     return (
         <StRoomListItems>
             <StRoom >
-                <div><h2>{gameType}</h2><h3>{roomOwner}</h3></div>
+                <div><h2>{gameType}</h2><h3>{creatorLogin}</h3></div>
             </StRoom>
             <Button content={t(content)}
                 id={id}
