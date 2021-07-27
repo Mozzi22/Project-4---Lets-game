@@ -63,5 +63,8 @@
     "not_your_turn": "Opponent turn",
     "game_error": "",
     "you_winner": "The game is over. You won!",
-    "you_loser": "The game is over. You lost!"
+    "you_loser": "The game is over. You lost!",
+    "bot": "Bot",
+    "draw": "Draw",
+    "bot_turn": "Not your step"
 }
