@@ -1,17 +1,15 @@
 import { SagaIterator } from '@redux-saga/types';
 import { takeEvery, call, take, put, select } from 'redux-saga/effects';
-import { Stomp, CompatClient } from '@stomp/stompjs';
 import { v4 as uuidv4 } from 'uuid';
 import { NotificationManager } from 'react-notifications';
-import { eventChannel } from 'redux-saga';
 import i18next from 'i18next';
 import { routes } from 'src/constants/routes';
+import { stompClient, connection, createStompChannel, init } from 'src/helpers/websocket';
 import { getUserLogin, getActualRoom, getStepOrderSelector, getPossibleSteps } from './selectors';
 import { support } from 'src/helpers/support';
 import { BOT_NAME, DRAW, CHECKER_FIELD_INIT, CHECKERS } from 'src/constants/componentsСonsts';
 import { actionTypes } from './actionTypes';
 import {
-    setAllRooms,
     setCurrentRoom,
     getStepOrder,
     setStepHistory,
@@ -23,31 +21,7 @@ import {
 } from './actions';
 import { postRequest } from 'src/helpers/requests';
 
-export let stompClient: CompatClient;
-
-export const connection = (token: string) => {
-    const socket = new WebSocket(`${routes.baseWebSocketUrl}${routes.game_menu}`);
-    stompClient = Stomp.over(socket);
-    return new Promise(resolve => stompClient
-        .connect({ Authorization: `Bearer ${token}` }, () => resolve(stompClient)));
-};
-
-export const createStompChannel = (stompClient: CompatClient) => eventChannel((emit) => {
-    const roomsSub = stompClient.subscribe(routes.ws.rooms, ({ body }) => emit(setAllRooms(JSON.parse(body))));
-    const errorSub = stompClient.subscribe(routes.ws.errors, support.errorCatcher);
-    const stepsSub = stompClient.subscribe(routes.ws.user_game, support.possibleStep);
-    return () => {
-        roomsSub.unsubscribe();
-        errorSub.unsubscribe();
-        stepsSub.unsubscribe();
-    };
-});
-
-export const init = (stompClient: CompatClient) => {
-    stompClient.send(routes.ws.update_room);
-};
-
-export function* workerConnection() :SagaIterator {
+export function* workerConnection(): SagaIterator {
     try {
         const token = yield call([support, support.getTokenFromCookie], 'token');
         const stompClient = yield call(connection, token);
@@ -88,6 +62,13 @@ export function* joinRoom({ payload }): SagaIterator {
     yield call([stompClient, stompClient.send], routes.ws.update_room);
 }
 
+export function* playWithBot({ payload }) {
+    const body = { guestLogin: BOT_NAME, id: payload };
+    yield call(topicBotSteps, payload);
+    yield call([stompClient, stompClient.send], routes.ws.join_room, {}, JSON.stringify(body));
+    yield call([stompClient, stompClient.send], routes.ws.update_room);
+};
+
 export function* getStepsOrder({ payload }) {
     yield call([stompClient, stompClient.send], routes.ws.get_step_order,
         { uuid: payload.uuid }, JSON.stringify({ gameType: payload.gameType }));
@@ -115,13 +96,6 @@ export function* ticTacSteps({ payload }) {
         gameType, stepDto: { login: userLogin, step: payload, time: Date.now(), id },
     }));
     yield put(getStepOrder({ gameType, uuid: id }));
-};
-
-export function* playWithBot({ payload }) {
-    const body = { guestLogin: BOT_NAME, id: payload };
-    yield call(topicBotSteps, payload);
-    yield call([stompClient, stompClient.send], routes.ws.join_room, {}, JSON.stringify(body));
-    yield call([stompClient, stompClient.send], routes.ws.update_room);
 };
 
 export function* getBotSteps() {
@@ -155,59 +129,60 @@ export function* workerGameEvent({ payload }) {
             yield put(setStepHistory(parsedBody.field.gameField));
             return yield put(getStepOrder({ uuid: id, gameType }));
         }
-        const { id, gameType } = yield select(getActualRoom);
-        const stringifyField = yield call([JSON, JSON.stringify], parsedBody.field);
-        yield call([localStorage, localStorage.setItem], 'stepHistory', stringifyField);
-        yield put(setStepHistory(parsedBody.field));
-        return yield put(getStepOrder({ uuid: id, gameType }));
-    }
-    if (parsedBody.stepDtoList) {
-        let firstStepHistory = yield call([JSON, JSON.stringify], []);
-        if (parsedBody.gameType === CHECKERS) {
-            firstStepHistory = yield call([JSON, JSON.stringify], CHECKER_FIELD_INIT);
-            yield put(setStepHistory(CHECKER_FIELD_INIT));
+            const { id, gameType } = yield select(getActualRoom);
+            const stringifyField = yield call([JSON, JSON.stringify], parsedBody.field);
+            yield call([localStorage, localStorage.setItem], 'stepHistory', stringifyField);
+            yield put(setStepHistory(parsedBody.field));
+            return yield put(getStepOrder({ uuid: id, gameType }));
         }
-        yield put(setCurrentRoom(parsedBody));
-        yield put(getStepOrder({ uuid: parsedBody.id, gameType: parsedBody.gameType }));
-        yield put(setWinner(''));
-        yield call([localStorage, localStorage.setItem], 'actualRoom', payload);
-        return yield call([localStorage, localStorage.setItem], 'stepHistory', firstStepHistory);
-    }
-    if (parsedBody.stepOrderLogin) {
-        const actualRoom = yield select(getActualRoom);
-        if (actualRoom.gameType === CHECKERS
-            && parsedBody.stepOrderLogin === actualRoom.guestLogin) {
-            yield put(setStepOrder(actualRoom.creatorLogin))
-            const turn = yield select(getStepOrderSelector);
-            if(turn === BOT_NAME) yield put(askBotStep())
-            return
+        if (parsedBody.stepDtoList) {
+            let firstStepHistory = yield call([JSON, JSON.stringify], []);
+            if (parsedBody.gameType === CHECKERS) {
+                firstStepHistory = yield call([JSON, JSON.stringify], CHECKER_FIELD_INIT);
+                yield put(setStepHistory(CHECKER_FIELD_INIT));
+            }
+            yield put(setCurrentRoom(parsedBody));
+            yield put(getStepOrder({ uuid: parsedBody.id, gameType: parsedBody.gameType }));
+            yield put(setWinner(''));
+            yield call([localStorage, localStorage.setItem], 'actualRoom', payload);
+            return yield call([localStorage, localStorage.setItem], 'stepHistory', firstStepHistory);
         }
-        if (actualRoom.gameType === CHECKERS
-            && parsedBody.stepOrderLogin === actualRoom.creatorLogin) {
-            yield put(setStepOrder(actualRoom.guestLogin))
-            const turn = yield select(getStepOrderSelector);
-            if(turn === BOT_NAME) yield put(askBotStep())
-            return
-        }
-        if(parsedBody.stepOrderLogin === BOT_NAME)yield put(askBotStep())
-        return yield put(setStepOrder(parsedBody.stepOrderLogin));
+        if (parsedBody.stepOrderLogin) {
+            const actualRoom = yield select(getActualRoom);
+            if (actualRoom.gameType === CHECKERS
+                && parsedBody.stepOrderLogin === actualRoom.guestLogin) {
+                yield put(setStepOrder(actualRoom.creatorLogin))
+                const turn = yield select(getStepOrderSelector);
+                if(turn === BOT_NAME) yield put(askBotStep())
+                return
+            }
+                if (actualRoom.gameType === CHECKERS
+                    && parsedBody.stepOrderLogin === actualRoom.creatorLogin) {
+                    yield put(setStepOrder(actualRoom.guestLogin))
+                    const turn = yield select(getStepOrderSelector);
+                    if(turn === BOT_NAME) yield put(askBotStep())
+                    return
+                }
+                if(parsedBody.stepOrderLogin === BOT_NAME)yield put(askBotStep())
+                return yield put(setStepOrder(parsedBody.stepOrderLogin));
     }
 };
 
 export function* getPossibleStep({ payload }) {
     const { id, gameType } = yield select(getActualRoom);
     const login = yield select(getUserLogin);
-    const body = yield call([JSON, JSON.stringify], {
-        gameType,
-        stepDto: {
-            login,
-            step: payload,
-            time: Date.now(),
-            id,
-        },
-    });
+    const body = yield call([JSON, JSON.stringify],
+        {gameType,
+            stepDto: {
+                login,
+                step: payload,
+                time: Date.now(),
+                id,
+            },
+        });
     yield call([stompClient, stompClient.send], routes.ws.get_possible_steps, { uuid: id }, body);
 }
+
 export function* checkersSteps({ payload }) {
     const possibleSteps = yield select(getPossibleSteps);
     const startIndex = possibleSteps[0].startIndex;
