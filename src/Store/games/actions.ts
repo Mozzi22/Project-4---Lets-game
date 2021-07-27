@@ -41,3 +41,18 @@ export const getPosibleStep = (payload: string) => action(AT.GET_POSIBLE_STEP, p
 export const putPossibleSteps = (payload: any) => action(AT.PUT_POSSIBLE_STEPS, payload);
 export const doCheckerStep = (payload: string) => action(AT.DO_CHECKER_STEP, payload);
 export const logOut = () => action(AT.LOGOUT);
+
+export const startStatisticsRequest = (payload) => ({
+  type: AT.START_STATISTICS_REQUEST,
+  payload,
+});
+
+export const getStatistics = () => ({ type: AT.GET_STATISTICS });
+export const getStatisticsSuccess = (payload) => ({
+  type: AT.GET_STATISTICS_SUCCESS,
+  payload,
+});
+export const getStatisticsError = (payload) => ({
+  type: AT.GET_STATISTICS_ERROR,
+  payload,
+});

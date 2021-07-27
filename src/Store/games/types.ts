@@ -89,6 +89,8 @@ export type TInitialGame = {
     stepHistory: TStepInStepHistory[] | [];
     winner: string;
     possibleSteps: [] | any;
+    statistics: [];
+    isLoading: boolean;
 }
 
 export type THistory = Array<typeof CHECKER_FIELD__INIT> | [];

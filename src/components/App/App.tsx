@@ -9,6 +9,7 @@ import Registration from '../Registration';
 import Main from '../Main';
 import Login from '../Login';
 import Header from '../Header';
+import Statistics from '../Statistics';
 import { APP_ROUTES } from '../../constants/reactRoutes';
 import { StAppDiv } from './styled';
 
@@ -27,6 +28,7 @@ const App = () => {
           <Route path={APP_ROUTES.login} exact component={Login} />
           <Route path={APP_ROUTES.registration} exact component={Registration} />
           <Route path={APP_ROUTES.main} exact component={Main} />
+          <Route path={APP_ROUTES.statistics} exact component={Statistics} />
         </Switch>
       </BrowserRouter>
       <ModalCreateRoom />

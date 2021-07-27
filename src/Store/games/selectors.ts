@@ -113,3 +113,13 @@ export const getWinner = createSelector(
         }
     },
 );
+
+export const getStatisticsList = createSelector(
+  gameStore,
+  ({ statistics }) => statistics
+);
+
+export const getIsLoading = createSelector(
+  gameStore,
+  ({ isLoading }) => isLoading
+);

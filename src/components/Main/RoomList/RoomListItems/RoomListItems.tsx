@@ -86,9 +86,15 @@ const RoomListItems: React.FC<IRoomListItems> = ({
 
     return (
         <StRoomListItems>
-            <p>{roomOwner}</p>
-            <p>{t(gameType)}</p>
-            <Button content={content} width="150px" onClick={onClickFunc} id={id}/>
+            <StRoom >
+                <div><h2>{gameType}</h2><h3>{roomOwner}</h3></div>
+            </StRoom>
+            <Button content={t(content)}
+                id={id}
+                width="200px"
+                height="50px"
+                margin="15px 0"
+                onClick={onClickFunc} />
         </StRoomListItems>
     );
 

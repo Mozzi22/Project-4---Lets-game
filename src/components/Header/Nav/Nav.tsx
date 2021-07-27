@@ -10,10 +10,43 @@ const Nav = ({ history }) => {
     const { t } = useTranslation();
     const { colors, theme } = useTheme();
 
+    const goToGames = () => {
+        const { pathname } = history.location;
+        history.push('/main');
+    };
+    const goToStats = () => {
+        const { pathname } = history.location;
+        history.push('/statistics');
+    };
+
     return (
         <StNav theme={theme} colors={colors} >
             <img src="/public/assets/images/game-logo.svg" />
-            {LINKS.map((el) => {
+            <Link
+                        theme={theme}
+                        colors={colors}
+                        content={t('main_page')}
+                        width='110px'
+                        fontSize='18px'
+                        backgroundSize='0'
+                        padding='0'
+                        margin='0'
+                        bgColor='transparent'
+                        onClick={goToGames}
+                    />
+                    <Link
+                        theme={theme}
+                        colors={colors}
+                        content={t('statistics')}
+                        width='110px'
+                        fontSize='18px'
+                        backgroundSize='0'
+                        padding='0'
+                        margin='0'
+                        bgColor='transparent'
+                        onClick={goToStats}
+                    />
+            {/* {LINKS.map((el) => {
                 if (history.location.pathname === '/') return null;
                 return (
                     <Link
@@ -31,7 +64,7 @@ const Nav = ({ history }) => {
                         onClick={el.goToPage}
                     />
                 );
-            })}
+            })} */}
         </StNav>
     );
 };

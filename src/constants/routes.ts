@@ -53,5 +53,4 @@ export const routes = {
             getPossibleStep: '/radioactive/get-possible-steps',
         },
     },
-
 };

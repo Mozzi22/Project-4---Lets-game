@@ -41,20 +41,22 @@ import { Reducer } from 'redux';
 import { ActionType } from 'typesafe-actions';
 import * as actions from './actions';
 import { actionTypes as AT } from './actionTypes';
-import { TInitialLogin } from './types';
+import { TInitialLoginData } from './types';
 
-export const initialState: TInitialLogin = {
+export const initialState: TInitialLoginData = {
     login: '',
     password: '',
     success: false,
     isLoading: false,
+    userLogin: '',
+    token: '',
 };
 
-const actionTypes1 = actions;
-type TActions = typeof actionTypes1;
-export type TActionLogin = ActionType<TActions>;
+const actionTypesAll = actions;
+type TActions = typeof actionTypesAll ;
+export type TActionsLogin = ActionType<TActions>;
 
-export const reducer: Reducer<TInitialLogin, TActionLogin> = (state = initialState, action) => {
+export const reducer: Reducer<TInitialLoginData, TActionsLogin> = (state = initialState, action) => {
     switch (action.type) {
         case AT.SET_VALUE:
             return { ...state, [action.payload.name]: action.payload.value };
