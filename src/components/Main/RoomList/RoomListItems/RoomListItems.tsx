@@ -67,7 +67,7 @@ const RoomListItems: React.FC<IRoomListItems> = ({
   //     </StRoomListItems>
   //   );
       const { t } = useTranslation();
-    const roomOwner: string = creatorLogin === userLogin ? t('your_room') : creatorLogin;
+    const roomOwner: string = creatorLogin === userLogin ? creatorLogin : creatorLogin;
     const onClickDistributor = (creatorLogin: string, userLogin: string) : TDistResult => {
         return creatorLogin === userLogin
             ? {
