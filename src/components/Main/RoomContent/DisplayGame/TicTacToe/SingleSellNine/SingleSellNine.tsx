@@ -16,7 +16,7 @@ const SingleSellNine: React.FC<TSingleSell> = ({  id, doStep, status }) => {
             id={id}
             onClick={handleClick}
         >
-             { item }
+            { item }
         </StSingleSellNine>
     );
 };

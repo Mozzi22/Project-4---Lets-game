@@ -32,12 +32,13 @@ export const StRoom = styled.div < IStRoom > `
     max-height: 55px;
     overflow: hidden;
         h2 {
-            font-size: 18px;
+            font-size: 22px;
             margin: 0;
             overflow-wrap: break-word;
         }
         h3 {
             font-size: 16px;
+            font-weight: 400;
             text-transform: capitalize;
             margin: 0;
             overflow-wrap: break-word;

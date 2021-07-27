@@ -19,6 +19,8 @@ const Nav = ({ history }) => {
         history.push('/statistics');
     };
 
+    if (history.location.pathname === '/') return null;
+    if (history.location.pathname === '/registration') return null;
     return (
         <StNav theme={theme} colors={colors} >
             <img src="/public/assets/images/game-logo.svg" />
@@ -46,25 +48,6 @@ const Nav = ({ history }) => {
                         bgColor='transparent'
                         onClick={goToStats}
                     />
-            {/* {LINKS.map((el) => {
-                if (history.location.pathname === '/') return null;
-                return (
-                    <Link
-                        theme={theme}
-                        colors={colors}
-                        id={el.id}
-                        key={el.id}
-                        content={t(el.content)}
-                        width='110px'
-                        fontSize='18px'
-                        backgroundSize='0'
-                        padding='0'
-                        margin='0'
-                        bgColor='transparent'
-                        onClick={el.goToPage}
-                    />
-                );
-            })} */}
         </StNav>
     );
 };

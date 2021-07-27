@@ -5,6 +5,6 @@ export const StControl = styled.div`
         justify-content: flex-end;
         align-items: center;
         height: 100%;
-        width: 80%;
+        width: 100%;
         margin-right: 20px;
 `;

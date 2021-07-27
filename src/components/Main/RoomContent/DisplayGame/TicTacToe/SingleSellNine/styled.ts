@@ -10,4 +10,6 @@ export const StSingleSellNine = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 45px;
+    font-weight: 500;
 `;

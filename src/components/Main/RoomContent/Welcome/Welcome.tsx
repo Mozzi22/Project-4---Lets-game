@@ -10,7 +10,7 @@ const { colors, theme } = useTheme();
         <StWelcome  theme={theme} colors={colors}>
              {t('welcome')}
                         {' '}
-                        {userLogin}
+                       <h2>{userLogin}</h2>
                         {''}
                         <span>{t('find_interlocutors')}</span>
             </StWelcome>

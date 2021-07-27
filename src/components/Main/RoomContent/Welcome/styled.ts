@@ -11,4 +11,11 @@ export const StWelcome = styled.div`
     text-align: center;
     border-radius: 3px;
     justify-content: center;
+
+    h2 {
+        text-transform: capitalize;
+        font-weight: 400;
+        margin: 0;
+        font-size: 36px;
+    }
 `;
