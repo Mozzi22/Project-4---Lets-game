@@ -1,13 +1,14 @@
 import React from 'react';
 import DisplayGame from './DisplayGame';
+import EndGame from './EndGame';
 import { StRoomContent } from './styled';
-import Turn from './Turn';
+// import Turn from './Turn';
 
-const RoomContent = () => {
+const RoomContent = ({winner, cleanOldGame}) => {
+    if (winner) setTimeout(() => cleanOldGame());
     return (
         <StRoomContent>
-            <Turn/>
-            <DisplayGame/>
+            {winner ? <EndGame winner={winner}/> : <DisplayGame />}
         </StRoomContent>
     );
 };

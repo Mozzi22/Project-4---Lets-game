@@ -61,5 +61,7 @@
     "TicTacToe": "Tic Tac Toe",
     "Checkers": "Checkers",
     "not_your_turn": "Opponent turn",
-    "game_error": ""
+    "game_error": "",
+    "you_winner": "The game is over. You won!",
+    "you_loser": "The game is over. You lost!"
 }
