@@ -2,6 +2,7 @@ import React from 'react';
 import { StDisplayGame } from './styled';
 import Checkers from './Сheckers';
 import TicTacToe from './TicTacToe';
+import Welcome from '../Welcome';
 
 const DisplayGame = ({ gameType }) => {
     switch (gameType) {
@@ -19,7 +20,7 @@ const DisplayGame = ({ gameType }) => {
         );
         default: return (
             <StDisplayGame>
-                Тут будет компонент приветствия
+               <Welcome/>
             </StDisplayGame>
         );
     };
