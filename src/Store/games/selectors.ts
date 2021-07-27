@@ -90,11 +90,11 @@ export const getWinner = createSelector(
     gameStore,
     ({ winner, userLogin }) => {
         switch (winner) {
-            case userLogin: return i18next.t('winner');
+            case userLogin: return i18next.t('you_winner');
             case DRAW: return i18next.t(DRAW);
             default: {
                 if (winner === '') return '';
-                if (winner !== userLogin) return i18next.t('loser');
+                if (winner !== userLogin) return i18next.t('you_loser');
             }
         }
     },

@@ -1,7 +1,6 @@
 import React from 'react';
 import { StSingleSellNine } from './styled';
 import { TSingleSell } from 'src/components/Main/RoomContent/DisplayGame/types';
-import CrossAndZero from './CrosssAndZero';
 
 const SingleSellNine: React.FC<TSingleSell> = ({  id, doStep, status }) => {
     let item = '';
@@ -18,7 +17,6 @@ const SingleSellNine: React.FC<TSingleSell> = ({  id, doStep, status }) => {
             onClick={handleClick}
         >
              { item }
-            {/* {figure ? <CrossAndZero position={id} isChecked={isChecked} figure={figure}/> : null} */}
         </StSingleSellNine>
     );
 };

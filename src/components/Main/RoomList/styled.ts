@@ -28,7 +28,8 @@ export const StItems = styled.div`
     height: 100%;
     flex-direction: column;
     width: 100%;
-    overflow-y: hidden;
+    overflow-y: auto;
+    padding-bottom: 15px;
     &:hover {
         overflow-y: auto;
         overflow-x: auto;

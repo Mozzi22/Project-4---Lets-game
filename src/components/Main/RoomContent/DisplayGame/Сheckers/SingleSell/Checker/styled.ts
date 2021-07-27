@@ -9,10 +9,10 @@ export const StChecker = styled.div<{bgColors: string}>`
     align-items: center;
     justify-content: center;
     box-shadow: 0 0 2px 2px black;
-    background-color: ${({ bgColors = 'red' }) => bgColors};
+    background-color: ${({ bgColors = 'green' }) => bgColors};
     &::after {
         border: 2px solid black;
-        background-color: ${({ bgColors = 'red' }) => bgColors};
+        background-color: ${({ bgColors = 'green' }) => bgColors};
 
     }
 `;

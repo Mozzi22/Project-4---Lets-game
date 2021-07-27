@@ -8,16 +8,16 @@ export const StRoomListItems = styled.div`
     min-height: 60px;
     align-items: center;
     color: ${({ color = colorDefault }) => color};
-    margin: 0 0 20px;
+    margin: 0 20px 20px;
     border-radius: 5px;
     padding: 7px 15px;
     background-color: #2acbb9;
     cursor: pointer;
         ul {
-          padding-left: 1rem;
-          list-style-type: none;
+            padding-left: 1rem;
+            list-style-type: none;
         }
-        :hover{
+        :hover {
             color: ${({ color = bgColorDefault }) => color};
             span{
                 color: ${({ color = colorDefault }) => color};
@@ -29,27 +29,24 @@ export const StRoom = styled.div < IStRoom > `
     justify-content: flex-start;
     align-items: center;
     width: 100%;
-        h2{
+    max-height: 55px;
+    overflow: hidden;
+        h2 {
             font-size: 18px;
             margin: 0;
+            overflow-wrap: break-word;
         }
-        h3{
+        h3 {
             font-size: 16px;
             text-transform: capitalize;
             margin: 0;
+            overflow-wrap: break-word;
+            line-height: 30px;
         }
-        div{
+        div {
             width: 80%;
             color: #eee;
-        }
-        span{
-            width: 30px;
-            height: 30px;
-            display:flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 20px;
-            border-radius: 50%;
-            background-color: ${({ bgColor = bgColorDefault }) => bgColor};
+            max-height: 60px;
+            padding: 20px 0;
         }
 `;

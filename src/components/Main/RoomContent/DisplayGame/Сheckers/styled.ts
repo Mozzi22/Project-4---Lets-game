@@ -5,11 +5,8 @@ export const StCheckers = styled.div`
     width: 400px;
     height: 400px;
     display: flex;
-    align-content: center;
     flex-wrap: wrap;
     flex-direction: row-reverse;
-    color:red;
+    color: black;
     margin: 10px auto;
-    justify-content: center;
-    align-items: center;
 `;

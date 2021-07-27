@@ -351,6 +351,7 @@ export function* workerGetPosibleStep({ payload }) {
             id,
         },
     });
+    console.log('body', body);
     yield call([stompClient, stompClient.send], routes.ws.actions.getPossibleStep, { uuid: id }, body);
 }
 export function* workerCheckerStep({ payload }) {

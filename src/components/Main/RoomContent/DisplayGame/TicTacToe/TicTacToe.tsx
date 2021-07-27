@@ -1,28 +1,14 @@
 import React from 'react';
 import { StTicTacToe } from './styled';
 import SingleSellNine from './SingleSellNine';
+import { ITEMS_FOR_TIC_TAC_TOE } from 'src/constants/ui';
 
-const TicTacToe = ({ ticTacToe, doStepTicTacToe }) => {
- const items = [];
-    for (let i = 0; i < 9; i++) { items.push(i); }
+const TicTacToe = () => {
     return (
         <StTicTacToe>
-            {items.map((item) => <SingleSellNine id={item} key={item} />)}
+            {ITEMS_FOR_TIC_TAC_TOE.map((item) => <SingleSellNine id={item.position} key={item.position} />)}
         </StTicTacToe>
     );
-    // return (
-    //     <StTicTacToe>
-    //        {ticTacToe.map((item) =>
-    //             <SingleSellNine
-    //                 key={item.position}
-    //                 id={item.position}
-    //                 figure={item.figure}
-    //                 isChecked={item.isChecked}
-    //                 onClick={doStepTicTacToe}
-    //             />
-    //         )}
-    //     </StTicTacToe>
-    // );
 };
 
 export default TicTacToe;
