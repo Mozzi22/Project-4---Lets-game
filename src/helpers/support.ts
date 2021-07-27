@@ -21,15 +21,16 @@ export const support = {
   deleteTokenFromCookie: (name: string) => {
     support.setTokenInCookie(name, -1);
   },
-  errorCatcher: ({ body }) => {
+  errorCatcher: ({ body }: { body: string }) => {
     const { body: parsedBody } = JSON.parse(body);
     switch (parsedBody) {
-      case BOT_TIC: return 1;
-      case BOT_CHECKERS: return 1;
-      case 'Invalid step Bot1': return 1;
-      case 'Invalid step Bot2': return 1;
-      case 'Invalid step Bot3': return 1;
-      case 'Invalid step {}': return 1;
+      case BOT_TIC:
+      case BOT_CHECKERS: 
+      case 'Invalid step Bot1':
+      case 'Invalid step Bot2':
+      case 'Invalid step Bot3':
+      case 'Invalid step {}':
+        return 1;
       default: NotificationManager.error(parsedBody, i18next.t('game_error'), 3000);
     }
   },
