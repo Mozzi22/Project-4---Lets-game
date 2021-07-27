@@ -3,9 +3,9 @@ import RoomList from './RoomList';
 import RoomContent from './RoomContent';
 import { StMain } from './styled';
 
-const Main = ({ getSockJSConnection }) => {
+const Main = ({ initialWebSocket }) => {
     useEffect(() => {
-        getSockJSConnection();
+        initialWebSocket();
 
     }, []);
     return (

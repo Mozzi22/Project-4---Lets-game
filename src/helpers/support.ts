@@ -2,12 +2,12 @@ import { NotificationManager } from 'react-notifications';
 import i18next from 'i18next';
 import moment from 'moment';
 import { store } from '../index';
-import { 
+import {
   gameEvent,
   doBotStepTic,
   putPossibleSteps,
 } from 'src/Store/games/actions';
-import { BOT_CHECKERS, BOT_TIC } from 'src/constants/simpleConstants';
+import { BOT_CHECKERS, BOT_TIC } from 'src/constants/componentsСonsts';
 
 export const support = {
     setTokenInCookie: (payload: string, age: number = 3600 * 8) => {

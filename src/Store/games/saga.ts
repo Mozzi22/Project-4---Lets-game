@@ -1,142 +1,3 @@
-// import { routes } from 'src/constants/routes';
-// import { takeEvery, call, take, put, select} from 'redux-saga/effects';
-// import { CompatClient, Stomp } from '@stomp/stompjs';
-// import { v4 as uuidv4 } from 'uuid';
-// import { NotificationManager } from 'react-notifications';
-// import { eventChannel, SagaIterator } from 'redux-saga';
-// import i18next from 'i18next';
-// import { support } from 'src/helpers/support';
-// import { actionTypes } from './actionTypes';
-// import { setAllRooms } from './actions';
-// import { getUserLogin } from '../login/selectors';
-
-// export let stompClient: CompatClient | null = null;
-
-// export const connection = (token: string) => {
-//     const socket = new WebSocket(`${routes.baseWebSocketUrl}${routes.game_menu}`);
-//     stompClient = Stomp.over(socket);
-//     return new Promise((resolve) => stompClient
-//         .connect({ Authorization: `Bearer ${token}` }, () => resolve(stompClient)));
-// };
-
-// export const createStompChannel = (stompClient: CompatClient) => eventChannel((emit) => {
-//     const roomsSub = stompClient.subscribe(routes.ws.rooms, ({ body }) => {
-//         return emit(setAllRooms(JSON.parse(body)));
-// });
-
-//     const errorSub = stompClient.subscribe(routes.ws.errors, support.errorCatcher);
-//     return () => {
-//         roomsSub.unsubscribe();
-//         errorSub.unsubscribe();
-//     };
-// });
-
-// export const init = (stompClient: CompatClient) => {
-//     stompClient.send(routes.ws.update_room);
-// };
-
-// export function* workerConnection(): SagaIterator {
-//     try {
-//         const token: string = yield call([support, support.getTokenFromCookie], 'token');
-//         const stompClient = yield call(connection, token);
-//         const stompChannel = yield call(createStompChannel, stompClient);
-
-//         yield call(init, stompClient);
-//         while (stompChannel) {
-//             const payload = yield take(stompChannel);
-//             yield put(payload);
-//         }
-//     } catch (e) {
-//         yield call([NotificationManager, NotificationManager.error],
-//             i18next.t('server_error_text'), i18next.t('server_error'), 2000);
-//     }
-// }
-
-// export function* createRoomSaga({ payload }): SagaIterator {
-//     try {
-//         const creatorLogin = yield select(getUserLogin);
-//         const body = {
-//             creatorLogin,
-//             gameType: payload,
-//             id: uuidv4(),
-//         };
-//         const token: string = yield call([support, support.getTokenFromCookie], 'token');
-//         yield call(
-//             [stompClient, stompClient.send],
-//             routes.ws.create_room, { Authorization: token },
-//             JSON.stringify(body)
-//             );
-//         yield call(
-//             [stompClient, stompClient.send],
-//             routes.ws.update_room, {},
-//             JSON.stringify(body)
-//         );
-//         } catch (error) {
-//             console.log("error", error);
-//         }
-// }
-
-// export function* joinRoomSaga({ payload }): SagaIterator {
-//     try {
-//         const guestLogin = yield select(getUserLogin);
-//         const body = {
-//             guestLogin,
-//             id: payload,
-//         };
-
-//         yield call(
-//             [stompClient, stompClient.subscribe],
-//             `${routes.ws.game}${payload}`);
-
-//         yield call(
-//             [stompClient, stompClient.send],
-//             routes.ws.join_room, {},
-//             JSON.stringify(body)
-//         );
-//         yield call(
-//             [stompClient, stompClient.send],
-//             routes.ws.update_room,
-//             JSON.stringify(body)
-//             );
-//         } catch (error) {
-//             console.log("error", error);
-//         }
-// }
-
-// // export function* workerSubscribeRoom({ payload }): SagaIterator {
-// //     yield call([stompClient, stompClient.subscribe], `${routes.ws.subs.newGame}${payload}`, support.subGame);
-// // }
-
-// // export function* playWithBotSaga({ payload }): SagaIterator {
-//     // try {
-//     //     const creatorLogin = yield select(getUserLogin);
-//     //     const body = {
-//     //         creatorLogin,
-//     //         gameType: payload,
-//     //         id: uuidv4(),
-//     //         };
-//     //     const token: string = yield call([support, support.getTokenFromCookie], 'token');
-//     //     yield call(
-//     //         [stompClient, stompClient.send],
-//     //         routes.ws.create_room, { Authorization: token },
-//     //         JSON.stringify(body)
-//     //         );
-//     //     yield call(
-//     //         [stompClient, stompClient.send],
-//     //         routes.ws.update_room, {},
-//     //         JSON.stringify(body)
-//     //     );
-//     //     } catch (error) {
-//     //         console.log("error", error);
-//     //     }
-
-
-// export function* watcherGames() {
-//     yield takeEvery(actionTypes.INITIAL_WEB_SOCKET, workerConnection);
-//     yield takeEvery(actionTypes.CREATE_ROOM, createRoomSaga);
-//     yield takeEvery(actionTypes.JOIN_ROOM, joinRoomSaga);
-// }
-
 import { SagaIterator } from '@redux-saga/types';
 import { takeEvery, call, take, put, select } from 'redux-saga/effects';
 import { Stomp, CompatClient } from '@stomp/stompjs';
@@ -147,45 +8,45 @@ import i18next from 'i18next';
 import { routes } from 'src/constants/routes';
 import { getUserLogin, getActualRoom, getStepOrderSelector, getPossibleSteps } from './selectors';
 import { support } from 'src/helpers/support';
-import { BOT_NAME, DRAW, CHECKER_FIELD_INIT, CHECKERS } from 'src/constants/simpleConstants';
+import { BOT_NAME, DRAW, CHECKER_FIELD_INIT, CHECKERS } from 'src/constants/componentsСonsts';
 import { actionTypes } from './actionTypes';
 import {
-    putRooms,
-    setActualRoom,
+    setAllRooms,
+    setCurrentRoom,
     getStepOrder,
     setStepHistory,
     setWinner,
     setStepOrder,
     askBotStep,
     putPossibleSteps,
+    setStatisticsSuccess
 } from './actions';
 import { postRequest } from 'src/helpers/requests';
 
-import { startStatisticsRequest, getStatisticsSuccess, getStatisticsError } from './actions';
-
 export let stompClient: CompatClient;
-// export const setStompClient = (arg: any) => {
-//     stompClient = arg;
-// };
+
 export const connection = (token: string) => {
-    const socket = new WebSocket(`${routes.baseWebSocketUrl}${routes.ws.game_menu}`);
+    const socket = new WebSocket(`${routes.baseWebSocketUrl}${routes.game_menu}`);
     stompClient = Stomp.over(socket);
     return new Promise(resolve => stompClient
-         .connect({ Authorization: `Bearer ${token}` }, () => resolve(stompClient)));
+        .connect({ Authorization: `Bearer ${token}` }, () => resolve(stompClient)));
 };
+
 export const createStompChannel = (stompClient: CompatClient) => eventChannel((emit) => {
-    const roomsSub = stompClient.subscribe(routes.ws.subs.rooms, ({ body }) => emit(putRooms(JSON.parse(body))));
-    const errorSub = stompClient.subscribe(routes.ws.subs.user_errors, support.errorCatcher);
-    const stepsSub = stompClient.subscribe(routes.ws.subs.user_game, support.possibleStep);
+    const roomsSub = stompClient.subscribe(routes.ws.rooms, ({ body }) => emit(setAllRooms(JSON.parse(body))));
+    const errorSub = stompClient.subscribe(routes.ws.errors, support.errorCatcher);
+    const stepsSub = stompClient.subscribe(routes.ws.user_game, support.possibleStep);
     return () => {
         roomsSub.unsubscribe();
         errorSub.unsubscribe();
         stepsSub.unsubscribe();
     };
 });
+
 export const init = (stompClient: CompatClient) => {
-    stompClient.send(routes.ws.actions.getRooms);
+    stompClient.send(routes.ws.update_room);
 };
+
 export function* workerConnection() :SagaIterator {
     try {
         const token = yield call([support, support.getTokenFromCookie], 'token');
@@ -195,9 +56,9 @@ export function* workerConnection() :SagaIterator {
         const stringifyActualRoom = yield call([localStorage, localStorage.getItem], 'actualRoom');
         if (stringifyActualRoom) {
             const actualRoom = yield call([JSON, JSON.parse], stringifyActualRoom);
-            if (actualRoom.guestLogin === BOT_NAME) yield call(workerBotSub, actualRoom.id);
-            yield call(workerSubscribeRoom, { payload: actualRoom.id });
-            yield put(setActualRoom(actualRoom));
+            if (actualRoom.guestLogin === BOT_NAME) yield call(topicBotSteps, actualRoom.id);
+            yield call(subscribeRoom, { payload: actualRoom.id });
+            yield put(setCurrentRoom(actualRoom));
             yield put(getStepOrder({ gameType: actualRoom.gameType, uuid: actualRoom.id }));
         }
         yield call(init, stompClient);
@@ -206,7 +67,7 @@ export function* workerConnection() :SagaIterator {
             if (Array.isArray(action.payload)) {
                 const userLogin = yield select(getUserLogin);
                 const actualRoom = action.payload.find(el => el.creatorLogin === userLogin);
-                if (actualRoom) yield call(workerSubscribeRoom, { payload: actualRoom.id });
+                if (actualRoom) yield call(subscribeRoom, { payload: actualRoom.id });
             }
             yield put(action);
         }
@@ -214,16 +75,24 @@ export function* workerConnection() :SagaIterator {
         yield call([NotificationManager, NotificationManager.error],
             i18next.t('server_error_text'), i18next.t('server_error'), 2000);
     }
-}
-export function* workerSubscribeRoom({ payload }): SagaIterator {
-    yield call([stompClient, stompClient.subscribe], `${routes.ws.subs.newGame}${payload}`, support.subGame);
-}
-export function* workerJoinRoom({ payload }): SagaIterator {
-    const userLogin = yield select(getUserLogin); 
+};
+
+export function* subscribeRoom({ payload }): SagaIterator {
+    yield call([stompClient, stompClient.subscribe], `${routes.ws.game}${payload}`, support.subGame);
+};
+
+export function* joinRoom({ payload }): SagaIterator {
+    const userLogin = yield select(getUserLogin);
     const body = { guestLogin: userLogin, id: payload };
-    yield call([stompClient, stompClient.send], routes.ws.actions.joinRoom, {}, JSON.stringify(body));
-    yield call([stompClient, stompClient.send], routes.ws.actions.getRooms);
+    yield call([stompClient, stompClient.send], routes.ws.join_room, {}, JSON.stringify(body));
+    yield call([stompClient, stompClient.send], routes.ws.update_room);
 }
+
+export function* getStepsOrder({ payload }) {
+    yield call([stompClient, stompClient.send], routes.ws.get_step_order,
+        { uuid: payload.uuid }, JSON.stringify({ gameType: payload.gameType }));
+};
+
 export function* createRoomSaga({ payload }): SagaIterator {
     const creatorLogin = yield select(getUserLogin);
     const newUUID = yield call(uuidv4);
@@ -234,57 +103,46 @@ export function* createRoomSaga({ payload }): SagaIterator {
     };
     const token: string = yield call([support, support.getTokenFromCookie], 'token');
     yield call(
-        [stompClient, stompClient.send], routes.ws.actions.createRoom, { Authorization: token }, JSON.stringify(body),
+        [stompClient, stompClient.send], routes.ws.create_room, { Authorization: token }, JSON.stringify(body),
         );
-    yield call([stompClient, stompClient.send], routes.ws.actions.getRooms, { Authorization: token });
-}
-export function* workerGetStepOrder({ payload }) {
-    yield call([stompClient, stompClient.send], routes.ws.actions.getStepOrder,
-        { uuid: payload.uuid }, JSON.stringify({ gameType: payload.gameType }));
-}
-export function* workerTicStep({ payload }) {
+    yield call([stompClient, stompClient.send], routes.ws.update_room, { Authorization: token });
+};
+
+export function* ticTacSteps({ payload }) {
     const { id, gameType } = yield select(getActualRoom);
     const userLogin = yield select(getUserLogin);
-    yield call([stompClient, stompClient.send], routes.ws.actions.doStep, { uuid: id }, JSON.stringify({
-       gameType, stepDto: { login: userLogin, step: payload, time: Date.now(), id },
+    yield call([stompClient, stompClient.send], routes.ws.do_step, { uuid: id }, JSON.stringify({
+        gameType, stepDto: { login: userLogin, step: payload, time: Date.now(), id },
     }));
-   yield put(getStepOrder({ gameType, uuid: id }));
-}
-export function* workerCleanOldGame() {
-    yield call([localStorage, localStorage.removeItem], 'actualRoom');
-    yield call([localStorage, localStorage.removeItem], 'stepHistory');
-    yield put(setStepHistory([]));
-    yield put(setActualRoom({
-        gameType: '',
-        creatorLogin: '',
-        guestLogin: '',
-        tartTime: 0,
-        id: '',
-        stepDoList: [],
-    }));
-}
-export function* workerAddBot({ payload }) {
+    yield put(getStepOrder({ gameType, uuid: id }));
+};
+
+export function* playWithBot({ payload }) {
     const body = { guestLogin: BOT_NAME, id: payload };
-    yield call(workerBotSub, payload);
-    yield call([stompClient, stompClient.send], routes.ws.actions.joinRoom, {}, JSON.stringify(body));
-    yield call([stompClient, stompClient.send], routes.ws.actions.getRooms);
-}
-export function* workerAskBotStep() {
+    yield call(topicBotSteps, payload);
+    yield call([stompClient, stompClient.send], routes.ws.join_room, {}, JSON.stringify(body));
+    yield call([stompClient, stompClient.send], routes.ws.update_room);
+};
+
+export function* getBotSteps() {
     const { id, gameType } = yield select(getActualRoom);
     const body = { id, gameType };
-    yield call([stompClient, stompClient.send], routes.ws.actions.getBotStep, { uuid: id }, JSON.stringify(body));
-}
-export function* workerBotSub(payload: string) {
-    yield call([stompClient, stompClient.subscribe], `${routes.ws.subs.botStep}${payload}`, support.subBot);
-}
-export function* workerDoBotStepTic({ payload }) {
+    yield call([stompClient, stompClient.send], routes.ws.get_bot_step, { uuid: id }, JSON.stringify(body));
+};
+
+export function* topicBotSteps(payload: string) {
+    yield call([stompClient, stompClient.subscribe], `${routes.ws.bot_steps}${payload}`, support.subBot);
+};
+
+export function* doBotStepTicTac({ payload }) {
     const { id, gameType } = yield select(getActualRoom);
     const userLogin = BOT_NAME;
-    yield call([stompClient, stompClient.send], routes.ws.actions.doStep, { uuid: id }, JSON.stringify({
+    yield call([stompClient, stompClient.send], routes.ws.do_step, { uuid: id }, JSON.stringify({
         gameType, stepDto: { login: userLogin, step: payload, time: Date.now(), id },
-     }));
-    yield call(workerGetStepOrder, { payload: { gameType, uuid: id } });
-}
+    }));
+    yield call(getStepOrder, { payload: { gameType, uuid: id } });
+};
+
 export function* workerGameEvent({ payload }) {
     const parsedBody = yield call([JSON, JSON.parse], payload);
     if (parsedBody.winner === null) return yield put(setWinner(DRAW));
@@ -302,7 +160,6 @@ export function* workerGameEvent({ payload }) {
         yield call([localStorage, localStorage.setItem], 'stepHistory', stringifyField);
         yield put(setStepHistory(parsedBody.field));
         return yield put(getStepOrder({ uuid: id, gameType }));
-        
     }
     if (parsedBody.stepDtoList) {
         let firstStepHistory = yield call([JSON, JSON.stringify], []);
@@ -310,7 +167,7 @@ export function* workerGameEvent({ payload }) {
             firstStepHistory = yield call([JSON, JSON.stringify], CHECKER_FIELD_INIT);
             yield put(setStepHistory(CHECKER_FIELD_INIT));
         }
-        yield put(setActualRoom(parsedBody));
+        yield put(setCurrentRoom(parsedBody));
         yield put(getStepOrder({ uuid: parsedBody.id, gameType: parsedBody.gameType }));
         yield put(setWinner(''));
         yield call([localStorage, localStorage.setItem], 'actualRoom', payload);
@@ -333,13 +190,11 @@ export function* workerGameEvent({ payload }) {
             return
         }
         if(parsedBody.stepOrderLogin === BOT_NAME)yield put(askBotStep())
-        return yield put(setStepOrder(parsedBody.stepOrderLogin)); 
+        return yield put(setStepOrder(parsedBody.stepOrderLogin));
     }
-}
-export function* workerDisconnect() {
-    yield call([stompClient, stompClient.disconnect]);
-}
-export function* workerGetPosibleStep({ payload }) {
+};
+
+export function* getPossibleStep({ payload }) {
     const { id, gameType } = yield select(getActualRoom);
     const login = yield select(getUserLogin);
     const body = yield call([JSON, JSON.stringify], {
@@ -351,64 +206,68 @@ export function* workerGetPosibleStep({ payload }) {
             id,
         },
     });
-    console.log('body', body);
-    yield call([stompClient, stompClient.send], routes.ws.actions.getPossibleStep, { uuid: id }, body);
+    yield call([stompClient, stompClient.send], routes.ws.get_possible_steps, { uuid: id }, body);
 }
-export function* workerCheckerStep({ payload }) {
+export function* checkersSteps({ payload }) {
     const possibleSteps = yield select(getPossibleSteps);
     const startIndex = possibleSteps[0].startIndex;
     const step = `${startIndex}_${payload}`;
     const { id, gameType } = yield select(getActualRoom);
     const userLogin = yield select(getUserLogin);
-    yield call([stompClient, stompClient.send], routes.ws.actions.doStep, { uuid: id }, JSON.stringify({
-       gameType, stepDto: { login: userLogin, step, time: Date.now(), id },
+    yield call([stompClient, stompClient.send], routes.ws.do_step, { uuid: id }, JSON.stringify({
+        gameType, stepDto: { login: userLogin, step, time: Date.now(), id },
     }));
     yield put(putPossibleSteps([]));
     yield put(getStepOrder({ uuid: id, gameType }));
 }
 
+export function* cleanOldGame() {
+    yield call([localStorage, localStorage.removeItem], 'actualRoom');
+    yield call([localStorage, localStorage.removeItem], 'stepHistory');
+    yield put(setStepHistory([]));
+    yield put(setCurrentRoom({
+        gameType: '',
+        creatorLogin: '',
+        guestLogin: '',
+        tartTime: 0,
+        id: '',
+        stepDoList: [],
+    }));
+};
+
+export function* workerDisconnect() {
+    yield call([stompClient, stompClient.disconnect]);
+};
+
 export function* getStatistics() {
-    // try { 
-    //     const username = yield select(getUserLogin);
-    //     // const username = cookie.get("userName"); 
-    //     const data = { username } 
-    //     const answer = yield call(fetch, routes.statistic, data); 
-    //     const statisticData = yield call([answer, "json"]) 
-    //     yield put(getStatistic(statisticData)) 
-    // } catch (e) { 
-    //     console.log(e) 
-    // } 
     try {
-        const token = yield call([support, support.getTokenFromCookie], 'token');
-        const username = yield select(getUserLogin);
-        const data2 = { username };
-        yield put(startStatisticsRequest());
-        const data = yield call(postRequest, `${routes.statistic.byUserName}`, data2, { Authorization: token });
-        const parsedData = yield call([data, data.json]);
-        yield put(getStatisticsSuccess(parsedData));
+        const token: string = yield call([support, support.getTokenFromCookie], 'token');
+        const username: string = yield select(getUserLogin);
+        const body = { username };
+        const reqData = yield call(postRequest, routes.statistics.search_user_name, body, { Authorization: token });
+        const parsedAnswer = yield call([reqData, reqData.json]);
+        yield put(setStatisticsSuccess(parsedAnswer));
+
     } catch (e) {
-        console.log(e)
-        yield put(getStatisticsError());
         yield call([NotificationManager, NotificationManager.error],
             i18next.t('server_error_text'), i18next.t('server_error'), 2000);
     }
 }
 
-
 export function* watcherGame() {
-    yield takeEvery(actionTypes.GET_SOCKJS_CONNECTION, workerConnection);
-    yield takeEvery(actionTypes.SUBSCRIBE_ROOM, workerSubscribeRoom);
-    yield takeEvery(actionTypes.CREATE_ROOM, createRoomSaga);
-    yield takeEvery(actionTypes.JOIN_ROOM, workerJoinRoom);
-    yield takeEvery(actionTypes.GET_STEP_ORDER, workerGetStepOrder);
-    yield takeEvery(actionTypes.DO_TIC_STEP, workerTicStep);
-    yield takeEvery(actionTypes.CLEAN_OLD_GAME, workerCleanOldGame);
-    yield takeEvery(actionTypes.PLAY_WITH_BOT, workerAddBot);
-    yield takeEvery(actionTypes.ASK_BOT_STEP, workerAskBotStep);
-    yield takeEvery(actionTypes.DO_BOT_STEP_TIC, workerDoBotStepTic);
+    yield takeEvery(actionTypes.INITIAL_WEB_SOCKET, workerConnection);
     yield takeEvery(actionTypes.GAME_EVENT, workerGameEvent);
     yield takeEvery(actionTypes.DISCONNECT, workerDisconnect);
-    yield takeEvery(actionTypes.GET_POSIBLE_STEP, workerGetPosibleStep);
-    yield takeEvery(actionTypes.DO_CHECKER_STEP, workerCheckerStep);
+    yield takeEvery(actionTypes.SUBSCRIBE_ROOM, subscribeRoom);
+    yield takeEvery(actionTypes.CREATE_ROOM, createRoomSaga);
+    yield takeEvery(actionTypes.JOIN_ROOM, joinRoom);
+    yield takeEvery(actionTypes.GET_STEP_ORDER, getStepsOrder);
+    yield takeEvery(actionTypes.DO_TIC_STEP, ticTacSteps);
+    yield takeEvery(actionTypes.PLAY_WITH_BOT, playWithBot);
+    yield takeEvery(actionTypes.ASK_BOT_STEP, getBotSteps);
+    yield takeEvery(actionTypes.DO_BOT_STEP_TIC, doBotStepTicTac);
+    yield takeEvery(actionTypes.GET_POSSIBLE_STEP, getPossibleStep);
+    yield takeEvery(actionTypes.DO_CHECKER_STEP, checkersSteps);
+    yield takeEvery(actionTypes.CLEAN_OLD_GAME, cleanOldGame);
     yield takeEvery(actionTypes.GET_STATISTICS, getStatistics);
 }

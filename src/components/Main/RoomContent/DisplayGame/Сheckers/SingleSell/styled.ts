@@ -15,6 +15,6 @@ export const StPossition = styled.div`
     width:  50px;
     height: 50px;
     cursor: pointer;
-    border: 1px solid red;
+    background-color: #aa03d9;
     z-index: 1000;
 `;

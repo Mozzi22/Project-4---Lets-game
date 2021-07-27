@@ -6,7 +6,7 @@ export type TCheckers = {
     color: string | null;
     bgColors: string;
     onClick: (e: React.MouseEvent) => void;
-    getPosibleStep: (e: React.MouseEvent) => void;
+    getPossibleStep: (e: React.MouseEvent) => void;
     doCheckerStep: (arg: number) => void;
     handleClick: (arg: React.MouseEvent) => void;
 }
