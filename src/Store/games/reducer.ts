@@ -84,6 +84,8 @@ export const initialState: TInitialGame = {
         : [],
     winner: '',
     possibleSteps: [],
+    statistics: [],
+    isLoading: false,
 };
 
 export const reducer: Reducer<TInitialGame, TActionsRegistration> = (state = initialState, action) => {
@@ -95,6 +97,12 @@ export const reducer: Reducer<TInitialGame, TActionsRegistration> = (state = ini
         case AT.SET_STEP_HISTORY: return { ...state, stepHistory: action.payload };
         case AT.SET_WINNER: return { ...state, winner: action.payload };
         case AT.PUT_POSSIBLE_STEPS: return { ...state, possibleSteps: action.payload };
-        default: return state;
-    }
+        case AT.START_STATISTICS_REQUEST:
+        return { ...state, isLoading: true };
+        case AT.GET_STATISTICS_SUCCESS:
+        return { ...state, statistics: action.payload, isLoading: false };
+        case AT.GET_STATISTICS_ERROR:
+        return { ...state, isLoading: false };
+            default: return state;
+        }
 };

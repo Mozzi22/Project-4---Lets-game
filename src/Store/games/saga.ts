@@ -159,6 +159,9 @@ import {
     askBotStep,
     putPossibleSteps,
 } from './actions';
+import { postRequest } from 'src/helpers/requests';
+
+import { startStatisticsRequest, getStatisticsSuccess, getStatisticsError } from './actions';
 
 export let stompClient: CompatClient;
 // export const setStompClient = (arg: any) => {
@@ -351,7 +354,6 @@ export function* workerGetPosibleStep({ payload }) {
     yield call([stompClient, stompClient.send], routes.ws.actions.getPossibleStep, { uuid: id }, body);
 }
 export function* workerCheckerStep({ payload }) {
-    payload = payload.toString();
     const possibleSteps = yield select(getPossibleSteps);
     const startIndex = possibleSteps[0].startIndex;
     const step = `${startIndex}_${payload}`;
@@ -363,6 +365,34 @@ export function* workerCheckerStep({ payload }) {
     yield put(putPossibleSteps([]));
     yield put(getStepOrder({ uuid: id, gameType }));
 }
+
+export function* getStatistics() {
+    // try { 
+    //     const username = yield select(getUserLogin);
+    //     // const username = cookie.get("userName"); 
+    //     const data = { username } 
+    //     const answer = yield call(fetch, routes.statistic, data); 
+    //     const statisticData = yield call([answer, "json"]) 
+    //     yield put(getStatistic(statisticData)) 
+    // } catch (e) { 
+    //     console.log(e) 
+    // } 
+    try {
+        const token = yield call([support, support.getTokenFromCookie], 'token');
+        const username = yield select(getUserLogin);
+        const data2 = { username };
+        yield put(startStatisticsRequest());
+        const data = yield call(postRequest, `${routes.statistic.byUserName}`, data2, { Authorization: token });
+        const parsedData = yield call([data, data.json]);
+        yield put(getStatisticsSuccess(parsedData));
+    } catch (e) {
+        console.log(e)
+        yield put(getStatisticsError());
+        yield call([NotificationManager, NotificationManager.error],
+            i18next.t('server_error_text'), i18next.t('server_error'), 2000);
+    }
+}
+
 
 export function* watcherGame() {
     yield takeEvery(actionTypes.GET_SOCKJS_CONNECTION, workerConnection);
@@ -379,4 +409,5 @@ export function* watcherGame() {
     yield takeEvery(actionTypes.DISCONNECT, workerDisconnect);
     yield takeEvery(actionTypes.GET_POSIBLE_STEP, workerGetPosibleStep);
     yield takeEvery(actionTypes.DO_CHECKER_STEP, workerCheckerStep);
+    yield takeEvery(actionTypes.GET_STATISTICS, getStatistics);
 }

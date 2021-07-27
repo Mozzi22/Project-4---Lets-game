@@ -1,20 +1,20 @@
 import React, { useEffect } from 'react';
 import RoomList from './RoomList';
 import RoomContent from './RoomContent';
+import Statistics from '../Statistics';
 import { StMain } from './styled';
 
-const Main = ({getSockJSConnection, disconnect}) => {
-     useEffect(() => {
+const Main = ({ getSockJSConnection }) => {
+    useEffect(() => {
         getSockJSConnection();
-        return () => disconnect();
-    },
-             []);
+
+    }, []);
     return (
         <StMain>
-            <RoomList/> 
-            <RoomContent/>
+            <RoomList/>
+            <RoomContent />
         </StMain>
-    );
+    )
 };
 
 export default Main;

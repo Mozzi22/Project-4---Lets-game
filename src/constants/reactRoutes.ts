@@ -2,7 +2,7 @@ interface IRoutes {
     registration: string;
     login: string;
     main: string;
-    statistics:string
+    statistics: string
 }
 
 export const APP_ROUTES: IRoutes = {
