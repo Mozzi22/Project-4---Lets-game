@@ -101,6 +101,7 @@ module.exports = {
       chunks: 'all',
     },
   },
+  performance: { hints: false },
   devServer: {
     port: 7777,
     historyApiFallback: true,
