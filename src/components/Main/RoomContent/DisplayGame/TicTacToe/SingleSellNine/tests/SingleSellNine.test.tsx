@@ -2,44 +2,39 @@ import React from 'react';
 import SingleSellNine from '../SingleSellNine';
 import { mount, shallow } from 'enzyme';
 import configureStore from 'redux-mock-store';
-import { mountSmart } from 'src/helpers/tests/testHelper';
 
 const mockStore = configureStore();
 const store = mockStore({
       ticTacToe: {}
 });
 describe('SingleSellNine', () => {
-    const props = {
-    id: 12,
-    onClick: jest.fn(),
-    isChecked: true ,
-    figure: null,
-    }
+   const props = {
+            id: 1,
+            doStep: jest.fn(),
+            status: '',
+          };
     it('Should match snapshot', () => {
         const component = shallow(<SingleSellNine {...props}/>);
         expect(component.html()).toMatchSnapshot();
     });
-    it('should render StSingleSellNine', () => {
-        const component = mount(<SingleSellNine {...props}/>);
+    it('Should render SingleSellNine ', () => {
+        const component = mount(<SingleSellNine {...props} />);
         expect(component.find('styled__StSingleSellNine')).toHaveLength(1);
     });
-    it('should not render CrossAndZero', () => {
-        const component = mountSmart(<SingleSellNine {...props}/>);
-        expect(component.find('CrossAndZero')).toHaveLength(0);
+    it('Should render img CROSS ', () => {
+        props.status = 'X';
+        const component = mount(<SingleSellNine {...props} />);
+        expect(component.find('styled__StSingleSellNine')).toBe('X');
     });
-    it('should render CrossAndZero', () => {
-        const props = {
-        id: 12,
-        onClick: jest.fn(),
-        isChecked: true, 
-        figure: 'X',
-        }
-            const component = mountSmart(<SingleSellNine {...props} />, store);
-        expect(component.find('CrossAndZero')).toHaveLength(1);
+    it('Should render img ZEROTIC ', () => {
+        props.status = 'O';
+        const component = mount(<SingleSellNine {...props} />);
+        expect(component.find('styled__StSingleSellNine')).toBe('O');
     });
-    it('should click on the button', () => {
-        const component = mountSmart(<SingleSellNine {...props} />);
+    it('Should click tic-tac-toe field and call doStep ', () => {
+        props.status = '';
+        const component = mount(<SingleSellNine {...props} />);
         component.find('styled__StSingleSellNine').props().onClick();
-        expect(props.onClick).toHaveBeenCalled();
+        expect(props.doStep).toHaveBeenCalledWith(props.id);
     });
 });

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getUserLogin } from 'src/store/games/selectors';
+import { getUserLogin } from 'src/Store/games/selectors';
 import Welcome from './Welcome';
 
 const mapStateToProps = state => ({

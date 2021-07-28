@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import { setValueSearch } from 'src/Store/games/actions';
-import { getFilterByRoomName } from 'src/store/games/selectors';
+import { getFilterByRoomName } from 'src/Store/games/selectors';
 import { changeModalVisibility } from 'src/Store/modals/actions';
 import ControlPanel from './ControlPanel';
 

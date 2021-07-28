@@ -229,7 +229,7 @@ export function* cleanOldGame() {
         gameType: '',
         creatorLogin: '',
         guestLogin: '',
-        tartTime: 0,
+        startTime: 0,
         id: '',
         stepDoList: [],
     }));
